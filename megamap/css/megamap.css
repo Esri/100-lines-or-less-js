@@ -11,11 +11,11 @@
 
 #map-hero {
   font-family: MegaMan;
-  font-size: 50pt;
+  font-size: 5em;
 }
 #map-villain {
   font-family: MegaManVillain;
-  font-size: 50pt;
+  font-size: 5em;
 }
 
 .btn.active {
