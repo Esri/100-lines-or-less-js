@@ -1,0 +1,40 @@
+@font-face { font-family: MegaMan; src: url('MegaMan.[fontvir.us].ttf') }
+@font-face { font-family: MegaManVillain; src: url('MegaMan.Villianz.[fontvir.us].ttf') }
+
+#mapDiv {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#map-hero {
+  font-family: MegaMan;
+  font-size: 50pt;
+}
+#map-villain {
+  font-family: MegaManVillain;
+  font-size: 50pt;
+}
+
+.btn.active {
+  border: 2px solid #000;
+}
+
+#chooser {
+  z-index: 1001;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#announce {
+  position: absolute;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 200%;
+  z-index: 1001;
+  left: 1%;
+  bottom: 1%;
+}
+
