@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beam Me Up Scotty App">
+    <meta name="author" content="Robert Djurasaj">
+    <!-- Safari iOS - apps only -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Chrome for Android - NEW! -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="images/brand.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <title>Beam Me Up Scotty</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.8/js/esri/css/esri.css">   
+    <link rel="stylesheet" type="text/css" href="http://esri.github.io/bootstrap-map-js/src/css/bootstrapmap.css">  
+    <link rel="stylesheet" type="text/css" href="css/beammeupscotty.css">   
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bootstrap_v3/docs-assets/js/html5shiv.js"></script>
+      <script src="../bootstrap_v3/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top navbar-custom">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;Beam Me Up Scotty</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-contents">
+          <ul class="nav navbar-nav navbar-right" role="navigation">
+            <li><a href="#" data-toggle="modal" data-target="#modal-about">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div id="mapDiv"></div>
+    <div id="controls">
+      <button id="bmus" type="button" class="btn btn-primary btn-sm">Beam Me Up &nbsp;<span id="results" class="badge"></span></button>
+      <button id="hard-reset" type="button" class="btn btn-danger btn-sm">Hard Reset &nbsp;<span id="global-results" class="badge"></button>
+    </div>
+    <div id="results">
+      
+    </div>
+
+
+    <div class="modal fade" id="modal-about">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">About</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Capt'n Kirk would be a huge Instagram fan. :)
+            </p>
+            <p>
+              <b>Instructions:</b>b> Click anywhere on the map to show available images in the radius (green circle)... or ask Scotty to beam you somewhere else by clicking on <button type="button" class="btn btn-primary btn-sm">Beam Me Up</button>  button :). Also you can see in the realtime where other people are clicking on the map (red circles).
+            </p>
+            <p>
+              Use <button type="button" class="btn btn-danger btn-sm">Hard Reset</button> button to delete complete "beaming" history and all users will instantly see the change... thanks firebase.io :). 
+            </p>
+            <p>
+              Each time you click on the map <button type="button" class="btn btn-primary btn-sm">Beam Me Up&nbsp;<span id="results" class="badge">0</span></button> button will show you the number of the results returned by the Instagram. Likewise, <button type="button" class="btn btn-danger btn-sm">Hard Reset&nbsp;<span id="results" class="badge">0</span></button>  button will show you the total number of the results for all the users currently using the app.
+            </p>
+            <p>
+              Cheers!!!
+            </p>
+            <hr>
+            <p>
+              APIs used:
+              <ul>
+                <li><a href="http://instagram.com/developer/" target="_blank">Instagram API</a></li>
+              </ul>
+
+              Libraries Referenced:
+              <ul>
+                <li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a></li>
+                <li><a href="https://github.com/Esri/bootstrap-map-js" taget="_blank">Bootstrap-map-js</a></li>
+                <li><a href="http://jquery.com/" target="_blank">jQuery</a></li>
+                <li><a href="http://firebase.io">FirebaseIO</a></li>
+                <li><a href="http://fortawesome.github.io/">Font Awesome</a></li>
+              </ul>
+            </p>
+            <hr>
+            <p>
+              Made by Robert Djurasaj <a href="http://github.com/robertd"><i class="fa fa-github fa-lg"></i> robertd</a>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
+    <script src="http://js.arcgis.com/3.8compact"></script>
+    <script src="js/arcgis.js"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
