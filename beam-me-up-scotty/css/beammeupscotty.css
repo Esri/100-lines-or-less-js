@@ -1,0 +1,34 @@
+#mapDiv {
+  margin-top: 50px;
+  min-height: 100%; 
+  max-height: 100%; 
+}
+
+.navbar .navbar-brand {
+  padding-top: 13px;
+  color: #E0E0E0;
+}
+
+#bmus, #hard-reset {
+  margin-top: 9px;
+  margin-right: 10px;
+}
+
+.navbar-border: {
+  border-bottom: 1px solid gray;
+}
+
+#controls {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 55px;
+  right: 10px;
+}
+
+#locate-button {
+  position: absolute;
+  top: 135px;
+  left: 16px;
+  z-index: 50;
+}
