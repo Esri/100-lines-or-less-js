@@ -3,7 +3,7 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
   "esri/graphic", "esri/symbols/PictureMarkerSymbol", "esri/InfoTemplate", "esri/geometry/Point",
   "esri/dijit/LocateButton", "esri/layers/GraphicsLayer", "esri/symbols/SimpleLineSymbol", 
   "esri/symbols/SimpleFillSymbol", "dojo/domReady!"], 
-  function(Map, Scalebar, webMercatorUtils, Color, BM, Circle, Graphic, PictureMarkerSymbol, 
+  function(Map, Scalebar, webMercatorUtils, Color, BootstrapMap, Circle, Graphic, PictureMarkerSymbol, 
     InfoTemplate, Point, LocateButton, GraphicsLayer,  SimpleLineSymbol, SimpleFillSymbol) {
     // Map and variables
     var map = new Map("mapDiv", {basemap: "topo", center: [-116.5381,33.8250], zoom: 16, minZoom: 4, maxZoom: 18}),
@@ -22,7 +22,7 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
       drawBeam(geoPoint, greenFillColor, map.graphics); 
       map.centerAndZoom(geoToMerc(geoPoint), 15);
     });
-    $("#hard-reset").click(clearAll); firebase.on("child_removed", clearAll); BM.bindTo(map);
+    $("#hard-reset").click(clearAll); firebase.on("child_removed", clearAll); BootstrapMap.bindTo(map);
     map.on("click", function (e) {
       map.graphics.clear(); //clear own graphics
       var geoPoint = mercToGeo(e.mapPoint),
