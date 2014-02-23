@@ -25,10 +25,8 @@ require(["esri/map", "esri/dijit/Scalebar", "http://esri.github.io/bootstrap-map
       map.centerAndZoom(geographicToMercator(geoPoint), 15);
     });
 
-    $("#hard-reset").click(function (e) {
-      clearAll();
-      firebase.set(null);
-    });
+    $("#hard-reset").click(clearAll);
+    firebase.on("child_removed", clearAll);
 
     map.on("click", function (e) {
       map.graphics.clear(); //clear own graphics
@@ -45,8 +43,6 @@ require(["esri/map", "esri/dijit/Scalebar", "http://esri.github.io/bootstrap-map
       $globalResults.html(globalResults);
       $.each(res.val().data, function(k, data) { drawThumbnail(data, otherScottiesLayer); });
     });
-
-    firebase.on("child_removed", clearAll);
     //Functions
     function fetchInstagramData(point) {
       $.ajax({
@@ -87,6 +83,7 @@ require(["esri/map", "esri/dijit/Scalebar", "http://esri.github.io/bootstrap-map
       map.infoWindow.hide(); //close any visible info templates
       map.graphics.clear(); //clear own graphics
       otherScottiesLayer.clear(); //clear other realtime graphics
+      firebase.set(null); //reset beammeupscotty.firebase.io
     }
     function createThumbnailGraphic(details) { return new Graphic(createGeoPoint(details.location), createPictureMarkerSymbol(details.thumbnailUrl), {}, createInfoTemplate(details)); }
     function drawThumbnail(details, graphicLayer) { graphicLayer.add(createThumbnailGraphic(details)); }
