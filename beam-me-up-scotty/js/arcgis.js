@@ -1,19 +1,21 @@
 /* Uses pre-existing library - http://github.com/esri/bootstrap-map-js */
 require(["esri/map", "esri/dijit/Scalebar", "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js", 
   "esri/geometry/webMercatorUtils", "dojo/_base/Color", "esri/geometry/Circle", "esri/graphic",
-  "esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", "esri/InfoTemplate",
+  "esri/geometry/Point", "esri/symbols/PictureMarkerSymbol", "esri/InfoTemplate", "esri/dijit/LocateButton",
   "esri/layers/GraphicsLayer", "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "dojo/domReady!"], 
-  function(Map, Scalebar, BootstrapMap, webMercatorUtils, Color, Circle, Graphic, Point, PictureMarkerSymbol, InfoTemplate, GraphicsLayer,  SimpleLineSymbol, SimpleFillSymbol, on) {
-    // Map
+  function(Map, Scalebar, BootstrapMap, webMercatorUtils, Color, Circle, Graphic, Point, PictureMarkerSymbol, InfoTemplate, LocateButton, GraphicsLayer,  SimpleLineSymbol, SimpleFillSymbol, on) {
+    // Map and variables
     var map = new Map("mapDiv", { basemap: "topo", center: [-116.5381,33.8250], zoom: 16, minZoom: 4, maxZoom: 18}),
         scalebar = new Scalebar({ map: map, scalebarUnit: "dual" }), clientID = "7dedae6f0abb4affac4d06c109a134af",
         instagramAPI = "https://api.instagram.com/v1/media/search",
         firebase = new Firebase("https://beammeupscotty.firebaseio.com/"),
         otherScottiesLayer = new GraphicsLayer({id:"other-scotties", opacity: 0.5}),
         redFillColor = new Color([255, 6, 52, 0.1]), greenFillColor = new Color([152, 251, 152, 0.25]),
-        $results = $("#results"), $globalResults = $("#global-results"), globalResults = 0;
+        $results = $("#results"), $globalResults = $("#global-results"), globalResults = 0,
+        geoLocate = new LocateButton({ map: map }, "locate-button");
     map.addLayer(otherScottiesLayer);
     map.infoWindow.resize(175, 250);
+    geoLocate.startup();
     //Event Binding
     BootstrapMap.bindTo(map);
     $("#bmus").click(function (e) {
@@ -44,9 +46,7 @@ require(["esri/map", "esri/dijit/Scalebar", "http://esri.github.io/bootstrap-map
       $.each(res.val().data, function(k, data) { drawThumbnail(data, otherScottiesLayer); });
     });
 
-    firebase.on("child_removed", function (res) {
-      clearAll();
-    });
+    firebase.on("child_removed", function (res) { clearAll(); });
     //Functions
     function fetchInstagramData(point) {
       $.ajax({

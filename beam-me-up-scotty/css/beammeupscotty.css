@@ -25,3 +25,10 @@
   top: 55px;
   right: 10px;
 }
+
+#locate-button {
+  position: absolute;
+  top: 135px;
+  left: 16px;
+  z-index: 50;
+}
