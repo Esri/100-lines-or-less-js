@@ -4,20 +4,20 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
   "esri/dijit/LocateButton", "esri/layers/GraphicsLayer", "esri/symbols/SimpleLineSymbol", 
   "esri/symbols/SimpleFillSymbol", "dojo/domReady!"], 
   function(Map, Scalebar, webMercatorUtils, Color, BootstrapMap, Circle, Graphic, PictureMarkerSymbol, 
-    InfoTemplate, Point, LocateButton, GraphicsLayer,  SimpleLineSymbol, SimpleFillSymbol) {
+    InfoTemplate, Point, LocateButton, GraphicsLayer, SimpleLineSymbol, SimpleFillSymbol) {
     // Map and variables
-    var map = new Map("mapDiv", {basemap: "topo", center: [-116.5381,33.8250], zoom: 16, minZoom: 4, maxZoom: 18}),
-      scalebar = new Scalebar({map: map, scalebarUnit: "dual"}), clientID = "7dedae6f0abb4affac4d06c109a134af",
+    var map = new Map("mapDiv", { basemap: "topo", center: [-116.5381, 33.8250], zoom: 16, minZoom: 4, maxZoom: 18 }),
+      scalebar = new Scalebar({ map: map, scalebarUnit: "dual" }), clientID = "7dedae6f0abb4affac4d06c109a134af",
       instagramAPI = "https://api.instagram.com/v1/media/search",
       firebase = new Firebase("https://beammeupscotty.firebaseio.com/"),
-      otherScottiesLayer = new GraphicsLayer({id:"other-scotties", opacity: 0.5}),
+      otherScottiesLayer = new GraphicsLayer({ id:"other-scotties", opacity: 0.5 }),
       redFillColor = new Color([255, 6, 52, 0.1]), greenFillColor = new Color([152, 251, 152, 0.25]),
       $results = $("#results"), $globalResults = $("#global-results"), globalResults = 0,
       geoLocate = new LocateButton({ map: map }, "locate-button");
     map.addLayer(otherScottiesLayer); map.infoWindow.resize(175, 250); geoLocate.startup();
     //Event Binding
     $("#bmus").click(function (e) {
-      var geoPoint = createPoint({longitude: getRandomCoordinate(-122,-76), latitude: getRandomCoordinate(47,30)}),
+      var geoPoint = createPoint({ longitude: getRandomCoordinate(-122,-76), latitude: getRandomCoordinate(47,30) }),
            request = fetchInstagramData(geoPoint);
       drawBeam(geoPoint, greenFillColor, map.graphics); 
       map.centerAndZoom(geoToMerc(geoPoint), 15);
@@ -30,7 +30,7 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
       drawBeam(geoPoint, greenFillColor, map.graphics);
     });
     firebase.on("child_added", function (res) {
-      var geoPoint = createPoint({longitude: res.val().mapPoint.x, latitude: res.val().mapPoint.y}),
+      var geoPoint = createPoint({ longitude: res.val().mapPoint.x, latitude: res.val().mapPoint.y }),
           mapPoint = geoToMerc(geoPoint);
       drawBeam(geoPoint, redFillColor, otherScottiesLayer);
       globalResults += res.val().data.length;
@@ -86,7 +86,7 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
     function geoToMerc(mapPoint) { return webMercatorUtils.geographicToWebMercator(mapPoint); }
     function createPictureMarkerSymbol(imageUrl) { return new PictureMarkerSymbol(imageUrl, 25, 25); }
     function createPoint(location) { 
-      return new Point({x: location.longitude, y: location.latitude, spatialReference: { wkid: 4326 }}); 
+      return new Point({ x: location.longitude, y: location.latitude, spatialReference: { wkid: 4326 } }); 
     }
     function createInfoTemplate(details) { 
       return new InfoTemplate({
