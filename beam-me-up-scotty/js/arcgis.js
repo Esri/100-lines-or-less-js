@@ -17,8 +17,7 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
     map.addLayer(otherScottiesLayer); map.infoWindow.resize(175, 250); geoLocate.startup();
     //Event Binding
     $("#bmus").click(function (e) {
-      var geoPoint = createPoint({longitude: getRandomCoordinate(-122,-76),
-                                  latitude: getRandomCoordinate(47,30)}),
+      var geoPoint = createPoint({longitude: getRandomCoordinate(-122,-76), latitude: getRandomCoordinate(47,30)}),
            request = fetchInstagramData(geoPoint);
       drawBeam(geoPoint, greenFillColor, map.graphics); 
       map.centerAndZoom(geoToMerc(geoPoint), 15);
@@ -52,16 +51,17 @@ require(["esri/map", "esri/dijit/Scalebar", "esri/geometry/webMercatorUtils", "d
           });
           firebase.push({mapPoint: point, data: firebaseData});
         } else { 
-          map.graphics.add(new Graphic(point, 
-                           new PictureMarkerSymbol("http://i57.tinypic.com/vhyh08.png", 50, 50))); 
+          map.graphics.add(new Graphic(point, new PictureMarkerSymbol("http://i57.tinypic.com/vhyh08.png", 50, 50))); 
         }
       }).fail(function (jqXHR, res) { console.log("Request failed: " + res); });
     }
+    //Functions
     function getDetails(data) {
-      return { username: data.user.username, thumbnailUrl: data.images.thumbnail.url,
-               pictureUrl: data.images.standard_resolution.url,
-               location: data.location, link: data.link,
-               description: (data.caption && data.caption.text) ? data.caption.text : ""
+      return { 
+                username: data.user.username, thumbnailUrl: data.images.thumbnail.url,
+                pictureUrl: data.images.standard_resolution.url,
+                location: data.location, link: data.link,
+                description: (data.caption && data.caption.text) ? data.caption.text : ""
              };
     }
     function createBeam(mapPoint, fillColor) {
