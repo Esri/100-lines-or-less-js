@@ -46,7 +46,7 @@ require(["esri/map", "esri/dijit/Scalebar", "http://esri.github.io/bootstrap-map
       $.each(res.val().data, function(k, data) { drawThumbnail(data, otherScottiesLayer); });
     });
 
-    firebase.on("child_removed", function (res) { clearAll(); });
+    firebase.on("child_removed", clearAll);
     //Functions
     function fetchInstagramData(point) {
       $.ajax({
