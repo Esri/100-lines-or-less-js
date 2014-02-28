@@ -1,9 +1,6 @@
-﻿var map, lyrOpacityFlag;
-var theImage;
-var mil;
-var iconlayer;
+﻿var map, lyrOpacityFlag, theImage, mil, iconlayer;
 require(["esri/map", "esri/dijit/BasemapToggle", "esri/layers/MapImageLayer", "esri/layers/MapImage"
-    , "esri/geometry/Extent", "esri/SpatialReference", "dijit/form/HorizontalSlider",  "dojo/domReady!"],
+    , "esri/geometry/Extent", "esri/SpatialReference", "dijit/form/HorizontalSlider", "dojo/domReady!"],
     function (Map, BasemapToggle, dom, on, parser, ready) {
         map = new Map("map", { center: [-89, 10], zoom: 3, basemap: "topo" });
         var toggle = new BasemapToggle({ map: map, basemap: "satellite" }, "BasemapToggle");
@@ -23,54 +20,34 @@ require(["esri/map", "esri/dijit/BasemapToggle", "esri/layers/MapImageLayer", "e
         AddImage(-7980433.729840, -1564762.601321, -7959108.928618, -1544135.098798, '10.png');
         AddImage(9595738.689578, 3218881.087547, 9618966.099158, 3241841.340859, '11.png');
         AddImage(4337194.440358, -705166.511542, 4358756.203225, -684723.609897, '12.png');
-        
         var slider = new dijit.form.HorizontalSlider({
-            name: "slider",
-            value: 1,
-            minimum: .1,
-            maximum: 1,
-            intermediateChanges: true,
-            style: "width:300px;",
-            onChange: function (value) {
-                mil.setOpacity(value);
-            }
+            name: "slider", value: 1, minimum: .1, maximum: 1,
+            intermediateChanges: true, style: "width:300px;", onChange: function(value){mil.setOpacity(value);}
         }, "slider");
-        init();
-        function init() {
-            var supportsOrientationChange = "onorientationchange" in window,
-            orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
-
-            window.addEventListener(orientationEvent, function () {
-                orientationChanged();
-            }, false);
-            lyrOpacityFlag = false;
-            removeDynMapListener();
-        }
-        function orientationChanged() {
-            if (map) {
-                map.reposition();
-                map.resize();
-            }
-        }
+        var supportsOrientationChange = "onorientationchange" in window,
+        orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+        window.addEventListener(orientationEvent, function () {orientationChanged();}, false);
+        lyrOpacityFlag = false;
+        removeDynMapListener();
+        function orientationChanged() {if (map) {map.reposition();map.resize();}}
         function removeDynMapListener() {
-            if (window.DeviceMotionEvent) {  
+            if (window.DeviceMotionEvent) {
                 var threshhold = 20;
-                var xPreTotalAcc, yPreTotalAcc, zPreTotalAcc = 0;
-                var xPostTotalAcc, yPostTotalAcc, zPostTotalAcc = 0;
+                var xPTA, yPTA, zPTA = 0;
+                var xPostTA, yPostTA, zPostTA = 0;
                 window.addEventListener('devicemotion', function (e) {
-                    
-                    xPreTotalAcc = e.acceleration.x;
-                    yPreTotalAcc = e.acceleration.y;
-                    zPreTotalAcc = e.acceleration.z;
+                    xPTA = e.acceleration.x;
+                    yPTA = e.acceleration.y;
+                    zPTA = e.acceleration.z;
                 });
                 setInterval(function () {
-                    var change = Math.abs(xPreTotalAcc - xPostTotalAcc + yPreTotalAcc - yPostTotalAcc + zPreTotalAcc - zPostTotalAcc);
+                    var change = Math.abs(xPTA - xPostTA + yPTA - yPostTA + zPTA - zPostTA);
                     if (change > threshhold) {
                         map.centerAndZoom(new esri.geometry.Point(-89, 10), 3)
                     }
-                    xPostTotalAcc = xPreTotalAcc;
-                    yPostTotalAcc = yPreTotalAcc;
-                    zPostTotalAcc = zPreTotalAcc;
+                    xPostTA = xPTA;
+                    yPostTA = yPTA;
+                    zPostTA = zPTA;
                 }, 150);
             } else {
                 alert("DeviceMotion is currently not supported on this hardware.");
@@ -79,13 +56,13 @@ require(["esri/map", "esri/dijit/BasemapToggle", "esri/layers/MapImageLayer", "e
 
     });
 function onClick(e) {
-    if(map.getZoom() < 12){ 
-        map.centerAndZoom(new esri.geometry.Point(e.graphic.geometry.x + 10000, e.graphic.geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12)
-    }
+    if (map.getZoom() < 12) {
+        map.centerAndZoom(new esri.geometry.Point(e.graphic.geometry.x + 10000, e.graphic.geometry.y + 10000
+            , new esri.SpatialReference({ wkid: 102100 })), 12)}
 }
 function AddImage(xmin, ymin, xmax, ymax, href) {
     var geometrya = new esri.geometry.Point(xmin, ymin, new esri.SpatialReference({ wkid: 102100 }));
-    iconlayer.add(new esri.Graphic(geometrya, new esri.symbol.PictureMarkerSymbol("marker.png", 45, 45)));
+    iconlayer.add(new esri.Graphic(geometrya, new esri.symbol.PictureMarkerSymbol("marker.png",45,45)));
     map.addLayer(iconlayer);
     dojo.connect(iconlayer, "onClick", onClick);
     var mi = new esri.layers.MapImage({
