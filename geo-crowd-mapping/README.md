@@ -1,7 +1,7 @@
 Geo Crowd Mapping
 =================
 
-Geo Crowd Mapping is a collaborative web app where you can make your edits and see other people's edits in real time. 
+Geo Crowd Mapping is a collaborative web app where you can make your edits (red) and see other people's edits (blue) in real time. 
 
 Use Layer Swipe widget for distraction-free-mode and/or to compare your edits with other users.
 
