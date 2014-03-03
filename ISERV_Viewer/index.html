@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <!-- Sets whether a web application runs in full-screen mode. -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <!-- Changes the logical window size used when displaying a page on iOS. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+  <!-- Sets the style of the status bar for a web application. -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <title>ISERV Image Viewer</title>
+    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" media="screen"/>
+    <style type="text/css">
+        html, body, #map {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+
+        
+        
+    </style>
+    <link href="sliderStyle.css" rel="stylesheet" /> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+    <script src="http://js.arcgis.com/3.8/" type="text/javascript"></script>
+    <script src="iservscript.js" type="text/javascript"></script>
+    <script src="//connect.facebook.net/en_US/all.js" type="text/javascript"></script>
+    <script src="jquery.touchSwipe.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="fb-root"></div>
+    <div id="map" class="map"><img src="fullextent.png" alt="Zoom to full extent" onclick="javascript:fullextent();" class="fullextentbutton" />
+        <div id="BasemapToggle"></div><div class="claro"><div id="slider"></div></div>
+        <div id="imageSwipe" >
+        <span id="swipetext">Swipe here for next image<br />Shake to zoom out</span></div>
+    </div>
+</body>
+</html>
