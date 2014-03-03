@@ -45,15 +45,16 @@ function onClick(e) {
     theImage = e.graphic;
         map.centerAndZoom(new esri.geometry.Point(e.graphic.geometry.x + 10000,
            e.graphic.geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12);
-        openInfoWindow(e);
+        //openInfoWindow(e);
         }
 function AddImage(xmin, ymin, xmax, ymax, href) {
     var geometrya = new esri.geometry.Point(xmin, ymin, new esri.SpatialReference({ wkid: 102100 }));
-    iconlayer.add(new esri.Graphic(geometrya, new esri.symbol.PictureMarkerSymbol("marker.png",45,45)));
+    iconlayer.add(new esri.Graphic(geometrya,
+        new esri.symbol.PictureMarkerSymbol("images/marker.png", 45, 45)));
     map.addLayer(iconlayer);dojo.connect(iconlayer, "onClick", onClick);
     var mi = new esri.layers.MapImage({
         'extent': new esri.geometry.Extent({"xmin": xmin, "ymin": ymin, "xmax": xmax, "ymax": ymax, 
-            "spatialReference": { "wkid": 102100 } }), 'href': href });
+            "spatialReference": { "wkid": 102100 } }), 'href': 'images/'+href });
     mil.addImage(mi);if(!theImage){ theImage = iconlayer.graphics[0]; }}
     $(function () {
         $("#imageSwipe").swipe({ swipe: function (event, direction, distance, duration, fingerCount) {
@@ -68,10 +69,10 @@ function AddImage(xmin, ymin, xmax, ymax, href) {
                 }
                 map.centerAndZoom(new esri.geometry.Point(tg[nextIndex].geometry.x + 10000,
                 tg[nextIndex].geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12);
-                map.infoWindow.setTitle("Share on Facebook");
-                map.infoWindow.setContent("<button onclick='facebookWallPost()' id='sharebtn' ></button>");
-                map.infoWindow.show(new esri.geometry.Point(tg[nextIndex].geometry.x,
-                tg[nextIndex].geometry.y, new esri.SpatialReference({ wkid: 102100 })))
+                //map.infoWindow.setTitle("Share on Facebook");
+                //map.infoWindow.setContent("<button onclick='facebookWallPost()' id='sharebtn' ></button>");
+                //map.infoWindow.show(new esri.geometry.Point(tg[nextIndex].geometry.x,
+                //tg[nextIndex].geometry.y, new esri.SpatialReference({ wkid: 102100 })))
                 theImage = tg[nextIndex];
             }}, threshold: 75});});
 function facebookWallPost() {

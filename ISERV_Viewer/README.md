@@ -7,7 +7,7 @@ Instructions: Tap an ISERV icon to zoom to the image location.  You can adjust t
 
 Enjoy the cool images from space and share them with your friends!
 
-Try it out [here](https://esri.github.io/100-lines-or-less-js/ISERV_Viewer).
+Try it out [here](http://3.0websitedesigns.com/arcgis100lines/).
 
 APIs used
 

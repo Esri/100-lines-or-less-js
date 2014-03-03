@@ -97,7 +97,7 @@ h1
     border: 0;
     width: 18px;
     height: 16px;
-    background-image: url("sliderThumbs.png");
+    background-image: url("../images/sliderThumbs.png");
     background-repeat: no-repeat;
     background-position: 0 0;
 }
@@ -255,7 +255,7 @@ h1
 {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    background-image: url("commonFormArrows.png");
+    background-image: url("../images/commonFormArrows.png");
     background-repeat: no-repeat;
     background-color: #efefef;
     -moz-border-radius: 2px;
@@ -438,7 +438,7 @@ h1
     border: 0;
     width: 18px;
     height: 16px;
-    background-image: url("sliderThumbs.png");
+    background-image: url("../images/sliderThumbs.png");
     background-repeat: no-repeat;
     background-position: 0 0;
 }
@@ -467,7 +467,7 @@ h1
     border: 0;
     width: 18px;
     height: 16px;
-    background-image: url("sliderThumbs.png");
+    background-image: url("../images/sliderThumbs.png");
     background-repeat: no-repeat;
     background-position: -289px 0;
 }
@@ -501,7 +501,7 @@ h1
 }
 .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH, .claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV
 {
-    background-image: url("commonFormArrows.png");
+    background-image: url("../images/commonFormArrows.png");
     background-repeat: no-repeat;
     background-color: #efefef;
     -moz-border-radius: 2px;
@@ -668,7 +668,10 @@ h1
     -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; 
 }
 #sharebtn{
-background-image:url(share.jpg); width:138px; height:40px; border:0px; background-color:transparent;
+background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:42px; margin-left:20px; float:left;
+}
+#sharebtn:hover{
+background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:42px; margin-left:20px; float:left;
 }
 .fullextentbutton
 {
@@ -734,6 +737,9 @@ background-image:url(share.jpg); width:138px; height:40px; border:0px; backgroun
 		display:none;
 	
 	}
+    #sharebtn{
+    background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+    }
 }
 /*Mobile*/
 @media only screen and ( max-width: 640px)
@@ -787,13 +793,17 @@ background-image:url(share.jpg); width:138px; height:40px; border:0px; backgroun
     }
 #swipetext
 {
-    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.2em; 
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
+     width: 100px; height: 100%; margin: 0 auto; position: relative; top: 60px; color: white; font-size: .8em; right: 60px;
 }
 .fullextentbutton
 	{
 		display:none;
 	
 	}
+#sharebtn{
+    background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+    }
 }
 /*Other mobile*/
 @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)
