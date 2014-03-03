@@ -1,7 +1,8 @@
-﻿var map, lyrOpacityFlag, theImage, mil, iconlayer;
+﻿var map, lyrOpacityFlag, theImage, mil, iconlayer, nextIndex;
 require(["esri/map", "esri/dijit/BasemapToggle", "esri/layers/MapImageLayer", "esri/layers/MapImage"
-    , "esri/geometry/Extent", "esri/SpatialReference", "dijit/form/HorizontalSlider", "dojo/domReady!"],
-    function (Map, BasemapToggle, dom, on, parser, ready) {
+    ,"esri/geometry/Extent","esri/SpatialReference","dijit/form/HorizontalSlider","esri/dijit/Popup",
+        "esri/dijit/PopupTemplate", "dojo/domReady!"],
+    function (Map, BasemapToggle, Popup, PopupTemplate, dom, on, parser, ready) {
         map = new Map("map", { center: [-89, 10], zoom: 3, basemap: "topo" });
         var toggle = new BasemapToggle({ map: map, basemap: "satellite" }, "BasemapToggle");
         toggle.startup();
@@ -33,50 +34,66 @@ require(["esri/map", "esri/dijit/BasemapToggle", "esri/layers/MapImageLayer", "e
         function removeDynMapListener() {
             if (window.DeviceMotionEvent) {
                 var threshhold = 20;
-                var xPTA, yPTA, zPTA = 0;
-                var xPostTA, yPostTA, zPostTA = 0;
-                window.addEventListener('devicemotion', function (e) {
-                    xPTA = e.acceleration.x;
-                    yPTA = e.acceleration.y;
-                    zPTA = e.acceleration.z;
-                });
-                setInterval(function () {
-                    var change = Math.abs(xPTA - xPostTA + yPTA - yPostTA + zPTA - zPostTA);
-                    if (change > threshhold) {
-                        map.centerAndZoom(new esri.geometry.Point(-89, 10), 3)
-                    }
-                    xPostTA = xPTA;
-                    yPostTA = yPTA;
-                    zPostTA = zPTA;
-                }, 150);
-            } else {
-                alert("DeviceMotion is currently not supported on this hardware.");
-            }
-        }
-
-    });
+                var xPTA, yPTA, zPTA, xPostTA, yPostTA, zPostTA = 0;
+                window.addEventListener('devicemotion', function (e) {xPTA = e.acceleration.x;
+                    yPTA = e.acceleration.y;zPTA = e.acceleration.z;});
+                setInterval(function () {var change = Math.abs(xPTA - xPostTA + yPTA - yPostTA + zPTA - zPostTA);
+                    if (change > threshhold) { fullextent() }
+                    xPostTA = xPTA;yPostTA = yPTA; zPostTA = zPTA; }, 150);
+            } else {alert("DeviceMotion is currently not supported on this hardware.");}} });
 function onClick(e) {
-    if (map.getZoom() < 12) {
-        map.centerAndZoom(new esri.geometry.Point(e.graphic.geometry.x + 10000, e.graphic.geometry.y + 10000
-            , new esri.SpatialReference({ wkid: 102100 })), 12)}
-}
+    theImage = e.graphic;
+        map.centerAndZoom(new esri.geometry.Point(e.graphic.geometry.x + 10000,
+           e.graphic.geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12);
+        openInfoWindow(e);
+        }
 function AddImage(xmin, ymin, xmax, ymax, href) {
     var geometrya = new esri.geometry.Point(xmin, ymin, new esri.SpatialReference({ wkid: 102100 }));
     iconlayer.add(new esri.Graphic(geometrya, new esri.symbol.PictureMarkerSymbol("marker.png",45,45)));
-    map.addLayer(iconlayer);
-    dojo.connect(iconlayer, "onClick", onClick);
+    map.addLayer(iconlayer);dojo.connect(iconlayer, "onClick", onClick);
     var mi = new esri.layers.MapImage({
-        'extent': new esri.geometry.Extent({
-            "xmin": xmin, //left
-            "ymin": ymin, //bottom
-            "xmax": xmax, //right
-            "ymax": ymax, //top
-            "spatialReference": {
-                "wkid": 102100
-            }
-        }), 'href': href
-    });
-    mil.addImage(mi);
-}
-
+        'extent': new esri.geometry.Extent({"xmin": xmin, "ymin": ymin, "xmax": xmax, "ymax": ymax, 
+            "spatialReference": { "wkid": 102100 } }), 'href': href });
+    mil.addImage(mi);if(!theImage){ theImage = iconlayer.graphics[0]; }}
+    $(function () {
+        $("#imageSwipe").swipe({ swipe: function (event, direction, distance, duration, fingerCount) {
+            if (theImage) {
+                var tg = theImage._graphicsLayer.graphics;
+                if (direction == "left") {
+                    nextIndex = tg.indexOf(theImage) < 11 ? tg.indexOf(theImage) : -1;
+                    nextIndex = nextIndex + 1;
+                } else {
+                    nextIndex = tg.indexOf(theImage) > 0 ? tg.indexOf(theImage) : 12;
+                    nextIndex = nextIndex - 1;
+                }
+                map.centerAndZoom(new esri.geometry.Point(tg[nextIndex].geometry.x + 10000,
+                tg[nextIndex].geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12);
+                map.infoWindow.setTitle("Share on Facebook");
+                map.infoWindow.setContent("<button onclick='facebookWallPost()' id='sharebtn' ></button>");
+                map.infoWindow.show(new esri.geometry.Point(tg[nextIndex].geometry.x,
+                tg[nextIndex].geometry.y, new esri.SpatialReference({ wkid: 102100 })))
+                theImage = tg[nextIndex];
+            }}, threshold: 75});});
+function facebookWallPost() {
+    var theindex = 0; if (theImage) { theindex = theImage._graphicsLayer.graphics.indexOf(theImage) }
+    var tc = 'View from the International Space Station';
+    FB.ui({ method: 'feed', name: 'ISERV Image Viewer', caption: tc, description: ('Image from ISERV'),
+          link: 'http://3.0websitedesigns.com/arcgis100lines/',
+          picture: 'http://3.0websitedesigns.com/arcgis100lines/' + mil.getImages()[theindex].href},
+      function (response) {if (response && response.post_id) {alert('Post was published.');
+          } else {alert('Post was not published.'); }});}
+$(document).ready(function () {
+    try {
+        window.fbAsyncInit = function () {
+            FB.init({appId: '1428805310695091', status: true,  xfbml: true }); }; } catch (e) { alert(e); }
+}, false);
+var myLocation;
+function openInfoWindow(location) {
+    myLocation = location;
+    map.infoWindow.setTitle("Share on Facebook");
+    map.infoWindow.setContent("<button onclick='facebookWallPost()' id='sharebtn' ></button>");
+    map.infoWindow.show(new esri.geometry.Point(location.graphic.geometry.x,
+           location.graphic.geometry.y, new esri.SpatialReference({ wkid: 102100 })), 
+           map.getInfoWindowAnchor(location.screenPoint));}
+function fullextent() { map.centerAndZoom(new esri.geometry.Point(-89, 10), 3); }
 

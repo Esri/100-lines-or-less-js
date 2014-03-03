@@ -659,6 +659,26 @@ h1
 {
     background-position: -251px 50%;
 }
+#imageSwipe
+{
+    position: absolute; bottom: 0px; Width: 100%; background-color: blue; Height: 100px; z-index: 2; border: 1px solid #174667; border-radius: 10px; -moz-border-radius: 10px; -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35); box-shadow: 3px 5px 3px rgba(0,0,0,.35); background-color: #174667; height: 130px; text-align: center; 
+}
+#swipetext
+{
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; 
+}
+#sharebtn{
+background-image:url(share.jpg); width:138px; height:40px; border:0px; background-color:transparent;
+}
+.fullextentbutton
+{
+	position: absolute;
+	z-index: 30;
+	top: 20px;
+	left: 60px;
+	cursor: pointer;
+	
+}
 /* ipad portrait */
 @media only screen and ( min-width: 768px) and ( max-width: 981px )
 {
@@ -666,6 +686,54 @@ h1
     {
         width: auto;
     }
+    .claro
+    {
+        border: 1px solid #174667;
+        position: fixed;
+        z-index: 99;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        padding: 5px;
+        -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+        box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+        background-color: #174667; /*width: 97%;*/
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 4px;
+    }
+    table#slider
+    {
+        width: 99% !important;
+        -moz-transform: scale(3);
+    }
+    #BasemapToggle
+    {
+        top: auto;
+        position: absolute;
+        right: 6px;
+        z-index: 50;
+        bottom: 40px;
+    }
+    .esriSimpleSliderTL
+    {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+    .claro .dijitSliderImageHandleH
+    {
+        height: 28px;
+    }
+    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
+    {
+        height: 24px;
+        width: 12px;
+    }
+    .fullextentbutton
+	{
+		display:none;
+	
+	}
 }
 /*Mobile*/
 @media only screen and ( max-width: 640px)
@@ -717,7 +785,15 @@ h1
         height: 24px;
         width: 12px;
     }
-
+#swipetext
+{
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.2em; 
+}
+.fullextentbutton
+	{
+		display:none;
+	
+	}
 }
 /*Other mobile*/
 @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)
