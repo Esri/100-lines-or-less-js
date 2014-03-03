@@ -740,6 +740,9 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
     #sharebtn{
     background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
     }
+        #sharebtn:hover {
+            background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+        }
 }
 /*Mobile*/
 @media only screen and ( max-width: 640px)
@@ -803,6 +806,9 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
 	}
 #sharebtn{
     background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+    }
+#sharebtn:hover{
+    background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
     }
 }
 /*Other mobile*/

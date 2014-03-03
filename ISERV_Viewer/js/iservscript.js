@@ -45,7 +45,6 @@ function onClick(e) {
     theImage = e.graphic;
         map.centerAndZoom(new esri.geometry.Point(e.graphic.geometry.x + 10000,
            e.graphic.geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12);
-        //openInfoWindow(e);
         }
 function AddImage(xmin, ymin, xmax, ymax, href) {
     var geometrya = new esri.geometry.Point(xmin, ymin, new esri.SpatialReference({ wkid: 102100 }));
@@ -69,10 +68,6 @@ function AddImage(xmin, ymin, xmax, ymax, href) {
                 }
                 map.centerAndZoom(new esri.geometry.Point(tg[nextIndex].geometry.x + 10000,
                 tg[nextIndex].geometry.y + 10000, new esri.SpatialReference({ wkid: 102100 })), 12);
-                //map.infoWindow.setTitle("Share on Facebook");
-                //map.infoWindow.setContent("<button onclick='facebookWallPost()' id='sharebtn' ></button>");
-                //map.infoWindow.show(new esri.geometry.Point(tg[nextIndex].geometry.x,
-                //tg[nextIndex].geometry.y, new esri.SpatialReference({ wkid: 102100 })))
                 theImage = tg[nextIndex];
             }}, threshold: 75});});
 function facebookWallPost() {
@@ -89,12 +84,5 @@ $(document).ready(function () {
             FB.init({appId: '1428805310695091', status: true,  xfbml: true }); }; } catch (e) { alert(e); }
 }, false);
 var myLocation;
-function openInfoWindow(location) {
-    myLocation = location;
-    map.infoWindow.setTitle("Share on Facebook");
-    map.infoWindow.setContent("<button onclick='facebookWallPost()' id='sharebtn' ></button>");
-    map.infoWindow.show(new esri.geometry.Point(location.graphic.geometry.x,
-           location.graphic.geometry.y, new esri.SpatialReference({ wkid: 102100 })), 
-           map.getInfoWindowAnchor(location.screenPoint));}
 function fullextent() { map.centerAndZoom(new esri.geometry.Point(-89, 10), 3); }
 
