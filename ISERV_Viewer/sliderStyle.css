@@ -1,0 +1,801 @@
+﻿
+*
+{
+    outline: none !important;
+}
+.claro
+{
+    border: 1px solid #174667;
+    position: fixed;
+    z-index: 99;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    padding: 5px;
+    -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+    box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+    background-color: #174667;
+    margin-left: 35%;
+    margin-right: 65%;
+}
+#BasemapToggle
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+}
+
+button
+{
+    -webkit-transition: background-color 0.2s linear;
+    border-radius: 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    background-color: #E4F2FF;
+    background-image: url("//ajax.googleapis.com/ajax/libs/dojo/1.7.4/dijit/themes/claro/form/images/button.png");
+    background-position: center top;
+    background-repeat: repeat-x;
+    border: 1px solid #769DC0;
+    padding: 2px 8px 4px;
+    font-size: 1em;
+}
+
+button:hover
+{
+    background-color: #AFD9FF;
+    color: #000000;
+}
+
+h1
+{
+    font-size: 1.5em;
+}
+
+.break
+{
+    float: none;
+    clear: both;
+}
+.dijitReset
+{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    line-height: normal;
+    color: inherit;
+}
+.dj_a11y .dijitReset
+{
+    -moz-appearance: none;
+}
+.dijitSliderMoveable
+{
+    z-index: 99;
+    position: absolute !important;
+    display: block;
+    vertical-align: middle;
+}
+.dijitSliderMoveableH
+{
+    right: 0;
+}
+.dijitSliderMoveableV
+{
+    right: 50%;
+}
+.dj_a11y div.dijitSliderImageHandle, .dijitSliderImageHandle
+{
+    margin: 0;
+    padding: 0;
+    position: relative !important;
+    border: 8px solid gray;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    border: 0;
+    width: 18px;
+    height: 16px;
+    background-image: url("sliderThumbs.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.dj_iequirks .dj_a11y .dijitSliderImageHandle
+{
+    font-size: 0;
+}
+.dj_ie7 .dijitSliderImageHandle
+{
+    overflow: hidden;
+}
+.dj_ie7 .dj_a11y .dijitSliderImageHandle
+{
+    overflow: visible;
+}
+.dj_a11y .dijitSliderFocused .dijitSliderImageHandle
+{
+    border: 4px solid #000;
+    height: 8px;
+    width: 8px;
+}
+.dijitSliderImageHandleV
+{
+    top: -8px;
+    right: -50%;
+}
+.dijitSliderImageHandleH
+{
+    left: 50%;
+    top: -5px;
+    vertical-align: top;
+}
+.dijitSliderBar
+{
+    border-style: solid;
+    border-color: black;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.dijitSliderBarContainerV
+{
+    position: relative;
+    height: 100%;
+    z-index: 1;
+}
+.dijitSliderBarContainerH
+{
+    position: relative;
+    z-index: 1;
+}
+.dijitSliderBarH
+{
+    height: 4px;
+    border-width: 1px 0;
+}
+.dijitSliderBarV
+{
+    width: 4px;
+    border-width: 0 1px;
+}
+.dijitSliderProgressBar
+{
+    border-color: #b5bcc7;
+    background-color: #ffffff;
+    z-index: 1;
+}
+.dijitSliderProgressBarV
+{
+    position: static !important;
+    height: 0;
+    vertical-align: top;
+    text-align: left;
+}
+.dijitSliderProgressBarH
+{
+    position: absolute !important;
+    width: 0;
+    vertical-align: middle;
+    overflow: visible;
+}
+.dijitSliderRemainingBar
+{
+    overflow: hidden;
+    background-color: transparent;
+    z-index: 1;
+}
+.dijitSliderRemainingBarV
+{
+    height: 100%;
+    text-align: left;
+}
+.dijitSliderRemainingBarH
+{
+    width: 100% !important;
+}
+.dijitSliderBumper
+{
+    overflow: hidden;
+    z-index: 1;
+}
+.dijitSliderBumperV
+{
+    width: 4px;
+    height: 8px;
+    border-width: 0 1px;
+}
+.dijitSliderBumperH
+{
+    width: 8px;
+    height: 4px;
+    border-width: 1px 0;
+}
+.dijitSliderBottomBumper, .dijitSliderLeftBumper
+{
+    background-color: #ffffff;
+}
+.dijitSliderTopBumper, .dijitSliderRightBumper
+{
+    background-color: transparent;
+}
+.dijitSliderDecoration
+{
+    text-align: center;
+}
+.dijitSliderDecorationC, .dijitSliderDecorationV
+{
+    position: relative;
+}
+.dijitSliderDecorationH
+{
+    width: 100%;
+}
+.dijitSliderDecorationV
+{
+    height: 100%;
+    white-space: nowrap;
+}
+.dijitSliderButton
+{
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.dj_a11y .dijitSliderButtonInner
+{
+    visibility: visible !important;
+}
+.dijitSliderButtonContainer
+{
+    text-align: center;
+    height: 0;
+}
+.dijitSliderButtonContainer *
+{
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    background-image: url("commonFormArrows.png");
+    background-repeat: no-repeat;
+    background-color: #efefef;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: solid 1px #b5bcc7;
+    font-size: 1px;
+    border: solid 1px #759dc0;
+}
+.dijitSlider .dijitButtonNode
+{
+    padding: 0;
+    display: block;
+}
+.dj_a11y .dijitSliderReadOnly, .dj_a11y .dijitSliderDisabled
+{
+    opacity: 0.6;
+}
+.dj_ie .dj_a11y .dijitSliderReadOnly .dijitSliderBar, .dj_ie .dj_a11y .dijitSliderDisabled .dijitSliderBar
+{
+    filter: alpha(opacity=40);
+}
+.dj_a11y .dijitSlider .dijitSliderButtonContainer div
+{
+    font-family: monospace;
+    font-size: 1em;
+    line-height: 1em;
+    height: auto;
+    width: auto;
+    margin: 0 4px;
+}
+.claro .dijitTabStripSlideRightIcon
+{
+    background-position: -24px 50%;
+}
+.claro .tabStripButtonDisabled .dijitTabStripSlideLeftIcon
+{
+    background-position: -175px 50%;
+}
+.claro .tabStripButtonDisabled .dijitTabStripSlideRightIcon
+{
+    background-position: -124px 50%;
+}
+.claro .dijitSliderBar
+{
+    border-style: solid;
+    outline: 1px;
+}
+.claro .dijitSliderFocused .dijitSliderBar
+{
+    border-color: #759dc0;
+}
+.claro .dijitSliderHover .dijitSliderBar
+{
+    border-color: #759dc0;
+}
+.claro .dijitSliderDisabled .dijitSliderBar
+{
+    background-image: none;
+    border-color: #d3d3d3;
+}
+.claro .dijitSlider .dijitSliderProgressBarH, .claro .dijitSlider .dijitSliderLeftBumper
+{
+    border-color: #b5bcc7;
+    background-color: #cfe5fa;
+    background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
+    background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
+    background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
+    background-image: linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
+}
+.claro .dijitSlider .dijitSliderRemainingBarH, .claro .dijitSlider .dijitSliderRightBumper
+{
+    border-color: #b5bcc7;
+    background-color: #ffffff;
+}
+.claro .dijitSliderRightBumper
+{
+    border-right: solid 1px #b5bcc7;
+}
+.claro .dijitSliderLeftBumper
+{
+    border-left: solid 1px #b5bcc7;
+}
+.claro .dijitSliderHover .dijitSliderProgressBarH, .claro .dijitSliderHover .dijitSliderLeftBumper
+{
+    background-color: #abd6ff;
+    border-color: #759dc0;
+}
+.claro .dijitSliderHover .dijitSliderRemainingBarH, .claro .dijitSliderHover .dijitSliderRightBumper
+{
+    background-color: #ffffff;
+    border-color: #759dc0;
+}
+.claro .dijitSliderFocused .dijitSliderProgressBarH, .claro .dijitSliderFocused .dijitSliderLeftBumper
+{
+    background-color: #abd6ff;
+    border-color: #759dc0;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.claro .dijitSliderFocused .dijitSliderRemainingBarH, .claro .dijitSliderFocused .dijitSliderRightBumper
+{
+    background-color: #ffffff;
+    border-color: #759dc0;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.claro .dijitSliderDisabled .dijitSliderProgressBarH, .claro .dijitSliderDisabled .dijitSliderLeftBumper
+{
+    background-color: #d3d3d3;
+    background-image: none;
+}
+.claro .dijitSliderDisabled .dijitSliderRemainingBarH, .claro .dijitSliderDisabled .dijitSliderRightBumper
+{
+    background-color: #efefef;
+}
+.claro .dijitRuleLabelsContainerV
+{
+    padding: 0 2px;
+}
+.claro .dijitSlider .dijitSliderProgressBarV, .claro .dijitSlider .dijitSliderBottomBumper
+{
+    border-color: #b5bcc7;
+    background-color: #cfe5fa;
+    background-image: -moz-linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
+    background-image: -webkit-linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
+    background-image: -o-linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
+    background-image: linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
+}
+.claro .dijitSlider .dijitSliderRemainingBarV, .claro .dijitSlider .dijitSliderTopBumper
+{
+    border-color: #b5bcc7;
+    background-color: #ffffff;
+}
+.claro .dijitSliderBottomBumper
+{
+    border-bottom: solid 1px #b5bcc7;
+}
+.claro .dijitSliderTopBumper
+{
+    border-top: solid 1px #b5bcc7;
+}
+.claro .dijitSliderHover .dijitSliderProgressBarV, .claro .dijitSliderHover .dijitSliderBottomBumper
+{
+    background-color: #abd6ff;
+    border-color: #759dc0;
+}
+.claro .dijitSliderHover .dijitSliderRemainingBarV, .claro .dijitSliderHover .dijitSliderTopBumper
+{
+    background-color: #ffffff;
+    border-color: #759dc0;
+}
+.claro .dijitSliderFocused .dijitSliderProgressBarV, .claro .dijitSliderFocused .dijitSliderBottomBumper
+{
+    background-color: #abd6ff;
+    border-color: #759dc0;
+    -webkit-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
+}
+.claro .dijitSliderFocused .dijitSliderRemainingBarV, .claro .dijitSliderFocused .dijitSliderTopBumper
+{
+    background-color: #ffffff;
+    border-color: #759dc0;
+    -webkit-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
+}
+.claro .dijitSliderDisabled .dijitSliderProgressBarV, .claro .dijitSliderDisabled .dijitSliderBottomBumper
+{
+    background-color: #d3d3d3;
+}
+.claro .dijitSliderDisabled .dijitSliderRemainingBarV, .claro .dijitSliderDisabled .dijitSliderTopBumper
+{
+    background-color: #efefef;
+}
+.claro .dijitSliderImageHandleH
+{
+    border: 0;
+    width: 18px;
+    height: 16px;
+    background-image: url("sliderThumbs.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.claro .dijitSliderHover .dijitSliderImageHandleH
+{
+    background-position: -18px 0;
+}
+.claro .dijitSliderFocused .dijitSliderImageHandleH
+{
+    background-position: -36px 0;
+}
+.claro .dijitSliderProgressBarH .dijitSliderThumbHover
+{
+    background-position: -36px 0;
+}
+.claro .dijitSliderProgressBarH .dijitSliderThumbActive
+{
+    background-position: -36px 0;
+}
+.claro .dijitSliderReadOnly .dijitSliderImageHandleH, .claro .dijitSliderDisabled .dijitSliderImageHandleH
+{
+    background-position: -54px 0;
+}
+.claro .dijitSliderImageHandleV
+{
+    border: 0;
+    width: 18px;
+    height: 16px;
+    background-image: url("sliderThumbs.png");
+    background-repeat: no-repeat;
+    background-position: -289px 0;
+}
+.claro .dijitSliderHover .dijitSliderImageHandleV
+{
+    background-position: -307px 0;
+}
+.claro .dijitSliderFocused .dijitSliderImageHandleV
+{
+    background-position: -325px 0;
+}
+.claro .dijitSliderProgressBarV .dijitSliderThumbHover
+{
+    background-position: -325px 0;
+}
+.claro .dijitSliderProgressBarV .dijitSliderThumbActive
+{
+    background-position: -325px 0;
+}
+.claro .dijitSliderReadOnly .dijitSliderImageHandleV, .claro .dijitSliderDisabled .dijitSliderImageHandleV
+{
+    background-position: -343px 0;
+}
+.claro .dijitSliderButtonContainerH
+{
+    padding: 1px 3px 1px 2px;
+}
+.claro .dijitSliderButtonContainerV
+{
+    padding: 3px 1px 2px 1px;
+}
+.claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH, .claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV
+{
+    background-image: url("commonFormArrows.png");
+    background-repeat: no-repeat;
+    background-color: #efefef;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    border: solid 1px #b5bcc7;
+    font-size: 1px;
+}
+.claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
+{
+    height: 12px;
+    width: 9px;
+}
+.claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV
+{
+    height: 9px;
+    width: 12px;
+}
+.claro .dijitSliderActive .dijitSliderDecrementIconH, .claro .dijitSliderActive .dijitSliderIncrementIconH, .claro .dijitSliderActive .dijitSliderDecrementIconV, .claro .dijitSliderActive .dijitSliderIncrementIconV, .claro .dijitSliderHover .dijitSliderDecrementIconH, .claro .dijitSliderHover .dijitSliderIncrementIconH, .claro .dijitSliderHover .dijitSliderDecrementIconV, .claro .dijitSliderHover .dijitSliderIncrementIconV
+{
+    border: solid 1px #759dc0;
+    background-color: #ffffff;
+}
+.claro .dijitSliderDecrementIconH
+{
+    background-position: -357px 50%;
+}
+.claro .dijitSliderActive .dijitSliderDecrementIconH .claro .dijitSliderHover .dijitSliderDecrementIconH
+{
+    background-position: -393px 50%;
+}
+.claro .dijitSliderIncrementIconH
+{
+    background-position: -251px 50%;
+}
+.claro .dijitSliderActive .dijitSliderIncrementIconH .claro .dijitSliderHover .dijitSliderIncrementIconH
+{
+    background-position: -283px 50%;
+}
+.claro .dijitSliderDecrementIconV
+{
+    background-position: -38px 50%;
+}
+.claro .dijitSliderActive .dijitSliderDecrementIconV .claro .dijitSliderHover .dijitSliderDecrementIconV
+{
+    background-position: -73px 50%;
+}
+.claro .dijitSliderIncrementIconV
+{
+    background-position: -143px 49%;
+}
+.claro .dijitSliderActive .dijitSliderIncrementIconV .claro .dijitSliderHover .dijitSliderIncrementIconV
+{
+    background-position: -178px 49%;
+}
+.claro .dijitSliderButtonContainerV .dijitSliderDecrementButtonHover, .claro .dijitSliderButtonContainerH .dijitSliderDecrementButtonHover, .claro .dijitSliderButtonContainerV .dijitSliderIncrementButtonHover, .claro .dijitSliderButtonContainerH .dijitSliderIncrementButtonHover
+{
+    background-color: #cfe5fa;
+}
+.claro .dijitSliderButtonContainerV .dijitSliderDecrementButtonActive, .claro .dijitSliderButtonContainerH .dijitSliderDecrementButtonActive, .claro .dijitSliderButtonContainerV .dijitSliderIncrementButtonActive, .claro .dijitSliderButtonContainerH .dijitSliderIncrementButtonActive
+{
+    background-color: #abd6ff;
+    border-color: #759dc0;
+}
+.claro .dijitSliderButtonInner
+{
+    visibility: hidden;
+}
+.claro .dijitSliderDisabled .dijitSliderBar
+{
+    border-color: #d3d3d3;
+}
+.claro .dijitSliderReadOnly *, .claro .dijitSliderDisabled *
+{
+    border-color: #d3d3d3;
+    color: #818181;
+}
+.claro .dijitSliderReadOnly .dijitSliderDecrementIconH, .claro .dijitSliderDisabled .dijitSliderDecrementIconH
+{
+    background-position: -321px 50%;
+    background-color: #efefef;
+}
+.claro .dijitSliderReadOnly .dijitSliderIncrementIconH, .claro .dijitSliderDisabled .dijitSliderIncrementIconH
+{
+    background-position: -215px 50%;
+    background-color: #efefef;
+}
+.claro .dijitSliderReadOnly .dijitSliderDecrementIconV, .claro .dijitSliderDisabled .dijitSliderDecrementIconV
+{
+    background-position: -3px 49%;
+    background-color: #efefef;
+}
+.claro .dijitSliderReadOnly .dijitSliderIncrementIconV, .claro .dijitSliderDisabled .dijitSliderIncrementIconV
+{
+    background-position: -107px 49%;
+    background-color: #efefef;
+}
+.dijitSliderRtl .dijitSliderImageHandleV
+{
+    left: auto;
+}
+.dijitSliderRtl .dijitSliderImageHandleH
+{
+    left: -50%;
+}
+.dijitSliderRtl .dijitSliderMoveableH
+{
+    right: auto;
+    left: 0;
+}
+.dijitSliderRtl .dijitRuleContainerV
+{
+    float: right;
+}
+.dj_ie .dijitSliderRtl .dijitRuleContainerV
+{
+    text-align: right;
+}
+.dj_ie .dijitSliderRtl .dijitRuleLabelV
+{
+    text-align: left;
+}
+.dj_ie .dijitSliderRtl .dijitRuleLabelH
+{
+    zoom: 1;
+}
+.dijitSliderRtl .dijitSliderProgressBarH
+{
+    float: right;
+    right: 0;
+    left: auto;
+}
+.claro .dijitSliderRtl .dijitSliderProgressBarH, .claro .dijitSliderRtl .dijitSliderRemainingBarH, .claro .dijitSliderRtl .dijitSliderLeftBumper, .claro .dijitSliderRtl .dijitSliderRightBumper, .claro .dijitSliderRtl .dijitSliderTopBumper
+{
+    background-position: top right;
+}
+.claro .dijitSliderRtl .dijitSliderProgressBarV, .claro .dijitSliderRtl .dijitSliderRemainingBarV, .claro .dijitSliderRtl .dijitSliderBottomBumper
+{
+    background-position: bottom right;
+}
+.claro .dijitSliderRtl .dijitSliderLeftBumper
+{
+    border-left-width: 0;
+    border-right-width: 1px;
+}
+.claro .dijitSliderRtl .dijitSliderRightBumper
+{
+    border-left-width: 1px;
+    border-right-width: 0;
+}
+.claro .dijitSliderRtl .dijitSliderIncrementIconH
+{
+    background-position: -357px 50%;
+}
+.claro .dijitSliderRtl .dijitSliderDecrementIconH
+{
+    background-position: -251px 50%;
+}
+#imageSwipe
+{
+    position: absolute; bottom: 0px; Width: 100%; background-color: blue; Height: 100px; z-index: 2; border: 1px solid #174667; border-radius: 10px; -moz-border-radius: 10px; -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35); box-shadow: 3px 5px 3px rgba(0,0,0,.35); background-color: #174667; height: 130px; text-align: center; 
+}
+#swipetext
+{
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; 
+}
+#sharebtn{
+background-image:url(share.jpg); width:138px; height:40px; border:0px; background-color:transparent;
+}
+.fullextentbutton
+{
+	position: absolute;
+	z-index: 30;
+	top: 20px;
+	left: 60px;
+	cursor: pointer;
+	
+}
+/* ipad portrait */
+@media only screen and ( min-width: 768px) and ( max-width: 981px )
+{
+    body
+    {
+        width: auto;
+    }
+    .claro
+    {
+        border: 1px solid #174667;
+        position: fixed;
+        z-index: 99;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        padding: 5px;
+        -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+        box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+        background-color: #174667; /*width: 97%;*/
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 4px;
+    }
+    table#slider
+    {
+        width: 99% !important;
+        -moz-transform: scale(3);
+    }
+    #BasemapToggle
+    {
+        top: auto;
+        position: absolute;
+        right: 6px;
+        z-index: 50;
+        bottom: 40px;
+    }
+    .esriSimpleSliderTL
+    {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+    .claro .dijitSliderImageHandleH
+    {
+        height: 28px;
+    }
+    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
+    {
+        height: 24px;
+        width: 12px;
+    }
+    .fullextentbutton
+	{
+		display:none;
+	
+	}
+}
+/*Mobile*/
+@media only screen and ( max-width: 640px)
+{
+    body
+    {
+        width: auto;
+    }
+    .claro
+    {
+        border: 1px solid #174667;
+        position: fixed;
+        z-index: 99;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        padding: 5px;
+        -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+        box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+        background-color: #174667; /*width: 97%;*/
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-top: 4px;
+    }
+    table#slider
+    {
+        width: 99% !important;
+        -moz-transform: scale(3);
+    }
+    #BasemapToggle
+    {
+        top: auto;
+        position: absolute;
+        right: 6px;
+        z-index: 50;
+        bottom: 40px;
+    }
+    .esriSimpleSliderTL
+    {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+    }
+    .claro .dijitSliderImageHandleH
+    {
+        height: 28px;
+    }
+    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
+    {
+        height: 24px;
+        width: 12px;
+    }
+#swipetext
+{
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.2em; 
+}
+.fullextentbutton
+	{
+		display:none;
+	
+	}
+}
+/*Other mobile*/
+@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)
+{
+}
