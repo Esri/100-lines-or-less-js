@@ -1,14 +1,14 @@
 require([
   "http://esri.github.io/bootstrap-map-js/src/js/bootstrapmap.js",
-  "esri/map", 
+  "esri/map",
   "esri/layers/GraphicsLayer",
   "esri/graphic",
   "esri/geometry/jsonUtils",
-  "esri/geometry/webMercatorUtils", 
+  "esri/geometry/webMercatorUtils",
   "esri/dijit/LocateButton",
   "esri/dijit/LayerSwipe",
-  "esri/dijit/Scalebar", 
-  "esri/toolbars/draw", 
+  "esri/dijit/Scalebar",
+  "esri/toolbars/draw",
   "esri/symbols/PictureMarkerSymbol",
   "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleFillSymbol",
@@ -51,13 +51,13 @@ require([
     });
 
     $(".toolbar-btn").click(function (e) {
-      var type = e.target.dataset.type;
+      var type = $(e.target).data("type");
       drawType = (drawType !== type) ? type : "";
-      if(drawType === '') {
+      if(drawType === "") {
         $(e.target).toggleClass("btn-success");
         drawToolbar.deactivate();
       } else {
-        $(".btn").removeClass("btn-success"); 
+        $(".btn").removeClass("btn-success");
         $(e.target).toggleClass("btn-success");
         drawToolbar.activate(Draw[type]);
       }
@@ -85,15 +85,15 @@ require([
       }
     }
 
-    function createSimpleLineSymbol (color) { 
-      return new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, color, 2); 
+    function createSimpleLineSymbol (color) {
+      return new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, color, 2);
     }
 
-    function createSimpleFillSymbol (color) { 
-      return new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, createSimpleLineSymbol(color), color); 
+    function createSimpleFillSymbol (color) {
+      return new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, createSimpleLineSymbol(color), color);
     }
 
-    function createPictureMarkerSymbol () { 
-      return new PictureMarkerSymbol("img/point.png", 40, 40); 
+    function createPictureMarkerSymbol () {
+      return new PictureMarkerSymbol("img/point.png", 40, 40);
     }
 });
