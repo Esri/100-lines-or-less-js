@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Safari iOS - apps only -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Chrome for Android - NEW! -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="images/brand.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <title>MegaMap!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link rel="stylesheet" type="text/css" href="http://esri.github.io/bootstrap-map-js/src/css/bootstrapmap.css">
+    <link rel="stylesheet" type="text/css" href="css/megamap.css">
+  </head>
+
+  <body>
+    <div id="announce">
+      <span>MegaMap!</span>
+    </div>
+    <div id="chooser">
+      <div class="btn-group">
+        <button id="map-hero" type="button" class="btn btn-primary">A</button>
+        <button id="map-villain" type="button" class="btn btn-danger">A</button>
+      </div>
+    </div>
+    <div id="mapDiv"></div>
+
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
+    <script src="http://js.arcgis.com/3.8compact"></script>
+    <script src="js/arcgis.js"></script>
+  </body>
+</html>
