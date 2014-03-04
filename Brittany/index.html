@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Esri Dev Summit, 100js -> Brittany presentation">
+<meta name="keywords" content="Esri, arcgis, javascript, js, brittany" />
+<meta name="author" content="pierre.jego@gfi.fr">
+
+<!-- Safari iOS - apps only -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- Chrome for Android -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!--  TODO -->
+<link rel="apple-touch-icon" href="images/apple-touch-icon-iphone.png">
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<title>Brittany Tour</title>
+
+<!-- Bootstrap core CSS -->
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css"
+	href="//js.arcgis.com/3.8/js/esri/css/esri.css">
+<link rel="stylesheet" type="text/css"
+	href="http://esri.github.io/bootstrap-map-js/src/css/bootstrapmap.css">
+<link rel="stylesheet" type="text/css" href="css/brittany.css">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="../bootstrap_v3/docs-assets/js/html5shiv.js"></script>
+      <script src="../bootstrap_v3/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">
+					<span class="glyphicon glyphicon-globe"></span>&nbsp;Brittany Tour</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav" id="navbar">
+					<li class="visible-xs info"><div id="townNameXs"></div></li>
+					<li class="visible-xs info"><div id="distXs"></div></li>
+					<li class="visible-xs info"><a href="http://www.brittanytourism.com/" id="siteXs">Link to the town website</a></li>
+					<li class="dropdown visible-xs">
+						<a data-toggle="dropdown"
+						class="dropdown-toggle" href="#">BaseMap Style<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li data-basemap="gray"><a href="#">Gray</a></li>
+							<li data-basemap="streets"><a href="#">Streets</a></li>
+							<li data-basemap="hybrid"><a href="#">Satellite</a></li>
+							<li data-basemap="topo"><a href="#">Topo</a></li>
+							<li data-basemap="national-geographic"><a href="#">Nat Geo</a></li>
+							<li data-basemap="oceans"><a href="#">Oceans</a></li>
+						</ul></li>
+						<li class="hidden-xs" data-basemap="gray"><a href="#">Gray</a></li>
+						<li class="hidden-xs" data-basemap="streets"><a href="#">Streets</a></li>
+						<li class="hidden-xs" data-basemap="hybrid"><a href="#">Satellite</a></li>
+						<li class="hidden-xs" data-basemap="topo"><a href="#">Topo</a></li>
+						<li class="hidden-xs" data-basemap="national-geographic"><a href="#">Nat Geo</a></li>
+						<li class="hidden-xs" data-basemap="oceans"><a href="#">Oceans</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="page-header">
+			<img src="images/brittany-header.jpg"
+				class="img-responsive hidden-xs hidden-sm" alt="Brittany seaside :)">
+			Come to <a target="_blank" href="http://www.brittanytourism.com/">Brittany</a>.
+			. <a target="_blank"
+				href="http://gfitechnet.fr/references/perros-guirec-insolite/">
+				Mobile app to visit brittany</a>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-lg-3 hidden-xs hidden-sm">
+				<h2>Compass</h2>
+				<p>Click on the orange arrow to launch the trip.</p>
+				This arrow indicates direction to the next lovely town of Brittany.
+			</div>
+			<div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
+				<button id="boussoleButon" class="test">
+					<img src="images/brittany-arrow.png" class="img-responsive"
+						id="test" class="test" />
+				</button>
+			</div>
+			<div class="col-sm-5 col-md-3 col-lg-3 hidden-xs">
+				<h2>Town information</h2>
+				<p>
+				<div id="townName"></div>
+				</p>
+				<div id="dist"></div>
+
+			</div>
+			<div class="col-sm-5 col-md-4 col-lg-4 hidden-xs">
+				<a href="http://www.brittanytourism.com/" id="site"> <img
+					id="imgSite" src="images/brittany.jpg" class="img-responsive"></a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="mapDiv">
+			<div id="LocateButton"></div>
+		</div>
+	</div>
+
+	<script src="http://js.arcgis.com/3.8compact"></script>
+	<script src="js/brittany.js"></script>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
