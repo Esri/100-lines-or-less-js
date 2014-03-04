@@ -28,10 +28,10 @@ tour = {
       "arrowOffset": 0
     },
     {
-      "target": "esriScaleLabelDiv",
+      "target": ".esriScalebar",
       "title": "Scale bar",
       "content": "Check out the current map scale, it will help you understand distances!",
-      "placement": "right"
+      "placement": "top"
     },
     {
       "target": "search",
