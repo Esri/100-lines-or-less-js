@@ -31,8 +31,15 @@
 <div id="fb-root"></div>
     <div id="map" class="map"><img src="images/fullextent.png" alt="Zoom to full extent" onclick="javascript:fullextent();" class="fullextentbutton" />
         <div id="BasemapToggle"></div><div class="claro"><div id="slider"></div></div>
+       
+       
         <div id="imageSwipe" ><button onclick='facebookWallPost()' id='sharebtn'></button>
-        <span id="swipetext">Swipe here for next image<br />Shake to zoom out</span></div>
+        <span id="swipetext">Swipe here for next image<br />Shake to zoom out</span>
+            <span id="monitortext"><button type="button" onclick="updateImageIndex('left')">Previous Image</button> <button type="button" onclick="updateImageIndex('right')">Next Image</button></span>
+        </div>
+    </div>
+    <div style="width: 100%; text-align: center;">
+        <img src="images/close.png" id="oc" class="swipeOpen" onclick="tsoc()" />
     </div>
 </body>
 </html>
