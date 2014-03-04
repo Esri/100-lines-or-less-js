@@ -707,10 +707,30 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
 }
         #monitortext
 {
-    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%;  margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
 }
         .swipeOpen{position: absolute; bottom: 130px; z-index: 2; }
         .swipeClosed{position: absolute; bottom: 0px; z-index: 2; }
+        #infoWindow{position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+        width: 100%;
+        background-color: white;
+        border-radius: 4px;
+            -moz-border-radius: 4px 4px 4px 4px;
+            min-height:100%;
+        }
+         .infobtn{position: absolute;
+right: 110px;
+top: 40px;
+z-index: 2;
+width: 50px;}
+         .infobtncl{position: absolute;
+right: 10px;
+top: 0px;
+z-index: 2;
+width: 50px;}
 /* ipad portrait */
 @media only screen and ( min-width: 768px) and ( max-width: 981px )
 {
@@ -777,6 +797,7 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
 {
     -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
 }
+        .infobtn{position:absolute;left:4px; top:50px; z-index:2;}
 }
 /*Mobile*/
 @media only screen and ( max-width: 640px)
@@ -852,6 +873,7 @@ top: 50px;
 z-index: 30;
 max-height: 3px;
 }
+ .infobtn{position:absolute;left:4px; top:50px; z-index:2;}
 }
 /*Other mobile*/
 @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)
