@@ -1,0 +1,61 @@
+tour = {
+  "id": "learnGIS-tour",
+  "steps": [
+    {
+      "target": "mapDiv",
+      "title": "Content view area",
+      "content": "This is your main content view area. Usually a map-centric application will look like this.",
+      "placement": "bottom",
+      "xOffset": "center",
+      "yOffset": "center",
+      "arrowOffset": 60
+    },
+    {
+      "target": "mapDiv",
+      "title": "Main controls",
+      "content": "The main map component supports: <ul><li>Pan: click and drag to move the map location or use the keyboard arrow keys<br/><li>Zoom in: double click anywhere on the map or use your mouse wheel (or equivalent)<br/><li>Zoom out: use the mouse wheel<br/><li>Zoom at an area: Hold the SHIFT key while click and drag to select the desired ared<br/><br/><i><b>Try anything to continue ...</b></i></ul>",
+      "placement": "bottom",
+      "xOffset": "center",
+      "yOffset": "center",
+      "showNextButton": false,
+      "arrowOffset": 60
+    },
+    {
+      "target": "mapDiv_zoom_slider",
+      "title": "Zoom controls",
+      "content": "These buttons are also for zooming in or out if don't like any other option!",
+      "placement": "right",
+      "arrowOffset": 0
+    },
+    {
+      "target": "esriScaleLabelDiv",
+      "title": "Scale bar",
+      "content": "Check out the current map scale, it will help you understand distances!",
+      "placement": "right"
+    },
+    {
+      "target": "search",
+      "placement": "left",
+      "title": "Search",
+      "xOffset": 30,
+      "width": 400,
+      "showNextButton": false,
+      "content": "Finding places are always usefull at any application.<br />Notice the cool auto suggest feature for free :)<br /><br /><i><b>Try to find you address to continue ...</b></i>"
+    },
+    {
+      "target": "navbar",
+      "placement": "bottom",
+      "title": "Navbar",
+      "content": "The application does something, usually accesible by some command toolbar or menu.<br /><b>This is ours, just use it!</b>"
+    },
+    {
+      "target": ".navbar-brand",
+      "placement": "bottom",
+      "title": "",
+      "content": "A special thank you for  <a href=\"https://github.com/alaframboise\" target=\"_new\">alaframboise</a> for this demo application."
+    }
+  ],
+  "showPrevButton": false,
+  "showSkip": false,
+  "scrollTopMargin": 100
+}
