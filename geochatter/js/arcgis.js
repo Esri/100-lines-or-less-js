@@ -29,7 +29,7 @@ require(["esri/map","esri/geometry/webMercatorUtils","esri/InfoTemplate","esri/g
   var connect = goinstant.connect(url);
   connect.then(function(result) {
     room = result.rooms[0];
-    messagesKey = room.key('messages');
+    messagesKey = room.key('messages-esri');
     return room.self().get();
   }).then(function(result) {
     user = result.value;
