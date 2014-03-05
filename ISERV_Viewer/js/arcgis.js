@@ -92,7 +92,8 @@ function getISScurrentLocation()
               isslayer.add(new esri.Graphic(geometrya,
                   new esri.symbol.PictureMarkerSymbol("images/iss.png", 45, 45)));}); })();}
 function tsoc() {$("#oc").toggleClass('swipeOpen swipeClosed');
-    if ($('#oc').hasClass('swipeOpen')) {$("#oc").attr("src", "images/close.png");
-        $("#imageSwipe").show(); $("#map_zoom_slider").show(); $("#BasemapToggle").show();}
-    else {$("#oc").attr("src", "images/open.png"); $("#imageSwipe").hide();
-        $("#map_zoom_slider").hide(); $("#BasemapToggle").hide();}}
+    if ($('#oc').hasClass('swipeOpen')) {$("#imageSwipe").show();
+         $("#map_zoom_slider").show(); $("#BasemapToggle").show();}
+    else {$("#imageSwipe").hide(); if (!$("#febtn").is(":visible")){
+            $("#map_zoom_slider").hide(); $("#BasemapToggle").hide();}}}
+$(window).on('popstate', function () {$('#infoWindow').hide();});
