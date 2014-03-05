@@ -1,26 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <!-- Sets whether a web application runs in full-screen mode. -->
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <!-- Changes the logical window size used when displaying a page on iOS. -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-  <!-- Sets the style of the status bar for a web application. -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Sets whether a web application runs in full-screen mode. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Changes the logical window size used when displaying a page on iOS. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- Sets the style of the status bar for a web application. -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>ISERV Image Viewer</title>
-    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" media="screen" />
     <style type="text/css">
         html, body, #map {
             padding: 0;
             margin: 0;
             height: 100%;
         }
-
-        
-        
     </style>
-    <link href="css/sliderStyle.css" rel="stylesheet" /> 
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/sliderStyle.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
     <script src="http://js.arcgis.com/3.8/" type="text/javascript"></script>
     <script src="js/arcgis.js" type="text/javascript"></script>
@@ -28,11 +26,75 @@
     <script src="js/jquery.touchSwipe.min.js" type="text/javascript"></script>
 </head>
 <body>
-<div id="fb-root"></div>
-    <div id="map" class="map"><img src="images/fullextent.png" alt="Zoom to full extent" onclick="javascript:fullextent();" class="fullextentbutton" />
-        <div id="BasemapToggle"></div><div class="claro"><div id="slider"></div></div>
-        <div id="imageSwipe" ><button onclick='facebookWallPost()' id='sharebtn'></button>
-        <span id="swipetext">Swipe here for next image<br />Shake to zoom out</span></div>
+    <div id="fb-root"></div>
+    <div id="map" class="map">
+        <img src="images/fullextent.png" alt="Zoom to full extent" onclick="javascript:fullextent();" class="fullextentbutton" />
+        <div id="BasemapToggle"></div><div class="claro"><div id="slider"></div></div><img src="images/infobtn.png" alt="Info" onclick="$('#infoWindow').show();" class="infobtn" />
+
+
+        <div id="imageSwipe">
+            <button onclick='facebookWallPost()' id='sharebtn'></button>
+            <span id="swipetext">Swipe here for next image<br />Shake to zoom out</span>
+            <span id="monitortext"><button type="button" onclick="updateImageIndex('left')">Previous Image</button> <button type="button" onclick="updateImageIndex('right')">Next Image</button></span>
+        </div>
+    </div>
+    <div style="width: 100%; text-align: center;">
+        <img src="images/close.png" id="oc" class="swipeOpen" onclick="tsoc()" />
+    </div>
+    <div id="infoWindow" style="display:none;">
+        <div id="innerinfo" style="Padding:20px;">
+            <img src="images/infobtncl.png" alt="Info" onclick="$('#infoWindow').hide(); " class="infobtncl" />
+            <div id="wrapper">
+                <!-- shell -->
+                <div class="shell">
+                    <!-- container -->
+                    <div class="container">
+                        <!-- header -->
+                        <header id="header">
+                            <h1 id="logo"><a href="javascript:$('#infoWindow').hide();">ISERV Image Viewer</a></h1>
+                            <div class="cl">&nbsp;</div>
+                        </header>
+                        <!-- end of header -->
+                        <div class="main">
+                            <div class="featured">
+                                <h4>Images captured from the <strong>International Space Station</strong> with the <strong>ISERV Camera</strong></h4>
+                            </div>
+                            <section class="cols">
+                                <div class="col2 first">
+                                    <div class="chead"> ISERV Viewer Overview </div>
+                                    <p>
+                                        The International Space Station (ISS) is a space station, or a habitable artificial satellite in low Earth orbit.  A NASA Project called SERVIR
+                                        created an instrument called ISERV which automatically takes images of Earth through a small telescope with an off-the-shelf digital camera mounted
+                                        in the International Space Station’s Destiny module. When ISERV is running, it captures 3 images per second that cover approximately a 19 km x 11 km
+                                        area each. The goal is to improve automatic image capturing and data transfer, but the images taken in the experiment could also help environmental
+                                        scientists, disaster responders and other Earth-based users.
+                                    </p>
+                                    <p>
+                                        With this viewer You can see a handful of these ISERV images on the map and compare them to the base map image with the opacity slider at the top.
+                                        I intend to continue to gather and add more over time with the hopes that I can incorporate them into an image server.
+                                        Another cool feature of this viewer is that you can see the current location of the ISS.  The location will update on your device every 5 seconds.
+                                        It's pretty cool to think about the distance it is covering in such a small amount of time.
+
+                                    </p>
+                                </div>
+                                <div class="col last">
+                                    <div class="chead"> Creator of ISERV Viewer <br />Billy Ashmall</div>
+                                    <p style="text-align:center;">
+                                        <img src="images/Billy_Ashmall.jpg" alt="Billy Ashmall - Creator of the ISERV Viewer" title="  `    Billy Ashmall - Creator of the ISERV Viewer" /><br style="clear:both;" />
+                                        "The ISS is awesome and the picutres from space are amazing!"
+                                    </p>
+                                </div>
+                                <div class="cl">&nbsp;</div>
+                                <br style="clear:both;" />
+                            </section>
+                        </div>
+                        <!-- end of main -->
+                        <div class="cl">&nbsp;</div>
+                    </div>
+                    <!-- end of container -->
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,0 +1,82 @@
+html,body,#map {
+	padding: 0;
+	margin: 0;
+	height: 100% !important;
+}
+
+#LocateButton {
+	z-index: 30;
+}
+
+#boussole {
+	position: absolute;
+	background-color: transparent;
+}
+
+.test {
+	background-color: transparent;
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+	vertical-align: text-top;
+}
+
+.info{
+	margin-left: 40px;
+  	margin-right: auto;
+	font-weight:bold;	
+	color:#F70909;
+}
+
+button {
+	background: transparent;
+	border: none !important;
+	font-size: 0;
+}
+
+.product .img-responsive {
+	margin: 0 auto;
+}
+
+/* Extra small devices (phones, up to 480px) */
+@media ( max-width : 480px) {
+	.map {
+		height: 100px;
+	}
+	.container.main {
+		margin-top: 10px;
+	}
+}
+
+@media ( min-width : 481px) and (max-width: 767px) {
+	.map {
+		height: 150px;
+	}
+	.container.main {
+		margin-top: 10px;
+	}
+}
+
+/* Small devices (tablets, 768px and up) - Portrait to Landscape */
+@media ( min-width : 768px) {
+	.map {
+		height: 200px;
+	}
+	.row {
+		margin-bottom: 20px;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media ( min-width : 992px) {
+	.map {
+		height: 200px;
+	}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media ( min-width : 1200px) {
+	.map {
+		height: 300px;
+	}
+}

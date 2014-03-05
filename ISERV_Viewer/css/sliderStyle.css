@@ -27,6 +27,7 @@
 
 button
 {
+    /*
     -webkit-transition: background-color 0.2s linear;
     border-radius: 4px;
     -moz-border-radius: 4px 4px 4px 4px;
@@ -38,6 +39,17 @@ button
     border: 1px solid #769DC0;
     padding: 2px 8px 4px;
     font-size: 1em;
+    */
+    border: 1px solid white;
+
+border-radius: 10px;
+-moz-border-radius: 10px;
+
+-webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+background-color: white;
+padding: 2px 8px 4px;
+font-size: 1em;
 }
 
 button:hover
@@ -665,9 +677,20 @@ h1
 }
 #swipetext
 {
-    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; 
+   display:none;/* -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; */
 }
 #sharebtn{
+    webkit-box-shadow:none; 
+ box-shadow:none;
+
+ -webkit-transition: background-color 0.2s linear;
+    border-radius: 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    background-position: center top;
+    background-repeat: repeat-x;
+    padding: 2px 8px 4px;
+    font-size: 1em;
 background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:42px; margin-left:20px; float:left;
 }
 #sharebtn:hover{
@@ -682,6 +705,32 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
 	cursor: pointer;
 	
 }
+        #monitortext
+{
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%;  margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
+}
+        .swipeOpen{position: absolute; bottom: 130px; z-index: 2; }
+        .swipeClosed{position: absolute; bottom: 0px; z-index: 2; }
+        #infoWindow{position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+        width: 100%;
+        background-color: white;
+        border-radius: 4px;
+            -moz-border-radius: 4px 4px 4px 4px;
+            min-height:100%;
+        }
+         .infobtn{position: absolute;
+right: 110px;
+top: 40px;
+z-index: 2;
+width: 50px;}
+         .infobtncl{position: absolute;
+right: 10px;
+top: 0px;
+z-index: 2;
+width: 50px;}
 /* ipad portrait */
 @media only screen and ( min-width: 768px) and ( max-width: 981px )
 {
@@ -743,6 +792,12 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
         #sharebtn:hover {
             background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
         }
+        #monitortext{display:none;}
+        #swipetext
+{
+    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
+}
+        .infobtn{position:absolute;left:4px; top:50px; z-index:2;}
 }
 /*Mobile*/
 @media only screen and ( max-width: 640px)
@@ -797,7 +852,7 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
 #swipetext
 {
     -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
-     width: 100px; height: 100%; margin: 0 auto; position: relative; top: 60px; color: white; font-size: .8em; right: 60px;
+     width: 100%;  margin: 0 auto; position: relative; top: 60px; color: white; font-size: .8em; right: 80px; display:block;white-space: nowrap;
 }
 .fullextentbutton
 	{
@@ -810,6 +865,15 @@ background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px
 #sharebtn:hover{
     background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
     }
+#monitortext{display:none;}
+.esriControlsBR {
+position: absolute;
+right: 5px;
+top: 50px;
+z-index: 30;
+max-height: 3px;
+}
+ .infobtn{position:absolute;left:4px; top:50px; z-index:2;}
 }
 /*Other mobile*/
 @media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)
