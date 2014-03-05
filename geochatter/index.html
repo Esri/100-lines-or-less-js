@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GeoChattr</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body class="claro">
+  
+  <div id="map"></div>
+  
+  <div class="show-messages-div show">
+    <div class="input">
+      <a class="brand"><span class="geo">geo</span><span class="chattr">chattr</span></a>
+      <img class="dropdown-img-top" id="image" src="css/down.png" alt="some_text">
+      <input type="text" class="name" placeholder="Your Name"/>
+      <input type="text" class="text" placeholder="Type a message!" />
+      <img class="dropdown-img" id="image" src="css/down.png" alt="some_text">
+    </div>
+
+    <div class="messages-top-level messages-top-level-margin">
+      <div class="message-container">
+        <div class="messages-wrapper">
+          <ul class="messages"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.goinstant.net/v1/platform.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://js.arcgis.com/3.8compact"></script>
+  <script type="text/javascript" src="js/arcgis.js"></script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+html, body, #map{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.brand {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  margin-top: 20px;
+  padding: 5px;
+}
+.geo {
+  color: white;
+}
+.chattr {
+  color: rgb(255,121,25);
+}
+
+.show-messages-div{
+  position: absolute;
+  width: 100%;
+  background: rgba(68,65,65,1);
+}
+.show {
+  top:0px;
+  right:0px;
+}
+
+.messages-top-level{
+  position: absolute;
+  display: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background: rgba(68,65,65,0.5);
+}
+.messages-top-level-margin {
+  top:48px;
+}
+
+.message-container {
+  max-width: 600px;
+  margin: 20px auto;
+}
+.messages-wrapper {
+  min-height: 400px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+}
+
+.dropdown-img {
+  position: absolute;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: .7
+}
+
+.dropdown-img-top {
+  position: absolute;
+  opacity: .7;
+  right: 7px;
+  height: 24px;
+  width: 24px;
+  display: none;
+}
+
+img.dropdown-img:hover {
+  opacity: 1;
+}
+
+img.dropdown-img-top:hover {
+  opacity: 1;
+}
+/* Send a message input box */
+.input {
+  padding: 5px;
+}
+
+input[type="text"] {
+  margin: 0;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: sans-serif;
+  font-size: .9em;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+  border-color: #FF7919;
+}
+
+input.name {
+  width: 150px;
+  margin-right: 8px;
+}
+input.text {
+  width: 437px;
+}
+
+/* Messages list */
+.messages {
+  margin: 0;
+  padding: 0;
+  height: 450px;
+  overflow: auto;
+}
+.messages li {
+  list-style: none;
+  padding: 9px 14px;
+  line-height: 1.4;
+  border-bottom: 1px dotted #ccc;
+  font-weight: 500;
+}
+
+.messages li:last-child {
+  border-bottom: 0;
+}
+
+[class^="user-"] {
+  display: inline-block;
+}
+
+.user-name {
+  color: #999;
+  margin-right: 16px;
+  font-size: .9em;
+}
+
+.user-name:after {
+  content: ":";
+}
+
+.user-message {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.esriPopup .actionsPane {
+    display: none;
+}
+
+.esriPopup .titleButton.maximize {
+  display: none;
+}
+
+.esriPopup .contentPane {
+  position: relative;
+  max-height: 300px;
+  min-height: 45px;
+  overflow: auto;
+  padding: 10px 6px 6px 10px;
+  background-color: #F7F7F7;
+  border: 1px solid #999999;
+  border-top: none;
+  border-bottom: none;
+  color: #333333;
+  border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  -o-border-radius: 0px 0px 5px 5px;
+}
+
+@media screen and (max-height: 700px) {
+  .messages-wrapper {
+    min-height: 0;
+  }
+  .messages {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  input.text {
+    width: 435px;
+  }
+}
+@media screen and (max-width: 775px) {
+  input.text {
+    width: 430px;
+  }
+}
+@media screen and (max-width: 770px) {
+  input.text {
+    width: 425px;
+  }
+}
+@media screen and (max-width: 765px) {
+  input.text {
+    width: 420px;
+  }
+}
+@media screen and (max-width: 760px) {
+  input.text {
+    width: 415px;
+  }
+}
+@media screen and (max-width: 755px) {
+  input.text {
+    width: 410px;
+  }
+}
+@media screen and (max-width: 750px) {
+  input.text {
+    width: 405px;
+  }
+}
+@media screen and (max-width: 745px) {
+  input.text {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 740px) {
+  input.text {
+    width: 395px;
+  }
+}
+@media screen and (max-width: 735px) {
+  input.text {
+    width: 390px;
+  }
+}
+@media screen and (max-width: 730px) {
+  input.text {
+    width: 385px;
+  }
+}
+@media screen and (max-width: 725px) {
+  input.text {
+    width: 380px;
+  }
+}
+@media screen and (max-width: 720px) {
+  input.text {
+    width: 375px;
+  }
+}
+@media screen and (max-width: 715px) {
+  input.text {
+    width: 370px;
+  }
+}
+@media screen and (max-width: 710px) {
+  input.text {
+    width: 365px;
+  }
+}
+@media screen and (max-width: 705px) {
+  input.text {
+    width: 360px;
+  }
+}
+@media screen and (max-width: 700px) {
+  input.text {
+    width: 355px;
+  }
+}
+@media screen and (max-width: 695px) {
+  input.text {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 690px) {
+  input.text {
+    width: 345px;
+  }
+}
+@media screen and (max-width: 685px) {
+  input.text {
+    width: 340px;
+  }
+}
+@media screen and (max-width: 680px) {
+  input.text {
+    width: 335px;
+  }
+}
+@media screen and (max-width: 675px) {
+  input.text {
+    width: 330px;
+  }
+}
+@media screen and (max-width: 670px) {
+  input.text {
+    width: 325px;
+  }
+}
+@media screen and (max-width: 665px) {
+  input.text {
+    width: 320px;
+  }
+}
+@media screen and (max-width: 660px) {
+  input.text {
+    width: 315px;
+  }
+}
+@media screen and (max-width: 655px) {
+  input.text {
+    width: 310px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+      padding: 0 10px;
+      margin: 20px auto;
+  }
+  h1 {
+      font-size: 1.2em;
+  }
+  .messages-top-level-margin {
+    top:118px;
+  }
+  .messages-wrapper {
+      min-height: 0;
+  }
+  .messages {
+      height: 225px;
+      font-size: .8em;
+  }
+  input.text {
+      width: 100%;
+      margin-bottom: 0px;
+  }
+  input.name {
+      width: 100%;
+      margin-bottom: 5px;
+      margin-top: 3px;
+  }
+  .brand {
+      font-size: 19px;
+  }
+  .input {
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 6px;
+  }
+  .dropdown-img {
+    display: none;
+  }
+  .dropdown-img-top {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+      padding: 0 10px;
+      margin: 20px auto;
+  }
+  h1 {
+      font-size: 1.2em;
+  }
+}
