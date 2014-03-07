@@ -1,0 +1,63 @@
+﻿/* **************************************** */
+/*                                          */
+/* Continents Explorer by Akbar Ali Hussain */
+/* Date Created: March 06, 2014             */
+/*    Common stylesheet for Map             */
+/*                                          */
+/* **************************************** */
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	overflow:hidden;
+}
+#divMap {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	z-index: -1;
+}
+.esriLargeSliderVertical {
+	height: 200px;
+}
+.esriLargeSliderTR {
+	right: 10px;
+	top: 40px;
+}
+.title-large {
+	font-family: Calibri;
+	font-size: 30pt;
+	font-weight: bold;
+	color: rgb(76, 165, 212);
+}
+.title-med {
+	font-family: Calibri;
+	font-size: 12pt;
+	font-weight: bold;
+	color: rgb(76, 165, 212);
+}
+.title-small {
+	font-family: Calibri;
+	font-size: 9pt;
+	font-weight: bold;
+	color: rgb(76, 165, 212);
+}
+.msg-medium {
+	font-family: Calibri;
+	font-size: 10pt;
+}
+.msg-small {
+	position: fixed;
+	margin-top: -2px;
+	font-family: Calibri;
+	font-size: 8pt;
+	color: rgb(193,98,2);
+}
+.note-small {
+	font-family: Calibri;
+	font-size: 8pt;
+	font-weight: normal;
+	color: Maroon;
+}

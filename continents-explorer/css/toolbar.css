@@ -1,0 +1,161 @@
+/* **************************************** */
+/*                                          */
+/* Continents Explorer by Akbar Ali Hussain */
+/* Date Created: March 06, 2014             */
+/*   Stylesheet for Toolbar and Title       */
+/*                                          */
+/* **************************************** */
+
+/* ------------------------------------------- */
+/* Horizontal Style for Desktop/Tablet Toolbar */
+/* ------------------------------------------- */
+.tbrNTitle-desktop {
+	width: 70px;
+	height: 150px;
+	position: absolute;   
+	top: 30px;
+	left: 0px; 
+	z-index: 1;
+}
+.tbrNTitle-desktop .appTitle {
+	position: absolute;   
+	top: 0px;
+	left: 85px; 
+	width: 600px;
+	text-align: left;
+	padding-top: 6px;
+	padding-left: 10px; 
+	font-family: Calibri;
+	font-size: 40px;
+	font-weight: bold;
+	color: rgb(223,0,0);
+	z-index: 1;
+}
+.tbrNTitle-desktop .contTitle {
+	position: absolute;   
+	top: 40px;
+	left: 85px; 
+	width: 600px;
+	text-align: left;
+	padding-top: 6px;
+	padding-left: 10px; 
+	font-family: Calibri;
+	font-size: 20pt;
+	font-weight: bold;
+	color: rgb(3,125,226);
+	z-index: 1;
+}
+.tbrNTitle-desktop .toolbar {
+	height: 100%;
+}
+.tbrNTitle-desktop .toolbar div {
+	width: 100%;
+	height: 65px;
+	padding-top: 10px;
+	padding-left: 5px;
+	text-align: center;
+}
+.tbrNTitle-desktop .toolbar div:hover {
+	border: 1px solid Gray;
+	box-shadow: 2px 2px 2px Gray;
+}
+.tbrNTitle-desktop .toolbar img {
+	width: 48px;
+	height: 60px;
+	cursor: pointer;
+}
+/* ---------------------------------------- */
+/* Vertical Style for Mobile/Tablet Toolbar */
+/* ---------------------------------------- */
+.tbrNTitle-mobile {
+	width: 100%;
+	height: 40px;
+	position: absolute;   
+	top: 0px;
+	left: 0px; 
+	z-index: 1;
+	background-color: rgb(240, 255, 179);
+}
+.tbrNTitle-mobile .appTitle {
+	text-align: left;
+	margin: 0;
+	padding-left: 10px; 
+	font-family: Calibri;
+	font-size: 16pt;
+	font-weight: bold;
+	color: rgb(223,0,0);
+}
+.tbrNTitle-mobile .contTitle {
+	position: fixed;
+	text-align: left;
+	margin-top: -5px;
+	padding-left: 10px; 
+	font-family: Calibri;
+	font-size: 10pt;
+	font-weight: bold;
+	color: rgb(3,125,226);
+}
+.tbrNTitle-mobile div {
+	float: left;
+}
+.tbrNTitle-mobile .toolbar {
+	height: 100%;
+}
+.tbrNTitle-mobile .toolbar div {
+	width: 50px;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+.tbrNTitle-mobile .toolbar div:hover {
+	border: 1px solid Gray;
+	box-shadow: 3px 3px 3px Gray;
+}
+.tbrNTitle-mobile .toolbar img {
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	margin-top: 5px;
+	vertical-align: middle;
+}
+/* -------------------------------- */
+/* Styles for Balloon dialogs       */
+/* -------------------------------- */
+#mnuBasemap {
+	background-color: rgb(83,166,9);
+}
+#mnuLayers {
+	background-color: rgb(245,215,41);
+}
+#mnuWindows {
+	background-color: rgb(54,180,254);
+}
+#mnuAbout {
+	background-color: rgb(252,92,197);
+}
+.balloon-dialog {
+	position: absolute;   
+	top: 300px;
+	left: 315px; 
+	z-index: 3;
+	visibility: hidden;
+}
+.balloon-dialog-content {
+	height: 150px;
+	width: 260px;
+	padding-left: 10px; 
+	padding-top: 4px;
+	border: 5px solid rgb(128,0,0);
+	background-color: White;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	box-shadow: 15px 15px 9px Gray;
+}
+.balloon-arrow {
+    width: 1px;
+    height: 1px;
+	border-right: 10px solid transparent;
+	border-bottom: 25px solid rgb(128,0,0);
+	z-index: inherit;
+}
