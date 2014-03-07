@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Control this map with voice commands">
+    <meta name="author" content="Shad Campbell">
+
+    <title>Speak2map</title>
+
+    <!-- CSS -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link rel="stylesheet" type="text/css" href="https://esri.github.io/bootstrap-map-js/src/css/bootstrapmap.css">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bootstrap_v3/docs-assets/js/html5shiv.js"></script>
+      <script src="../bootstrap_v3/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Speak2map</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Basemaps <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" data-basemapvalue="streets" data-basemapname="streets">Streets</a></li>
+                            <li><a href="#" data-basemapvalue="satellite" data-basemapname="satellite">Satellite</a></li>
+                            <li><a href="#" data-basemapvalue="hybrid" data-basemapname="hybrid">Hybrid</a></li>
+                            <li><a href="#" data-basemapvalue="topo" data-basemapname="topo">Topo</a></li>
+                            <li><a href="#" data-basemapvalue="gray" data-basemapname="gray">Gray</a></li>
+                            <li><a href="#" data-basemapvalue="oceans" data-basemapname="oceans">Oceans</a></li>
+                            <li><a href="#" data-basemapvalue="national-geographic" data-basemapname="national geographic">National Geographic</a></li>
+                            <li><a href="#" data-basemapvalue="osm" data-basemapname="open street map">Open Street Map</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" data-toggle="modal" data-target="#help">Help</a></li>
+                </ul>
+
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input id="search" type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAP -->
+    <div id="mapDiv"></div>
+
+    <!-- ALERTS AND DIALOGS -->
+    <div class="alert alert-danger alert-dismissable float-alert" id="notsupported" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>It looks like your browser doesn't support speech recognition.</strong> Newer desktop and mobile versions of Chrome are recommended.  You can continue to use the standard map features.
+    </div>
+
+    <div class="alert alert-success alert-dismissable float-alert" id="welcome" style="display:none;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+        <h1 class="page-header">Control this map with voice commands!!</h1>
+        <p class="lead">Give it a try!  Make sure your microphone is on and speak clearly and legibly into it.  Avoid background noise.</p>
+
+        <div class="bs-callout bs-callout-info">
+            <p><i class="fa fa-microphone fa-lg"></i>&nbsp;Say... <strong>"Close"</strong> to close menus such as this one!</p>
+            <p><i class="fa fa-microphone fa-lg"></i>&nbsp;Say... <strong>"Zoom - In"</strong> (or Out)</p>
+            <p><i class="fa fa-microphone fa-lg"></i>&nbsp;Say... <strong>"Pan - Right"</strong> (or Up, Down, Left)</p>
+            <p><i class="fa fa-microphone fa-lg"></i>&nbsp;Say... <strong>"Locate - Palm Springs California"</strong> (or address, park, business, etc.)</p>
+            <p><i class="fa fa-microphone fa-lg"></i>&nbsp;Say... <strong>"Set Base Map - Satellite"</strong> (or Grey, Streets, Hybrid, Open Street Map, Topo, Oceans, National Geographic)</p>
+            <p><i class="fa fa-microphone fa-lg"></i>&nbsp;Say... <strong>"Help"</strong> to open the help.</p>
+        </div>
+    </div>
+
+    <div class="alert alert-danger alert-dismissable float-alert" id="nomatch" style="display:none;">
+        <strong>Sorry, I did not recognize that command. </strong>Say "Help" anytime to view the available commands again.
+    </div>
+
+    <div class="modal fade" id="help" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Speak2map Help</h4>
+                </div>
+                <div class="modal-body">
+
+                    <h4>Voice Commands:</h4>
+                    <ul class="list-unstyled indent">
+                        <li><i class="fa fa-microphone fa-sm"></i>&nbsp;&nbsp;<strong>"Close"</strong> to close menus such as this one!</li>
+                        <li><i class="fa fa-microphone fa-sm"></i>&nbsp;&nbsp;<strong>"Zoom - In"</strong> (or Out)</li>
+                        <li><i class="fa fa-microphone fa-sm"></i>&nbsp;&nbsp;<strong>"Pan - Right"</strong> (or Up, Down, Left)</li>
+                        <li><i class="fa fa-microphone fa-sm"></i>&nbsp;&nbsp;<strong>"Locate - Palm Springs California"</strong> (or address, park, business, etc.)</li>
+                        <li><i class="fa fa-microphone fa-sm"></i>&nbsp;&nbsp;<strong>"Set Base Map - Satellite"</strong> (or Grey, Streets, Hybrid, Open Street Map, Topo, Oceans, National Geographic)</li>
+                    </ul>
+
+                    <h4>Tips:</h4>
+                    <ul class="list-unstyled indent">
+                        <li><i class="fa fa-check fa-sm"></i>&nbsp;&nbsp;Avoid background noise... this probably won't work in the vendor hall.</li>
+                        <li><i class="fa fa-check fa-sm"></i>&nbsp;&nbsp;Be patient, it takes a second to process your request.</li>
+                        <li><i class="fa fa-check fa-sm"></i>&nbsp;&nbsp;Speak clearly, avoid using after a night at the bar! </li>
+                        <li><i class="fa fa-check fa-sm"></i>&nbsp;&nbsp;Adjust your microphone level - Google ("Adjust my {operating system} mic sensitivity")</li>
+                    </ul>
+
+                    <h4>Limitations:</h4>
+                    <ul class="list-unstyled indent">
+                        <li><i class="fa fa-frown-o fa-sm"></i>&nbsp;&nbsp;Currently only the Chrome browser supports the HTML 5 Speech API.</li>
+                    </ul>
+
+                    <br />
+                    <h4>Created by Shad Campbell</h4>
+                    <ul class="list-unstyled indent">
+                        <li><i class="fa fa-github-alt fa-lg"></i> <a href="https://github.com/shadcampbell"> shadcampbell</a></li>
+                        <li><i class="fa fa-twitter fa-lg"></i><a href="https://twitter.com/shadc"> @shadc</a></li>
+                    </ul>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="https://js.arcgis.com/3.8"></script>
+    <script src="js/arcgis.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
+
+</body>
+</html>
