@@ -351,6 +351,9 @@ input.text {
   .dropdown-img-top {
     display: inline;
   }
+  .esriSimpleSlider {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 500px) {
