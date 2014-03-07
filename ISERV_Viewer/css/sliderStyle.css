@@ -1,10 +1,9 @@
 ﻿
-*
-{
+* {
     outline: none !important;
 }
-.claro
-{
+
+.claro {
     border: 1px solid #174667;
     position: fixed;
     z-index: 99;
@@ -17,16 +16,46 @@
     margin-left: 35%;
     margin-right: 65%;
 }
-#BasemapToggle
-{
+
+#BasemapToggle {
     position: absolute;
     top: 20px;
     right: 20px;
     z-index: 50;
 }
+.esriSimpleSliderVertical .esriSimpleSliderDecrementButton {
+   color: #fff;
+background-color: #00ACEC;
+box-shadow: inset 1px 6px 12px #00ACEC, inset -1px -10px 5px #0093CA, 1px 2px 1px transparent;
+-o-box-shadow: inset 1px 6px 12px #00ACEC, inset -1px -10px 5px #0093CA, 1px 2px 1px transparent;
+-webkit-box-shadow: inset 1px 6px 12px #00ACEC, inset -1px -10px 5px #0093CA, 1px 2px 1px transparent;
+-moz-box-shadow: inset 1px 6px 12px #00ACEC, inset -1px -10px 5px #0093CA, 1px 2px 1px transparent;
+}
+.esriSimpleSliderVertical .esriSimpleSliderDecrementButton:hover {
+    background-color: #CAED4D;
+    color: #00ACEC;
+}
 
-button
-{
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
+    border-bottom: 2px solid #CAED4D;
+    color: #fff;
+background-color: #00ACEC;
+box-shadow: inset 1px 6px 12px #0093CA, inset -1px -10px 5px #00ACEC, 1px 2px 1px transparent;
+-o-box-shadow: inset 1px 6px 12px #0093CA, inset -1px -10px 5px #00ACEC, 1px 2px 1px transparent;
+-webkit-box-shadow: inset 1px 6px 12px #0093CA, inset -1px -10px 5px #00ACEC, 1px 2px 1px transparent;
+-moz-box-shadow: inset 1px 6px 12px #0093CA, inset -1px -10px 5px #00ACEC, 1px 2px 1px transparent;
+}
+
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton:hover {
+    background-color: #CAED4D;
+    color: #00ACEC;
+}
+
+.esriSimpleSliderTL {
+    border-color: #caed4d;
+}
+
+button {
     /*
     -webkit-transition: background-color 0.2s linear;
     border-radius: 4px;
@@ -40,36 +69,36 @@ button
     padding: 2px 8px 4px;
     font-size: 1em;
     */
-    border: 1px solid white;
-
-border-radius: 10px;
--moz-border-radius: 10px;
-
--webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
-box-shadow: 3px 5px 3px rgba(0,0,0,.35);
-background-color: white;
-padding: 2px 8px 4px;
-font-size: 1em;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+    box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+    background-color: white;
+    padding: 4px 8px 4px;
+    font-size: 1em;
+    background-image: url(../images/btnback.png);
+    color: #CAEE4E;
+    text-shadow: 2px 1px 1px #174667;
+    cursor: pointer;
 }
 
-button:hover
-{
-    background-color: #AFD9FF;
-    color: #000000;
-}
+    button:hover {
+        background-color: #AFD9FF;
+        color: #fff;
+        border: 1px solid #CAEE4E;
+    }
 
-h1
-{
+h1 {
     font-size: 1.5em;
 }
 
-.break
-{
+.break {
     float: none;
     clear: both;
 }
-.dijitReset
-{
+
+.dijitReset {
     margin: 0;
     border: 0;
     padding: 0;
@@ -77,27 +106,27 @@ h1
     line-height: normal;
     color: inherit;
 }
-.dj_a11y .dijitReset
-{
+
+.dj_a11y .dijitReset {
     -moz-appearance: none;
 }
-.dijitSliderMoveable
-{
+
+.dijitSliderMoveable {
     z-index: 99;
     position: absolute !important;
     display: block;
     vertical-align: middle;
 }
-.dijitSliderMoveableH
-{
+
+.dijitSliderMoveableH {
     right: 0;
 }
-.dijitSliderMoveableV
-{
+
+.dijitSliderMoveableV {
     right: 50%;
 }
-.dj_a11y div.dijitSliderImageHandle, .dijitSliderImageHandle
-{
+
+.dj_a11y div.dijitSliderImageHandle, .dijitSliderImageHandle {
     margin: 0;
     padding: 0;
     position: relative !important;
@@ -113,184 +142,184 @@ h1
     background-repeat: no-repeat;
     background-position: 0 0;
 }
-.dj_iequirks .dj_a11y .dijitSliderImageHandle
-{
+
+.dj_iequirks .dj_a11y .dijitSliderImageHandle {
     font-size: 0;
 }
-.dj_ie7 .dijitSliderImageHandle
-{
+
+.dj_ie7 .dijitSliderImageHandle {
     overflow: hidden;
 }
-.dj_ie7 .dj_a11y .dijitSliderImageHandle
-{
+
+.dj_ie7 .dj_a11y .dijitSliderImageHandle {
     overflow: visible;
 }
-.dj_a11y .dijitSliderFocused .dijitSliderImageHandle
-{
+
+.dj_a11y .dijitSliderFocused .dijitSliderImageHandle {
     border: 4px solid #000;
     height: 8px;
     width: 8px;
 }
-.dijitSliderImageHandleV
-{
+
+.dijitSliderImageHandleV {
     top: -8px;
     right: -50%;
 }
-.dijitSliderImageHandleH
-{
+
+.dijitSliderImageHandleH {
     left: 50%;
     top: -5px;
     vertical-align: top;
 }
-.dijitSliderBar
-{
+
+.dijitSliderBar {
     border-style: solid;
     border-color: black;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
-.dijitSliderBarContainerV
-{
+
+.dijitSliderBarContainerV {
     position: relative;
     height: 100%;
     z-index: 1;
 }
-.dijitSliderBarContainerH
-{
+
+.dijitSliderBarContainerH {
     position: relative;
     z-index: 1;
 }
-.dijitSliderBarH
-{
+
+.dijitSliderBarH {
     height: 4px;
     border-width: 1px 0;
 }
-.dijitSliderBarV
-{
+
+.dijitSliderBarV {
     width: 4px;
     border-width: 0 1px;
 }
-.dijitSliderProgressBar
-{
+
+.dijitSliderProgressBar {
     border-color: #b5bcc7;
     background-color: #ffffff;
     z-index: 1;
 }
-.dijitSliderProgressBarV
-{
+
+.dijitSliderProgressBarV {
     position: static !important;
     height: 0;
     vertical-align: top;
     text-align: left;
 }
-.dijitSliderProgressBarH
-{
+
+.dijitSliderProgressBarH {
     position: absolute !important;
     width: 0;
     vertical-align: middle;
     overflow: visible;
 }
-.dijitSliderRemainingBar
-{
+
+.dijitSliderRemainingBar {
     overflow: hidden;
     background-color: transparent;
     z-index: 1;
 }
-.dijitSliderRemainingBarV
-{
+
+.dijitSliderRemainingBarV {
     height: 100%;
     text-align: left;
 }
-.dijitSliderRemainingBarH
-{
+
+.dijitSliderRemainingBarH {
     width: 100% !important;
 }
-.dijitSliderBumper
-{
+
+.dijitSliderBumper {
     overflow: hidden;
     z-index: 1;
 }
-.dijitSliderBumperV
-{
+
+.dijitSliderBumperV {
     width: 4px;
     height: 8px;
     border-width: 0 1px;
 }
-.dijitSliderBumperH
-{
+
+.dijitSliderBumperH {
     width: 8px;
     height: 4px;
     border-width: 1px 0;
 }
-.dijitSliderBottomBumper, .dijitSliderLeftBumper
-{
+
+.dijitSliderBottomBumper, .dijitSliderLeftBumper {
     background-color: #ffffff;
 }
-.dijitSliderTopBumper, .dijitSliderRightBumper
-{
+
+.dijitSliderTopBumper, .dijitSliderRightBumper {
     background-color: transparent;
 }
-.dijitSliderDecoration
-{
+
+.dijitSliderDecoration {
     text-align: center;
 }
-.dijitSliderDecorationC, .dijitSliderDecorationV
-{
+
+.dijitSliderDecorationC, .dijitSliderDecorationV {
     position: relative;
 }
-.dijitSliderDecorationH
-{
+
+.dijitSliderDecorationH {
     width: 100%;
 }
-.dijitSliderDecorationV
-{
+
+.dijitSliderDecorationV {
     height: 100%;
     white-space: nowrap;
 }
-.dijitSliderButton
-{
+
+.dijitSliderButton {
     font-family: monospace;
     margin: 0;
     padding: 0;
     display: block;
 }
-.dj_a11y .dijitSliderButtonInner
-{
+
+.dj_a11y .dijitSliderButtonInner {
     visibility: visible !important;
 }
-.dijitSliderButtonContainer
-{
+
+.dijitSliderButtonContainer {
     text-align: center;
     height: 0;
 }
-.dijitSliderButtonContainer *
-{
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    background-image: url("../images/commonFormArrows.png");
-    background-repeat: no-repeat;
-    background-color: #efefef;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    border: solid 1px #b5bcc7;
-    font-size: 1px;
-    border: solid 1px #759dc0;
-}
-.dijitSlider .dijitButtonNode
-{
+
+    .dijitSliderButtonContainer * {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        background-image: url("../images/commonFormArrows.png");
+        background-repeat: no-repeat;
+        background-color: #efefef;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        border: solid 1px #b5bcc7;
+        font-size: 1px;
+        border: solid 1px #759dc0;
+    }
+
+.dijitSlider .dijitButtonNode {
     padding: 0;
     display: block;
 }
-.dj_a11y .dijitSliderReadOnly, .dj_a11y .dijitSliderDisabled
-{
+
+.dj_a11y .dijitSliderReadOnly, .dj_a11y .dijitSliderDisabled {
     opacity: 0.6;
 }
-.dj_ie .dj_a11y .dijitSliderReadOnly .dijitSliderBar, .dj_ie .dj_a11y .dijitSliderDisabled .dijitSliderBar
-{
+
+.dj_ie .dj_a11y .dijitSliderReadOnly .dijitSliderBar, .dj_ie .dj_a11y .dijitSliderDisabled .dijitSliderBar {
     filter: alpha(opacity=40);
 }
-.dj_a11y .dijitSlider .dijitSliderButtonContainer div
-{
+
+.dj_a11y .dijitSlider .dijitSliderButtonContainer div {
     font-family: monospace;
     font-size: 1em;
     line-height: 1em;
@@ -298,99 +327,99 @@ h1
     width: auto;
     margin: 0 4px;
 }
-.claro .dijitTabStripSlideRightIcon
-{
+
+.claro .dijitTabStripSlideRightIcon {
     background-position: -24px 50%;
 }
-.claro .tabStripButtonDisabled .dijitTabStripSlideLeftIcon
-{
+
+.claro .tabStripButtonDisabled .dijitTabStripSlideLeftIcon {
     background-position: -175px 50%;
 }
-.claro .tabStripButtonDisabled .dijitTabStripSlideRightIcon
-{
+
+.claro .tabStripButtonDisabled .dijitTabStripSlideRightIcon {
     background-position: -124px 50%;
 }
-.claro .dijitSliderBar
-{
+
+.claro .dijitSliderBar {
     border-style: solid;
     outline: 1px;
 }
-.claro .dijitSliderFocused .dijitSliderBar
-{
+
+.claro .dijitSliderFocused .dijitSliderBar {
     border-color: #759dc0;
 }
-.claro .dijitSliderHover .dijitSliderBar
-{
+
+.claro .dijitSliderHover .dijitSliderBar {
     border-color: #759dc0;
 }
-.claro .dijitSliderDisabled .dijitSliderBar
-{
+
+.claro .dijitSliderDisabled .dijitSliderBar {
     background-image: none;
     border-color: #d3d3d3;
 }
-.claro .dijitSlider .dijitSliderProgressBarH, .claro .dijitSlider .dijitSliderLeftBumper
-{
+
+.claro .dijitSlider .dijitSliderProgressBarH, .claro .dijitSlider .dijitSliderLeftBumper {
     border-color: #b5bcc7;
-    background-color: #cfe5fa;
+    background-color: #CAED4D;
     background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
     background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
     background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
     background-image: linear-gradient(top, #ffffff 0px, #ffffff 1px, rgba(255, 255, 255, 0) 2px);
 }
-.claro .dijitSlider .dijitSliderRemainingBarH, .claro .dijitSlider .dijitSliderRightBumper
-{
+
+.claro .dijitSlider .dijitSliderRemainingBarH, .claro .dijitSlider .dijitSliderRightBumper {
     border-color: #b5bcc7;
     background-color: #ffffff;
 }
-.claro .dijitSliderRightBumper
-{
+
+.claro .dijitSliderRightBumper {
     border-right: solid 1px #b5bcc7;
 }
-.claro .dijitSliderLeftBumper
-{
+
+.claro .dijitSliderLeftBumper {
     border-left: solid 1px #b5bcc7;
 }
-.claro .dijitSliderHover .dijitSliderProgressBarH, .claro .dijitSliderHover .dijitSliderLeftBumper
-{
-    background-color: #abd6ff;
+
+.claro .dijitSliderHover .dijitSliderProgressBarH, .claro .dijitSliderHover .dijitSliderLeftBumper {
+    background-color: #CAED4D;
     border-color: #759dc0;
 }
-.claro .dijitSliderHover .dijitSliderRemainingBarH, .claro .dijitSliderHover .dijitSliderRightBumper
-{
+
+.claro .dijitSliderHover .dijitSliderRemainingBarH, .claro .dijitSliderHover .dijitSliderRightBumper {
     background-color: #ffffff;
     border-color: #759dc0;
 }
-.claro .dijitSliderFocused .dijitSliderProgressBarH, .claro .dijitSliderFocused .dijitSliderLeftBumper
-{
-    background-color: #abd6ff;
+
+.claro .dijitSliderFocused .dijitSliderProgressBarH, .claro .dijitSliderFocused .dijitSliderLeftBumper {
+    background-color: #CAED4D;
     border-color: #759dc0;
     -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
     box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
-.claro .dijitSliderFocused .dijitSliderRemainingBarH, .claro .dijitSliderFocused .dijitSliderRightBumper
-{
+
+.claro .dijitSliderFocused .dijitSliderRemainingBarH, .claro .dijitSliderFocused .dijitSliderRightBumper {
     background-color: #ffffff;
     border-color: #759dc0;
     -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
     box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
-.claro .dijitSliderDisabled .dijitSliderProgressBarH, .claro .dijitSliderDisabled .dijitSliderLeftBumper
-{
+
+.claro .dijitSliderDisabled .dijitSliderProgressBarH, .claro .dijitSliderDisabled .dijitSliderLeftBumper {
     background-color: #d3d3d3;
     background-image: none;
 }
-.claro .dijitSliderDisabled .dijitSliderRemainingBarH, .claro .dijitSliderDisabled .dijitSliderRightBumper
-{
+
+.claro .dijitSliderDisabled .dijitSliderRemainingBarH, .claro .dijitSliderDisabled .dijitSliderRightBumper {
     background-color: #efefef;
 }
-.claro .dijitRuleLabelsContainerV
-{
+
+.claro .dijitRuleLabelsContainerV {
     padding: 0 2px;
 }
-.claro .dijitSlider .dijitSliderProgressBarV, .claro .dijitSlider .dijitSliderBottomBumper
-{
+
+.claro .dijitSlider .dijitSliderProgressBarV, .claro .dijitSlider .dijitSliderBottomBumper {
     border-color: #b5bcc7;
     background-color: #cfe5fa;
     background-image: -moz-linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
@@ -398,55 +427,55 @@ h1
     background-image: -o-linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
     background-image: linear-gradient(left, #ffffff 0px, rgba(255, 255, 255, 0) 1px);
 }
-.claro .dijitSlider .dijitSliderRemainingBarV, .claro .dijitSlider .dijitSliderTopBumper
-{
+
+.claro .dijitSlider .dijitSliderRemainingBarV, .claro .dijitSlider .dijitSliderTopBumper {
     border-color: #b5bcc7;
     background-color: #ffffff;
 }
-.claro .dijitSliderBottomBumper
-{
+
+.claro .dijitSliderBottomBumper {
     border-bottom: solid 1px #b5bcc7;
 }
-.claro .dijitSliderTopBumper
-{
+
+.claro .dijitSliderTopBumper {
     border-top: solid 1px #b5bcc7;
 }
-.claro .dijitSliderHover .dijitSliderProgressBarV, .claro .dijitSliderHover .dijitSliderBottomBumper
-{
-    background-color: #abd6ff;
+
+.claro .dijitSliderHover .dijitSliderProgressBarV, .claro .dijitSliderHover .dijitSliderBottomBumper {
+    background-color: #CAED4D;
     border-color: #759dc0;
 }
-.claro .dijitSliderHover .dijitSliderRemainingBarV, .claro .dijitSliderHover .dijitSliderTopBumper
-{
+
+.claro .dijitSliderHover .dijitSliderRemainingBarV, .claro .dijitSliderHover .dijitSliderTopBumper {
     background-color: #ffffff;
     border-color: #759dc0;
 }
-.claro .dijitSliderFocused .dijitSliderProgressBarV, .claro .dijitSliderFocused .dijitSliderBottomBumper
-{
-    background-color: #abd6ff;
+
+.claro .dijitSliderFocused .dijitSliderProgressBarV, .claro .dijitSliderFocused .dijitSliderBottomBumper {
+    background-color: #CAED4D;
     border-color: #759dc0;
     -webkit-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
     box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
 }
-.claro .dijitSliderFocused .dijitSliderRemainingBarV, .claro .dijitSliderFocused .dijitSliderTopBumper
-{
+
+.claro .dijitSliderFocused .dijitSliderRemainingBarV, .claro .dijitSliderFocused .dijitSliderTopBumper {
     background-color: #ffffff;
     border-color: #759dc0;
     -webkit-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
     box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.2);
 }
-.claro .dijitSliderDisabled .dijitSliderProgressBarV, .claro .dijitSliderDisabled .dijitSliderBottomBumper
-{
+
+.claro .dijitSliderDisabled .dijitSliderProgressBarV, .claro .dijitSliderDisabled .dijitSliderBottomBumper {
     background-color: #d3d3d3;
 }
-.claro .dijitSliderDisabled .dijitSliderRemainingBarV, .claro .dijitSliderDisabled .dijitSliderTopBumper
-{
+
+.claro .dijitSliderDisabled .dijitSliderRemainingBarV, .claro .dijitSliderDisabled .dijitSliderTopBumper {
     background-color: #efefef;
 }
-.claro .dijitSliderImageHandleH
-{
+
+.claro .dijitSliderImageHandleH {
     border: 0;
     width: 18px;
     height: 16px;
@@ -454,28 +483,28 @@ h1
     background-repeat: no-repeat;
     background-position: 0 0;
 }
-.claro .dijitSliderHover .dijitSliderImageHandleH
-{
+
+.claro .dijitSliderHover .dijitSliderImageHandleH {
     background-position: -18px 0;
 }
-.claro .dijitSliderFocused .dijitSliderImageHandleH
-{
+
+.claro .dijitSliderFocused .dijitSliderImageHandleH {
     background-position: -36px 0;
 }
-.claro .dijitSliderProgressBarH .dijitSliderThumbHover
-{
+
+.claro .dijitSliderProgressBarH .dijitSliderThumbHover {
     background-position: -36px 0;
 }
-.claro .dijitSliderProgressBarH .dijitSliderThumbActive
-{
+
+.claro .dijitSliderProgressBarH .dijitSliderThumbActive {
     background-position: -36px 0;
 }
-.claro .dijitSliderReadOnly .dijitSliderImageHandleH, .claro .dijitSliderDisabled .dijitSliderImageHandleH
-{
+
+.claro .dijitSliderReadOnly .dijitSliderImageHandleH, .claro .dijitSliderDisabled .dijitSliderImageHandleH {
     background-position: -54px 0;
 }
-.claro .dijitSliderImageHandleV
-{
+
+.claro .dijitSliderImageHandleV {
     border: 0;
     width: 18px;
     height: 16px;
@@ -483,36 +512,36 @@ h1
     background-repeat: no-repeat;
     background-position: -289px 0;
 }
-.claro .dijitSliderHover .dijitSliderImageHandleV
-{
+
+.claro .dijitSliderHover .dijitSliderImageHandleV {
     background-position: -307px 0;
 }
-.claro .dijitSliderFocused .dijitSliderImageHandleV
-{
+
+.claro .dijitSliderFocused .dijitSliderImageHandleV {
     background-position: -325px 0;
 }
-.claro .dijitSliderProgressBarV .dijitSliderThumbHover
-{
+
+.claro .dijitSliderProgressBarV .dijitSliderThumbHover {
     background-position: -325px 0;
 }
-.claro .dijitSliderProgressBarV .dijitSliderThumbActive
-{
+
+.claro .dijitSliderProgressBarV .dijitSliderThumbActive {
     background-position: -325px 0;
 }
-.claro .dijitSliderReadOnly .dijitSliderImageHandleV, .claro .dijitSliderDisabled .dijitSliderImageHandleV
-{
+
+.claro .dijitSliderReadOnly .dijitSliderImageHandleV, .claro .dijitSliderDisabled .dijitSliderImageHandleV {
     background-position: -343px 0;
 }
-.claro .dijitSliderButtonContainerH
-{
+
+.claro .dijitSliderButtonContainerH {
     padding: 1px 3px 1px 2px;
 }
-.claro .dijitSliderButtonContainerV
-{
+
+.claro .dijitSliderButtonContainerV {
     padding: 3px 1px 2px 1px;
 }
-.claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH, .claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV
-{
+
+.claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH, .claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV {
     background-image: url("../images/commonFormArrows.png");
     background-repeat: no-repeat;
     background-color: #efefef;
@@ -521,169 +550,182 @@ h1
     border: solid 1px #b5bcc7;
     font-size: 1px;
 }
-.claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
-{
+
+.claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH {
     height: 12px;
     width: 9px;
 }
-.claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV
-{
+
+.claro .dijitSliderDecrementIconV, .claro .dijitSliderIncrementIconV {
     height: 9px;
     width: 12px;
 }
-.claro .dijitSliderActive .dijitSliderDecrementIconH, .claro .dijitSliderActive .dijitSliderIncrementIconH, .claro .dijitSliderActive .dijitSliderDecrementIconV, .claro .dijitSliderActive .dijitSliderIncrementIconV, .claro .dijitSliderHover .dijitSliderDecrementIconH, .claro .dijitSliderHover .dijitSliderIncrementIconH, .claro .dijitSliderHover .dijitSliderDecrementIconV, .claro .dijitSliderHover .dijitSliderIncrementIconV
-{
+
+.claro .dijitSliderActive .dijitSliderDecrementIconH, .claro .dijitSliderActive .dijitSliderIncrementIconH, .claro .dijitSliderActive .dijitSliderDecrementIconV, .claro .dijitSliderActive .dijitSliderIncrementIconV, .claro .dijitSliderHover .dijitSliderDecrementIconH, .claro .dijitSliderHover .dijitSliderIncrementIconH, .claro .dijitSliderHover .dijitSliderDecrementIconV, .claro .dijitSliderHover .dijitSliderIncrementIconV {
     border: solid 1px #759dc0;
     background-color: #ffffff;
 }
-.claro .dijitSliderDecrementIconH
-{
+
+.claro .dijitSliderDecrementIconH {
     background-position: -357px 50%;
 }
-.claro .dijitSliderActive .dijitSliderDecrementIconH .claro .dijitSliderHover .dijitSliderDecrementIconH
-{
+
+.claro .dijitSliderActive .dijitSliderDecrementIconH .claro .dijitSliderHover .dijitSliderDecrementIconH {
     background-position: -393px 50%;
 }
-.claro .dijitSliderIncrementIconH
-{
+
+.claro .dijitSliderIncrementIconH {
     background-position: -251px 50%;
 }
-.claro .dijitSliderActive .dijitSliderIncrementIconH .claro .dijitSliderHover .dijitSliderIncrementIconH
-{
+
+.claro .dijitSliderActive .dijitSliderIncrementIconH .claro .dijitSliderHover .dijitSliderIncrementIconH {
     background-position: -283px 50%;
 }
-.claro .dijitSliderDecrementIconV
-{
+
+.claro .dijitSliderDecrementIconV {
     background-position: -38px 50%;
 }
-.claro .dijitSliderActive .dijitSliderDecrementIconV .claro .dijitSliderHover .dijitSliderDecrementIconV
-{
+
+.claro .dijitSliderActive .dijitSliderDecrementIconV .claro .dijitSliderHover .dijitSliderDecrementIconV {
     background-position: -73px 50%;
 }
-.claro .dijitSliderIncrementIconV
-{
+
+.claro .dijitSliderIncrementIconV {
     background-position: -143px 49%;
 }
-.claro .dijitSliderActive .dijitSliderIncrementIconV .claro .dijitSliderHover .dijitSliderIncrementIconV
-{
+
+.claro .dijitSliderActive .dijitSliderIncrementIconV .claro .dijitSliderHover .dijitSliderIncrementIconV {
     background-position: -178px 49%;
 }
-.claro .dijitSliderButtonContainerV .dijitSliderDecrementButtonHover, .claro .dijitSliderButtonContainerH .dijitSliderDecrementButtonHover, .claro .dijitSliderButtonContainerV .dijitSliderIncrementButtonHover, .claro .dijitSliderButtonContainerH .dijitSliderIncrementButtonHover
-{
-    background-color: #cfe5fa;
+
+.claro .dijitSliderButtonContainerV .dijitSliderDecrementButtonHover, .claro .dijitSliderButtonContainerH .dijitSliderDecrementButtonHover, .claro .dijitSliderButtonContainerV .dijitSliderIncrementButtonHover, .claro .dijitSliderButtonContainerH .dijitSliderIncrementButtonHover {
+    background-color: #CAED4D;
 }
-.claro .dijitSliderButtonContainerV .dijitSliderDecrementButtonActive, .claro .dijitSliderButtonContainerH .dijitSliderDecrementButtonActive, .claro .dijitSliderButtonContainerV .dijitSliderIncrementButtonActive, .claro .dijitSliderButtonContainerH .dijitSliderIncrementButtonActive
-{
-    background-color: #abd6ff;
+
+.claro .dijitSliderButtonContainerV .dijitSliderDecrementButtonActive, .claro .dijitSliderButtonContainerH .dijitSliderDecrementButtonActive, .claro .dijitSliderButtonContainerV .dijitSliderIncrementButtonActive, .claro .dijitSliderButtonContainerH .dijitSliderIncrementButtonActive {
+    background-color: #CAED4D;
     border-color: #759dc0;
 }
-.claro .dijitSliderButtonInner
-{
+
+.claro .dijitSliderButtonInner {
     visibility: hidden;
 }
-.claro .dijitSliderDisabled .dijitSliderBar
-{
+
+.claro .dijitSliderDisabled .dijitSliderBar {
     border-color: #d3d3d3;
 }
-.claro .dijitSliderReadOnly *, .claro .dijitSliderDisabled *
-{
+
+.claro .dijitSliderReadOnly *, .claro .dijitSliderDisabled * {
     border-color: #d3d3d3;
     color: #818181;
 }
-.claro .dijitSliderReadOnly .dijitSliderDecrementIconH, .claro .dijitSliderDisabled .dijitSliderDecrementIconH
-{
+
+.claro .dijitSliderReadOnly .dijitSliderDecrementIconH, .claro .dijitSliderDisabled .dijitSliderDecrementIconH {
     background-position: -321px 50%;
     background-color: #efefef;
 }
-.claro .dijitSliderReadOnly .dijitSliderIncrementIconH, .claro .dijitSliderDisabled .dijitSliderIncrementIconH
-{
+
+.claro .dijitSliderReadOnly .dijitSliderIncrementIconH, .claro .dijitSliderDisabled .dijitSliderIncrementIconH {
     background-position: -215px 50%;
     background-color: #efefef;
 }
-.claro .dijitSliderReadOnly .dijitSliderDecrementIconV, .claro .dijitSliderDisabled .dijitSliderDecrementIconV
-{
+
+.claro .dijitSliderReadOnly .dijitSliderDecrementIconV, .claro .dijitSliderDisabled .dijitSliderDecrementIconV {
     background-position: -3px 49%;
     background-color: #efefef;
 }
-.claro .dijitSliderReadOnly .dijitSliderIncrementIconV, .claro .dijitSliderDisabled .dijitSliderIncrementIconV
-{
+
+.claro .dijitSliderReadOnly .dijitSliderIncrementIconV, .claro .dijitSliderDisabled .dijitSliderIncrementIconV {
     background-position: -107px 49%;
     background-color: #efefef;
 }
-.dijitSliderRtl .dijitSliderImageHandleV
-{
+
+.dijitSliderRtl .dijitSliderImageHandleV {
     left: auto;
 }
-.dijitSliderRtl .dijitSliderImageHandleH
-{
+
+.dijitSliderRtl .dijitSliderImageHandleH {
     left: -50%;
 }
-.dijitSliderRtl .dijitSliderMoveableH
-{
+
+.dijitSliderRtl .dijitSliderMoveableH {
     right: auto;
     left: 0;
 }
-.dijitSliderRtl .dijitRuleContainerV
-{
+
+.dijitSliderRtl .dijitRuleContainerV {
     float: right;
 }
-.dj_ie .dijitSliderRtl .dijitRuleContainerV
-{
+
+.dj_ie .dijitSliderRtl .dijitRuleContainerV {
     text-align: right;
 }
-.dj_ie .dijitSliderRtl .dijitRuleLabelV
-{
+
+.dj_ie .dijitSliderRtl .dijitRuleLabelV {
     text-align: left;
 }
-.dj_ie .dijitSliderRtl .dijitRuleLabelH
-{
+
+.dj_ie .dijitSliderRtl .dijitRuleLabelH {
     zoom: 1;
 }
-.dijitSliderRtl .dijitSliderProgressBarH
-{
+
+.dijitSliderRtl .dijitSliderProgressBarH {
     float: right;
     right: 0;
     left: auto;
 }
-.claro .dijitSliderRtl .dijitSliderProgressBarH, .claro .dijitSliderRtl .dijitSliderRemainingBarH, .claro .dijitSliderRtl .dijitSliderLeftBumper, .claro .dijitSliderRtl .dijitSliderRightBumper, .claro .dijitSliderRtl .dijitSliderTopBumper
-{
+
+.claro .dijitSliderRtl .dijitSliderProgressBarH, .claro .dijitSliderRtl .dijitSliderRemainingBarH, .claro .dijitSliderRtl .dijitSliderLeftBumper, .claro .dijitSliderRtl .dijitSliderRightBumper, .claro .dijitSliderRtl .dijitSliderTopBumper {
     background-position: top right;
 }
-.claro .dijitSliderRtl .dijitSliderProgressBarV, .claro .dijitSliderRtl .dijitSliderRemainingBarV, .claro .dijitSliderRtl .dijitSliderBottomBumper
-{
+
+.claro .dijitSliderRtl .dijitSliderProgressBarV, .claro .dijitSliderRtl .dijitSliderRemainingBarV, .claro .dijitSliderRtl .dijitSliderBottomBumper {
     background-position: bottom right;
 }
-.claro .dijitSliderRtl .dijitSliderLeftBumper
-{
+
+.claro .dijitSliderRtl .dijitSliderLeftBumper {
     border-left-width: 0;
     border-right-width: 1px;
 }
-.claro .dijitSliderRtl .dijitSliderRightBumper
-{
+
+.claro .dijitSliderRtl .dijitSliderRightBumper {
     border-left-width: 1px;
     border-right-width: 0;
 }
-.claro .dijitSliderRtl .dijitSliderIncrementIconH
-{
+
+.claro .dijitSliderRtl .dijitSliderIncrementIconH {
     background-position: -357px 50%;
 }
-.claro .dijitSliderRtl .dijitSliderDecrementIconH
-{
+
+.claro .dijitSliderRtl .dijitSliderDecrementIconH {
     background-position: -251px 50%;
 }
-#imageSwipe
-{
-    position: absolute; bottom: 0px; Width: 100%; background-color: blue; Height: 100px; z-index: 2; border: 1px solid #174667; border-radius: 10px; -moz-border-radius: 10px; -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35); box-shadow: 3px 5px 3px rgba(0,0,0,.35); background-color: #174667; height: 130px; text-align: center; 
-}
-#swipetext
-{
-   display:none;/* -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; */
-}
-#sharebtn{
-    webkit-box-shadow:none; 
- box-shadow:none;
 
- -webkit-transition: background-color 0.2s linear;
+#imageSwipe {
+    position: absolute;
+    bottom: 0px;
+    Width: 100%;
+    background-color: blue;
+    Height: 100px;
+    z-index: 2;
+    border: 1px solid #174667;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-box-shadow: 3px -10px 3px rgba(0,0,0,.35);
+    box-shadow: 3px 5px 3px rgba(0,0,0,.35);
+    background-color: #174667;
+    height: 130px;
+    text-align: center;
+}
+
+#swipetext {
+    display: none; /* -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100px; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; */
+}
+
+#sharebtn {
+    webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: background-color 0.2s linear;
     border-radius: 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -691,55 +733,134 @@ h1
     background-repeat: repeat-x;
     padding: 2px 8px 4px;
     font-size: 1em;
-background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:42px; margin-left:20px; float:left;
+    background-image: url(../images/share.png);
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 40px;
+    border: 0px;
+    background-color: transparent;
+    position: relative;
+    top: 42px;
+    margin-left: 20px;
+    float: left;
+    z-index: 200;
 }
-#sharebtn:hover{
-background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:42px; margin-left:20px; float:left;
+
+    #sharebtn:hover {
+        background-image: url(../images/shareh.png);
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 40px;
+        border: 0px;
+        background-color: transparent;
+        position: relative;
+        top: 42px;
+        margin-left: 20px;
+        float: left;
+    }
+
+.fullextentbutton {
+    position: absolute;
+    z-index: 30;
+    top: 20px;
+    left: 60px;
+    cursor: pointer;
+    cursor: pointer;
 }
-.fullextentbutton
-{
-	position: absolute;
-	z-index: 30;
-	top: 20px;
-	left: 60px;
-	cursor: pointer;
-	
+
+    .fullextentbutton:hover {
+        opacity: .75;
+        cursor: pointer;
+    }
+
+#monitortext {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    top: 30%;
+    color: white;
+    font-size: 1.5em;
+    display: block;
+    white-space: nowrap;
 }
-        #monitortext
-{
-    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%;  margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
+
+.swipeOpen {
+    position: absolute;
+    bottom: 130px;
+    z-index: 2;
+    cursor: pointer;
+    
 }
-        .swipeOpen{position: absolute; bottom: 130px; z-index: 2; }
-        .swipeClosed{position: absolute; bottom: 0px; z-index: 2; }
-        #infoWindow{position: absolute;
-        top: 0px;
-        left: 0px;
-        z-index: 999;
-        width: 100%;
-        background-color: white;
-        border-radius: 4px;
-            -moz-border-radius: 4px 4px 4px 4px;
-            min-height:100%;
-        }
-         .infobtn{position: absolute;
-right: 110px;
-top: 40px;
-z-index: 2;
-width: 50px;}
-         .infobtncl{position: absolute;
-right: 10px;
-top: 0px;
-z-index: 2;
-width: 50px;}
+
+    .swipeOpen:hover {
+        opacity: .75;
+        cursor: pointer;
+    }
+
+.swipeClosed {
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+    .swipeClosed:hover {
+        opacity: .75;
+        cursor: pointer;
+    }
+
+#infoWindow {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    width: 100%;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    min-height: 100%;
+}
+
+.infobtn {
+    position: absolute;
+    right: 110px;
+    top: 40px;
+    z-index: 2;
+    width: 50px;
+    cursor: pointer;
+}
+
+    .infobtn:hover {
+        opacity: .75;
+        cursor: pointer;
+    }
+
+.infobtncl {
+    position: relative;
+    float: right;
+    top: 0px;
+    z-index: 2;
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .infobtncl:hover {
+        opacity: .75;
+        cursor: pointer;
+    }
 /* ipad portrait */
-@media only screen and ( min-width: 768px) and ( max-width: 981px )
-{
-    body
-    {
+@media only screen and ( min-width: 768px) and ( max-width: 981px ) {
+    body {
         width: auto;
     }
-    .claro
-    {
+
+    .claro {
         border: 1px solid #174667;
         position: fixed;
         z-index: 99;
@@ -753,61 +874,101 @@ width: 50px;}
         margin-right: 4px;
         margin-top: 4px;
     }
-    table#slider
-    {
+
+    table#slider {
         width: 99% !important;
         -moz-transform: scale(3);
     }
-    #BasemapToggle
-    {
+
+    #BasemapToggle {
         top: auto;
         position: absolute;
         right: 6px;
         z-index: 50;
         bottom: 40px;
     }
-    .esriSimpleSliderTL
-    {
+
+    .esriSimpleSliderTL {
         top: auto;
         bottom: 20px;
         left: 20px;
     }
-    .claro .dijitSliderImageHandleH
-    {
+
+    .claro .dijitSliderImageHandleH {
         height: 28px;
     }
-    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
-    {
+
+    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH {
         height: 24px;
         width: 12px;
     }
-    .fullextentbutton
-	{
-		display:none;
-	
-	}
-    #sharebtn{
-    background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+
+    .fullextentbutton {
+        display: none;
     }
+
+    #sharebtn {
+        background-image: url(../images/share.png);
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 40px;
+        border: 0px;
+        background-color: transparent;
+        position: relative;
+        top: 8px;
+        margin-left: 18px;
+        float: left;
+    }
+
         #sharebtn:hover {
-            background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+            background-image: url(../images/shareh.png);
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 40px;
+            border: 0px;
+            background-color: transparent;
+            position: relative;
+            top: 8px;
+            margin-left: 18px;
+            float: left;
         }
-        #monitortext{display:none;}
-        #swipetext
-{
-    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; width: 100%; height: 100%; margin: 0 auto; position: relative; top: 30%; color: white; font-size: 1.5em; display:block; white-space:nowrap;
-}
-        .infobtn{position:absolute;left:4px; top:50px; z-index:2;}
+
+    #monitortext {
+        display: none;
+    }
+
+    #swipetext {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        position: relative;
+        top: 30%;
+        color: white;
+        font-size: 1.5em;
+        display: block;
+        white-space: nowrap;
+    }
+
+    .infobtn {
+        position: absolute;
+        left: 4px;
+        top: 50px;
+        z-index: 2;
+    }
 }
 /*Mobile*/
-@media only screen and ( max-width: 640px)
-{
-    body
-    {
+@media only screen and ( max-width: 640px) {
+    body {
         width: auto;
     }
-    .claro
-    {
+
+    .claro {
         border: 1px solid #174667;
         position: fixed;
         z-index: 99;
@@ -821,61 +982,102 @@ width: 50px;}
         margin-right: 4px;
         margin-top: 4px;
     }
-    table#slider
-    {
+
+    table#slider {
         width: 99% !important;
         -moz-transform: scale(3);
     }
-    #BasemapToggle
-    {
+
+    #BasemapToggle {
         top: auto;
         position: absolute;
         right: 6px;
         z-index: 50;
         bottom: 40px;
     }
-    .esriSimpleSliderTL
-    {
+
+    .esriSimpleSliderTL {
         top: auto;
         bottom: 20px;
         left: 20px;
     }
-    .claro .dijitSliderImageHandleH
-    {
+
+    .claro .dijitSliderImageHandleH {
         height: 28px;
     }
-    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH
-    {
+
+    .claro .dijitSliderDecrementIconH, .claro .dijitSliderIncrementIconH {
         height: 24px;
         width: 12px;
     }
-#swipetext
-{
-    -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;
-     width: 100%;  margin: 0 auto; position: relative; top: 60px; color: white; font-size: .8em; right: 80px; display:block;white-space: nowrap;
-}
-.fullextentbutton
-	{
-		display:none;
-	
-	}
-#sharebtn{
-    background-image:url(../images/share.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+
+    #swipetext {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        top: 60px;
+        color: white;
+        font-size: .8em;
+        right: 80px;
+        display: block;
+        white-space: nowrap;
     }
-#sharebtn:hover{
-    background-image:url(../images/shareh.jpg); width:138px; height:40px; border:0px; background-color:transparent; position:relative; top:8px; margin-left:18px; float:left;
+
+    .fullextentbutton {
+        display: none;
     }
-#monitortext{display:none;}
-.esriControlsBR {
-position: absolute;
-right: 5px;
-top: 50px;
-z-index: 30;
-max-height: 3px;
-}
- .infobtn{position:absolute;left:4px; top:50px; z-index:2;}
+
+    #sharebtn {
+        background-image: url(../images/share.png);
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 40px;
+        border: 0px;
+        background-color: transparent;
+        position: relative;
+        top: 8px;
+        margin-left: 18px;
+        float: left;
+    }
+
+        #sharebtn:hover {
+            background-image: url(../images/shareh.png);
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 40px;
+            border: 0px;
+            background-color: transparent;
+            position: relative;
+            top: 8px;
+            margin-left: 18px;
+            float: left;
+        }
+
+    #monitortext {
+        display: none;
+    }
+
+    .esriControlsBR {
+        position: absolute;
+        right: 5px;
+        top: 50px;
+        z-index: 30;
+        max-height: 3px;
+    }
+
+    .infobtn {
+        position: absolute;
+        left: 4px;
+        top: 50px;
+        z-index: 2;
+    }
 }
 /*Other mobile*/
-@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi)
-{
+@media only screen and ( max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dpi) {
 }
