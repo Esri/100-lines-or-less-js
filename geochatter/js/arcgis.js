@@ -1,14 +1,13 @@
-require(["esri/map","esri/geometry/webMercatorUtils","esri/InfoTemplate","esri/graphic",
-  "esri/symbols/PictureMarkerSymbol","esri/layers/GraphicsLayer","esri/geometry/Point", "dojo/domReady!"
-  ], function(Map, webMercatorUtils, InfoTemplate, Graphic, PictureMarkerSymbol, GraphicsLayer, Point) {
+require(["esri/map","esri/InfoTemplate","esri/graphic","esri/symbols/PictureMarkerSymbol",
+  "esri/layers/GraphicsLayer","esri/geometry/Point","dojo/domReady!"
+  ], function(Map, InfoTemplate, Graphic, PictureMarkerSymbol, GraphicsLayer, Point) {
   var map = new Map("map", {
     center: [-56.049, 38.485],
     zoom: 3,
-    basemap: "topo"
+    basemap: "topo",
+    sliderPosition: "bottom-left"
   });
-  map.on("load", function() {
-    map.hideZoomSlider();
-  });
+
   map.infoWindow.highlight = false;
 
   var infoTemplate = new InfoTemplate("${name}","${message}");
@@ -48,15 +47,17 @@ require(["esri/map","esri/geometry/webMercatorUtils","esri/InfoTemplate","esri/g
     $name.on('keydown blur', handleName);
   });
 
-  function addMessage(message, isLoad) {
+  function addMessage(message, isLoad, context) {
     map.infoWindow.hide();
     var $message = $('<li><div class="user-name"></div><div class="user-message"></div></li>');
     $message.addClass('message');
     $message.children().first().text(message.name);
     $message.children().last().text(message.text);
     $messages.append($message);
-    $text.val('');
     _scrollBottom();
+    if (context != null && context.userId === user.id) {
+      $text.val('');
+    }
     addGraphic(message.lat, message.lng, message.text, message.name, isLoad);
   }
 
