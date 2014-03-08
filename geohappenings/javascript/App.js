@@ -48,9 +48,9 @@ saveMsg: function (evt) {
 },getLocation: function (model) {
 	if (navigator.geolocation) {
 		$('#loader').modal({show: true, backdrop: false});
-		navigator.geolocation.getCurrentPosition(function (position) {
+		navigator.geolocation.getCurrentPosition(function (p) {
 			model.set('loc', null);
-			model.set('loc', {lat: String(position.coords.latitude), lon: String(position.coords.longitude)});
+			model.set('loc', {lat: String(p.coords.latitude), lon: String(p.coords.longitude)});
 		});
 	} else { $('#alert-modal').modal(); }
 },enableEventClickHandler: function() {
