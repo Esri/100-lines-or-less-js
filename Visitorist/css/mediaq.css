@@ -1,0 +1,87 @@
+	@media only screen and (max-width: 520px) {
+		.app #appTitle{	
+   			font-size:24px;
+    		top: 35px;
+    		left: 5px;    		
+ 		}
+
+		#tourImg img {
+			display:none;
+		}
+
+		#introText {
+			width:200px;
+			font-size: 14px;			
+		}
+
+		#spotlinks .spot{	
+			
+			border-width: 10px 10px 10px 0;
+		}
+
+ 		#scrollIntro{
+ 			right:10px;
+ 		}
+ 		#spotLinks{
+ 			top:50px;	
+ 		}
+
+
+		#spotlinks .spot{
+			margin:25px 0px auto auto;
+		}
+
+		#tourInfo{			
+			top: 10px;
+			left: 10px;
+			right: 10px;
+			bottom: 10px;
+		}
+ 		
+
+
+	}
+
+	/* Smaller than standard 960 (devices and browsers) */
+	@media only screen and (min-width: 521px) {
+		.app #appTitle{	
+   			font-size:36px;
+    		top: 20px;
+    		left: 20px;    		
+ 		}
+
+		#tourImg img {
+			margin-bottom:20px;
+		}
+
+		.app #introText {
+			width:300px;
+			font-size: 14px;
+			background: #000;
+		}
+
+		#spotlinks .spot{	
+			border-width: 10px 30px 10px 0;
+		}
+
+ 		#scrollIntro{
+ 			right:20px;
+ 		}
+
+ 		#spotLinks{
+ 			top:100px;	
+ 		}
+
+ 		#spotlinks .spot{
+			margin:30px 0px auto auto;
+		}
+
+		#tourInfo{			
+			top: 75px;
+			left: 75px;
+			right: 75px;
+			bottom: 75px;
+		}
+
+
+	}

@@ -38,14 +38,14 @@ function(domClass,domStyle,dom,on,JSON,win,arrayUtil,domAttr, Map,ioQuery,arcgis
                             dojoQuery('#scrollpos').forEach(function(node){node.innerHTML=data.curTop});    
                             domClass.add("tourInfo","dijitHidden");
                             domClass.add("tourImg","dijitHidden");
+                            dojoQuery(".dijitHiddenTemp").forEach(function(n){
+                                domClass.remove(n,"dijitHiddenTemp");
+                            })
                         }
                         });
                     }
                     
-                });                     
-                on(window,"click",function(){
-                    console.log(arguments);
-                })
+                });                                     
                 arrayUtil.forEach(graphics,function(g,i){                           
                     var screenGeom = screenUtils.toScreenGeometry(map.extent,map.width,map.height,g.geometry);
                     var keyPos = (viewHeight/graphics.length)*(i+1);
@@ -67,23 +67,23 @@ function(domClass,domStyle,dom,on,JSON,win,arrayUtil,domAttr, Map,ioQuery,arcgis
                     var itemContainer = domConstruct.create("div",{"class":"spotItem"},"spotlinks");
                     var spotLabel = domConstruct.create("span",labelJson,itemContainer);
                     var spotButton = domConstruct.create("div",linkJson,itemContainer);                         
-                    on(spotButton,"click,touch",function(evt){    
+                    on(spotButton,"touch,click",function(evt){    
                         var jumpToTop = (top*-1)+"px";
                         var s = skrollr.get();
                         s.animateTo(keyPos+10, { duration: 600 });
                     })
-                    on(spotLabel,"click,touch",function(evt){   
+                    on(spotLabel,"touch,click",function(evt){   
                         domClass.toggle("tourInfo","dijitHidden");
                         domClass.toggle("tourImg","dijitHidden");
                         if (!domClass.contains("tourInfo","dijitHidden")){
                             dom.byId("tourInfo").innerHTML = g.attributes.Desc;
                             dom.byId("tourImg").innerHTML = "";
-                            var img = domConstruct.create("img",{"src":"images/"+g.attributes.Url},"tourImg");              
+                            var img = domConstruct.create("img",{"src":"images/"+g.attributes.Url},"tourImg");           
+                            domClass.add(evt.target,"dijitHiddenTemp");              
                         }
                     })                          
                 }) //array graphics                                         
         }
-
         arcgisUtils.createMap(webMapID, "map",{mapOptions:{"spatialReference":{wkid:102100},
               center: [55.125275,25.135339], // long, lat
               zoom: 13,
