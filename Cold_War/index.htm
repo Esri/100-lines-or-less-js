@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Defense</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link rel='stylesheet' media='screen and (min-width: 902px)' href='css/sty_defense.css' />
+    <link rel='stylesheet' media='screen and (min-width: 768px) and (max-width: 901px)' href='css/sty_defense_tab.css' />
+    <link rel='stylesheet' media='screen and (min-width: 0px) and (max-width: 767px)' href='css/sty_defense_mob.css' />
+	<script src="http://js.arcgis.com/3.8/"></script>
+ 
+ <style>
+  html, body, #mapDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    cursor:url(images/target.png), auto;
+  }
+</style>
+    
+    
+  <script type="text/javascript" src="widgets/defense.js"></script>
+    
+  </head>
+  
+  <body class="claro">
+  <div id="mapDiv"></div>
+  
+  <div id="RocDef_Container">
+  	<div id="RocDef_Container_Content">
+  		<div id="RocDef_Text">Missiles</div>
+  		<div id="RocDef_Count_Text"></div>
+  	</div>
+  </div>
+
+  <div id="US_Container">
+  	<div id="US_Container_Content">
+  		<div id="US_Text">Casualities</div>
+  		<div id="US_Count_Text"></div>
+  	</div>
+  </div>  
+ 
+  <div id="Title_Container">
+	<div id="Title_BgImg">
+		<div id="Title_Text1">COLD</div>
+		<div id="Title_Text2"> WAR</div>
+		<div id="Title_Text3">START</div>
+	</div>
+  </div> 
+  
+  <div id="Rockets"></div> 
+  
+  </body>
+  
+</html>
