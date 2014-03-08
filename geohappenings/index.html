@@ -1,0 +1,219 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GeoHappenings</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- STYLES -->
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,300italic' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="bower_components/modernizr/modernizr.js"></script>
+
+
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid no-padding">
+        <div class="navbar-header">
+            <div class="header-title">
+                <p>GeoHappenings</p>
+            </div>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a class="chat-modal" title="Chat" data-toggle="modal" data-target="#chat-modal"><i class="fa fa-bullhorn"></i><span>Happenings</span></a></li>
+            <li><a class="share-modal" title="Share" data-toggle="modal" data-target="#share-modal"><i class="fa fa-sign-in"></i><span>Share Something</span></a></li>
+            <li><a class="search-modal" title="Search" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search"></i><span>Search</span></a></li>
+            <li><a class="about-modal" title="About" data-toggle="modal" data-target="#about-modal"><i class="fa fa-question-circle"></i><span>About</span></a></li>
+        </ul>
+    </div><!-- /.container-fluid -->
+</nav>
+        <!-- What's happening Modal -->
+<div class="modal fade" id="chat-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">What's Happening?</h4>
+        <hr>
+        <p>Click a message to zoom to the location on the map.</p>
+      </div>
+      <div class="modal-body">
+        <div id="chat">
+           <ul id="chat-container" class="list-group msg-container">
+          </ul>
+        </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Share Modal -->
+<div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Share!</h4>
+      </div>
+      <div class="modal-body">
+                <input type="text" id="name-input" class="form-control" placeholder="Name / User ID">
+                <input type='text' id='message-input' class="form-control" placeholder='Message'>
+                <div>
+                  <div class='btn btn-primary current-location location-selector'><i class="fa fa-location-arrow"></i>My Location</div>
+                  <div id='add-event-btn' class='btn btn-primary location-selector'><i class="fa fa-map-marker"></i>Map Select</div>
+                </div>
+                <div class="row">
+                  <div class='col-xs-12 btn btn-success share-message disabled'>Share!</div>
+                </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- about Modal -->
+<div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">About...</h4>
+      </div>
+      <div class="modal-body">
+        <p>What's GeoHappening?</p>
+        <p>Socialize at your local event or conference (ahem...Dev Summit) with this real time social mapping app.</p>
+
+        <p>Chat with fellow map nerds, holler if you are at a good presentation, or just find nearby awesomeness.</p>
+        <p>Pan around the map to see where people are talking (all messages are geolocated) or just click on a message in Happenings to zoom to that location.</p>
+        <p>Check out our search page as well. Super neat auto complete enabled search on message history allowing easy search for specific topics.</p>
+        <hr>
+        <p>The JavaScripts*:</p>
+        <ul>
+          <li><a href="http://jquery.com">jQuery</a></li>
+          <li><a href="http://underscorejs.org">Underscore.js</a></li>
+          <li><a href="http://backbonejs.org">Backbone.js</a></li>
+          <li><a href="http://getbootstrap.com">Bootstrap</a></li>
+          <li><a href="http://twitter.github.io/typeahead.js/">Typeahead.js</a></li>
+          <li><a href="http://firebase.com">Firebase.js</a></li>
+          <li><a href="http://modernizr.com">Modernizr</a></li>
+          <li>And of course...<a href="https://developers.arcgis.com/javascript/jsapi/">ESRI JavaScript API</a>
+            <a href="http://dojotoolkit.org/">(Dojo)</a>
+          </li>
+        </ul>
+        <p class="small">*Also using the Ubuntu Web Font from the Google Font API and FontAwesome.</p>
+        <hr>
+        <span>Developed by Jeremy Folds and Nick Volpe of <a href="http://www.dtsagile.com">DTSAgile</a> in Fort Collins, CO</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- Search Modal -->
+<div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Search...</h4>
+      </div>
+      <div class="modal-body">
+      <p>Start typing to query the message database...</p>
+        <input id="search-input" type="text" class="form-control" placeholder="Search">
+<!--                 <div class="btn-group search-type-radio" data-toggle="buttons">
+            <label class="btn btn-primary active">
+                <input type="radio" name="search-options" value="users"> Users
+            </label>
+            <label class="btn btn-primary">
+                <input type="radio" name="search-options" value="events"> Events
+            </label>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- Alert Modal -->
+<div class="modal fade" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="alert-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="alert-h4">Oops!</h4>
+      </div>
+      <div class="modal-body">
+        Looks like you forgot something...Please try again.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- No Location Modal -->
+<div class="modal fade" id="no-location-modal" tabindex="-1" role="dialog" aria-labelledby="alert-modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="alert-h4">Oops!</h4>
+      </div>
+      <div class="modal-body">
+        We couldn't get your location, or one wasn't selected on the map. Please try again.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="dev-summit">Dev-Summit</div>
+<div id="map-canvas">
+    <div id="map"></div>
+</div>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="fa fa-spinner fa-spin fa-5x loader"></i>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- libs -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
+        <script src="http://js.arcgis.com/3.8/"></script>
+          
+        <!-- JS -->
+        <script src="javascript/App.js"></script>
+
+</body>
+</html>

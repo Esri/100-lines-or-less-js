@@ -1,0 +1,24 @@
+{
+  "name": "typeahead.js",
+  "version": "0.10.1",
+  "main": [
+    "bloodhound.js",
+    "typeahead.jquery.js",
+    "typeahead.bundle.js",
+    "typeahead.bundle.min.js"
+  ],
+  "dependencies": {
+    "jquery": "~1.9"
+  },
+  "homepage": "https://github.com/twitter/typeahead.js",
+  "_release": "0.10.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.10.1",
+    "commit": "86fee0262d12c07ba6a993c4adf22b86ceec2928"
+  },
+  "_source": "git://github.com/twitter/typeahead.js.git",
+  "_target": "~0.10.1",
+  "_originalSource": "typeahead.js",
+  "_direct": true
+}

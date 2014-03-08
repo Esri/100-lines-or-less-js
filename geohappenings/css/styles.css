@@ -1,0 +1,329 @@
+@charset "UTF-8";
+/*GLOBAL STYLES FOR ALL PAGES*/
+
+/*==Browser Resets==*/
+html, body {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1em;
+    height: 100%;
+    width: 100%;
+}
+ul, p {
+    padding: 0;
+    margin: 0;
+}
+/*==End Browser Resets==*/
+
+.loader {
+    color: #000;
+}
+#loader .modal-dialog {
+    margin: 200px auto;
+}
+#loader .modal-body {
+    text-align: center;
+}
+#loader .modal-content {
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; 
+}
+/* nav */
+.header-title p {
+    line-height: 50px;
+    margin-left: 8px;
+    font-size: 24px;
+    padding-right: 40px;
+}
+.navbar {
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.navbar-inverse {
+    margin: 0;
+}
+#collapse {
+    border: none;
+}
+.navbar-inverse .navbar-toggle,
+.navbar-inverse .navbar-toggle:focus {
+    background: #222;
+    border: none;
+    color: #fff;
+    margin-bottom: 0;
+}
+.container-fluid > .navbar-header {
+    display: none;
+    margin: 0;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #f6f6f6;
+}
+.navbar-inverse .nav span {
+    display: block;
+    margin-left: 8px;
+    font-size: 12px;
+}
+.navbar-inverse .nav li > a {
+    /*padding-top: 15px;*/
+    height: 50px;
+}
+.navbar-inverse .nav li > a > i {
+    font-size: 24px;
+}
+
+ul.nav.navbar-nav {
+    margin: 0;
+}
+ul.nav.navbar-nav li {
+    width: 25%;
+    height: 50px;
+    float: left;
+    cursor: pointer;
+    text-align: center;
+}
+.navbar-collapse,
+.navbar-collapse ul {
+    z-index: 10;
+    background: #222;
+}
+.navbar-collapse ul li {
+    z-index: 10;
+    background: #222;
+}
+
+.navbar-nav > li > a {
+    padding-top: 5px;
+}
+
+
+.show-map {
+    cursor: pointer;
+}
+.show-map:hover {
+    color: #669900;
+}
+.chat-item {
+    cursor: pointer;
+}
+#collapse {
+    margin: 0;
+}
+
+#about-modal p {
+    padding-bottom: 10px;
+}
+/*=====MOBILE FIRST======*/
+
+.row .col-xs-5 {
+    margin: 4%;
+}
+.share-message {
+    float: right;
+    margin: 15px 15px 0 0;
+    width: 85px;
+}
+
+
+.nested {
+    text-align: left;
+    padding-left: 15px;  
+}
+#search-results li:last-child {
+    border-bottom:solid 1px #bfbfbf
+}
+#search-results li img {
+    margin:0 15px 3px 0
+}
+
+.msg-container{
+    height: 350px;
+    overflow: auto;
+}
+
+.chat-date {
+    font-weight: bold;
+    font-size: .7em;
+}
+
+#about-modal li {
+    margin-left: 6%;
+}
+
+#add-event-btn {
+    float: right;
+}
+
+.location-selector i {
+    padding-right: 5px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+/* override esri popup */
+.esriPopup .titleButton {
+    /*top: -29px;*/
+}
+.esriPopup .titleButton.close {
+    right: 15px;
+    top: 1px;
+    opacity: 1;
+    background: none;
+
+}
+.esriPopup .titleButton.close:after {
+    color: red;
+    content: url('../images/close-white.png');
+
+}
+.titleButton.maximize {
+    display: none;
+}
+
+/* map */
+#map {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f5f5f5;
+    z-index: 1;
+}
+
+#dev-summit {
+    cursor: pointer;
+    border: solid 1px #000;
+    z-index: 10;
+    position: absolute;
+    top: 70px;
+    right: 15px;
+    border-radius: 6px;
+    padding: 5px;
+    color: #669900;
+    background: #000;
+}
+
+/*TWITTER TYPEAHEAD*/
+.twitter-typeahead {
+    width: 100%;
+}
+.tt-query {
+
+}
+.tt-hint {
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+}
+.tt-dropdown-menu {
+    white-space: pre;
+    z-index: 1000;
+    height: auto;
+    padding: 0;
+    margin: 2px 0 0 0;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+.tt-suggestion {
+  padding: 3px 20px;
+  line-height: 20px;
+}
+.tt-suggestion.tt-cursor {
+  color: #669900;
+}
+.tt-is-under-cursor {
+    color: #669900;
+}
+/*END TWITTER TYPEAHEAD*/
+
+
+/* ==================
+     MEDIA QUERIES
+   ================== */
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .container-fluid > .navbar-header {
+        display: block;
+        margin: 0;
+    }
+    .navbar-inverse .navbar-toggle:hover {
+        background-color: #222;
+        color: #669900;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus,
+    .activeNav {
+        color: #669900;
+    }
+    .chat-item:hover {
+        background-color: #222;
+        color: #669900;
+    }
+    .navbar-nav > li > a {
+        padding-top: 10px;
+    }
+    ul.nav.navbar-nav li {
+        display: inline-block;
+        width: auto;
+        float: none;
+    }
+    .navbar-inverse .nav span {
+        display: inline-block;
+        margin-left: 8px;
+        font-size: 15px;
+    }
+    #map {
+        top: 50px;
+        left: 0;
+        right: 0;
+
+    }
+    #aside {
+        /*display: block;*/
+        clear:both;
+        width: 350px;
+        left:0;
+        top:50px;
+        overflow: auto;
+    }
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+/*END MEDIA QUERIES*/
+
+
+/*HELPER CLASSES*/
+
+.no-padding {
+    padding: 0;
+}
+.no-margin {
+    margin: 0;
+}
+.no-mobile {
+    display: none;
+}
