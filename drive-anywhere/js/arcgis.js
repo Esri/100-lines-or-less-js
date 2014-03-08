@@ -37,7 +37,7 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 	function getCardinal(dd) { // get north, south, east, or west directions.
 		var dir; dd = dd % 360; dd = dd < 0 ? 360 + dd : dd;
 		dir = (dd <= 67.5 || dd >= 292.5) ? "N" : ((dd >= 112.5 && dd <= 247.5) ? "S" : "");
-		return dir + (dd > 22.5 && dd < 157.5) ? "W" : ((dd > 202.5 && dd < 337.5) ? "E" : "");
+		return dir + ((dd > 22.5 && dd < 157.5) ? "W" : ((dd > 202.5 && dd < 337.5) ? "E" : ""));
 	}
 	function playSound(file) {
 		var audio = new Audio(), M_a = Modernizr.audio;
@@ -54,6 +54,7 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 	dQuery(".pick_button").on("click", function (evt) {domClass.add("car", evt.target.name);});
 	dQuery(".closer").on("click", function (e) { domClass.add(e.target.parentNode, "hidden");});
 	dQuery(".open-next").on("click", function (e) { domClass.remove(e.target.name, "hidden");});
+	dQuery(".sounder").on("click", function (e) {playSound(e.target.name);});
 	dojoOn(d.body, "keydown", function (evt) {
 		var code = evt.keyCode || evt.charCode;
 		switch(code) {
