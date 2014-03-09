@@ -1,8 +1,8 @@
-define(["dojo/dom-class","dojo/dom-style","dojo/dom","dojo/on","dojo/json","dojo/window",
+define(["dojo/dom-class","dojo/dom-style","dojo/dom","dojo/on","dojo/json","dojo/window","dojo/has",
 "dojo/_base/array","dojo/dom-attr", "esri/map", "dojo/io-query"    ,"esri/arcgis/utils",
 "dojo/dom-construct","dojox/mobile/parser","dojo/query","esri/geometry/screenUtils","dojo/ready",
 "dojo/domReady!"],
-function(domClass,domStyle,dom,on,JSON,win,arrayUtil,domAttr, Map,ioQuery,arcgisUtils,
+function(domClass,domStyle,dom,on,JSON,win,has,arrayUtil,domAttr,Map,ioQuery,arcgisUtils,
     domConstruct,parser,dojoQuery,screenUtils,ready){        
         var init = function(){
             parser.parse();
@@ -24,28 +24,33 @@ function(domClass,domStyle,dom,on,JSON,win,arrayUtil,domAttr, Map,ioQuery,arcgis
                     evt.node.setAttribute("data-"+prevPos, "fill:rgb(0,0,255);fill-opacity:0.5");
                     evt.node.setAttribute("data-"+keyPos, "fill:rgb(255,0,0);fill-opacity:1");
                     evt.node.setAttribute("data-"+nextPos, "fill:rgb(0,0,255);fill-opacity:0.5");
-                    if (i+1==graphics.length) {
-                        var s = skrollr.init({
-                        edgeStrategy: 'set',
-                        easing: {
-                            WTF: Math.random,
+                    if (i+1==graphics.length) {                        
+                        var initObj = {
+                        edgeStrategy: 'set',smoothScrolling:true,smoothScrollingDuration:500,
+                        easing: {                            
                             inverted: function(p) {
-                                return 20-p;
+                                return 1-p;
                             }
+                        },
+                        mobileCheck: function() {
+                            return false;
                         },
                         render: function(data){
                             console.log(data);
                             dojoQuery('#scrollpos').forEach(function(node){node.innerHTML=data.curTop});    
                             domClass.add("tourInfo","dijitHidden");
                             domClass.add("tourImg","dijitHidden");
+                            dojoQuery(".dijitHiddenTemp").forEach(function(n){
+                                domClass.remove(n,"dijitHiddenTemp");
+                            })
                         }
-                        });
-                    }
-                    
-                });                     
-                on(window,"click",function(){
-                    console.log(arguments);
-                })
+                        }
+                        if (!has("touch")) {
+                            initObj.easing.WTF = Math.random;
+                        }
+                        var s = skrollr.init(initObj);
+                    }                    
+                });                                     
                 arrayUtil.forEach(graphics,function(g,i){                           
                     var screenGeom = screenUtils.toScreenGeometry(map.extent,map.width,map.height,g.geometry);
                     var keyPos = (viewHeight/graphics.length)*(i+1);
@@ -65,31 +70,30 @@ function(domClass,domStyle,dom,on,JSON,win,arrayUtil,domAttr, Map,ioQuery,arcgis
                     '"data-'+nextPos+'": "opacity:0;","class":"spotLabel","innerHTML":"'+g.attributes.Name+'"}';    
                     var labelJson = JSON.parse(jsonStr2);         
                     var itemContainer = domConstruct.create("div",{"class":"spotItem"},"spotlinks");
-                    var spotLabel = domConstruct.create("span",labelJson,itemContainer);
+                    var spotLabel = domConstruct.create("div",labelJson,itemContainer);
                     var spotButton = domConstruct.create("div",linkJson,itemContainer);                         
-                    on(spotButton,"click,touch",function(evt){    
+                    on(spotButton,"touch,click",function(evt){    
                         var jumpToTop = (top*-1)+"px";
                         var s = skrollr.get();
                         s.animateTo(keyPos+10, { duration: 600 });
                     })
-                    on(spotLabel,"click,touch",function(evt){   
+                    on(spotLabel,"touch,click",function(evt){   
                         domClass.toggle("tourInfo","dijitHidden");
                         domClass.toggle("tourImg","dijitHidden");
                         if (!domClass.contains("tourInfo","dijitHidden")){
                             dom.byId("tourInfo").innerHTML = g.attributes.Desc;
                             dom.byId("tourImg").innerHTML = "";
-                            var img = domConstruct.create("img",{"src":"images/"+g.attributes.Url},"tourImg");              
+                            var img = domConstruct.create("img",{"src":"images/"+g.attributes.Url},"tourImg");           
+                            domClass.add(evt.target,"dijitHiddenTemp");              
                         }
                     })                          
                 }) //array graphics                                         
         }
-
         arcgisUtils.createMap(webMapID, "map",{mapOptions:{"spatialReference":{wkid:102100},
               center: [55.125275,25.135339], // long, lat
               zoom: 13,
               slider: false},
-              ignorePopups:false}).then(mapHandler);
-            
+              ignorePopups:false}).then(mapHandler);            
         }
         var publicProps = {startup: function(){init();}};
         return publicProps;
