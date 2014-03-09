@@ -1,7 +1,7 @@
 require(["esri/map","esri/dijit/LocateButton","esri/dijit/Geocoder","esri/geometry/Polyline",
 	"esri/symbols/SimpleLineSymbol","esri/graphic","dojo/on","dojo/dom-style","dojo/dom-construct",
 	"dojo/dom-class","dijit/form/VerticalSlider","dojo/keys","dojo/query","dojo/domReady!"],
-function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyle, domConstruct, 
+function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyle, domConstruct,
 	domClass, Slider, keys, dQuery) {
 	var gas = new Slider({value: 0, minimum: -20, maximum: 40, intermediateChanges: true}, "gas"),
 		d = document, gauges = [d.getElementById("speed"), d.getElementById("cardinal")], 
@@ -25,7 +25,7 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 		position = newPosition(position, gas.value, prop.angle * Math.PI / 180);
 		map.centerAt(position).then(isGassed);
 	}
-	function setPos(point) { 
+	function resetPos(point) { // set position on map at start or when changed by search/geolocate
 		position = point || map.extent.getCenter(); 
 		trail.geometry = new Polyline(map.spatialReference).addPath([position]);
 	}
@@ -35,7 +35,7 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 			margin: ((h-diag)/2) + "px 0 0 " + ((w-diag)/2) + "px"
 		}); 
 	}
-	function getCardinal(dd) { // get north, south, east, or west directions.
+	function getCardinal(dd) { // get north, south, east, or west directions from map angle.
 		var dir; dd = dd % 360; dd = dd < 0 ? 360 + dd : dd;
 		dir = (dd <= 67.5 || dd >= 292.5) ? "N" : ((dd >= 112.5 && dd <= 247.5) ? "S" : "");
 		return dir + ((dd > 22.5 && dd < 157.5) ? "W" : ((dd > 202.5 && dd < 337.5) ? "E" : ""));
@@ -59,22 +59,22 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 	dojoOn(d.body, "keydown", function (evt) {
 		var code = evt.keyCode || evt.charCode;
 		switch(code) {
-			case keys.UP_ARROW: gas.set("value", Math.min(40, gas.value + 5)); break;
-			case keys.RIGHT_ARROW: prop.speed = prop.speed - 3; break;
-			case keys.LEFT_ARROW: prop.speed = prop.speed + 3; break;
-			case keys.DOWN_ARROW: gas.set("value", Math.max(-20, gas.value - 5)); break;
+			case keys.UP_ARROW: gas.set("value", Math.min(40, gas.value + 5)); break; // forward
+			case keys.RIGHT_ARROW: prop.speed = prop.speed - 3; break; // turn right
+			case keys.LEFT_ARROW: prop.speed = prop.speed + 3; break; // turn left
+			case keys.DOWN_ARROW: gas.set("value", Math.max(-20, gas.value - 5)); break; //reverse
 		}
 	});
-	gas._onKeyDown = function (a) {}; // fix for issue when slider uses/swallows keydown event.
+	gas._onKeyDown = function (a) {}; // fix for issue when slider doesn't bubble keydown event.
 	map = new Map("map", mapcfg);
 	locateBtn = new Locater({map: map, highlightLocation: false}, "locateBtn");
 	locateBtn.startup(); 
-	locateBtn.on("locate", function () {setPos();}); // lets you zoom to your current location.
+	locateBtn.on("locate", function () {resetPos();}); // lets you zoom to your current location.
 	map.on("load", function () {
 		var geocoder = new Geocoder({map: map}, "search"); geocoder.startup();
-		geocoder.on("select", function (res) { setPos(res.extent.getCenter());});
+		geocoder.on("select", function (res) { resetPos(res.extent.getCenter());});
 		trail = new Graphic(new Polyline(map.spatialReference), new LineSymbol(lineCfg));
-		setPos(map.extent.getCenter()); // set map center.
+		resetPos(map.extent.getCenter()); // set map center.
 		map.graphics.clear(); map.graphics.add(trail);
 		map.disableMapNavigation(); // stop normal map navigation (zoom in/out buttons okay).
 		domConstruct.place("map_zoom_slider", "newzoomspot", "first"); // make zoom slider visible
