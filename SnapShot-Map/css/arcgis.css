@@ -1,0 +1,29 @@
+ html, body{
+  padding:0;
+	  margin:0;
+      height:100%;
+ }
+
+
+ #map {
+      padding:0;
+	  margin:0;
+      height:65%;
+	  
+    }
+	#BasemapToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 50;
+    }
+    
+	#ImageContainer {
+      height: 250px; 
+	  overflow-y: scroll;
+	  background-color: #E9F6F7;
+	     }
+	h1{
+		 color:blue;
+         font-size: 20px;
+	 }

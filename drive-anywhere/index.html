@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+	<title>Drive Anywhere: A driving app</title>
+	<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" />
+	<link rel="stylesheet" href="./css/drive-anywhere.css" />
+	<script type="text/javascript" src="http://pixelscommander.com/polygon/propeller/src/propeller.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+	<script src="http://js.arcgis.com/3.8compact/"></script>
+	<!--[if gte IE 9]>
+	  <style type="text/css">
+	    button,
+	    .gradient {
+	       filter: none;
+	    }
+	  </style>
+	<![endif]-->
+</head>
+<body class="claro">
+	<div id="map">
+	</div>
+	<div id="newzoomspot">
+		<div id="locateBtn"></div>
+	</div>
+	<img id="car" src="./images/blank.png" class="redcar" />
+	<img id="drift" src="./images/blank.png" />
+	<div id="gas"></div>
+	<button id="brake" class="pedal"></button>
+	<div id="console" class="digital">
+		<span id="speed" >0.0</span>MPH
+		<span id="cardinal">N</span>
+		<span class="clear"></span>
+	</div>
+	<div class="search_container">
+		<div id="search"></div>
+	</div>
+	<div class="horn-container">
+		<button type="button" class="sounder" name="audio/horn" id="horn">
+		</button>
+	</div>
+	<div id="splash" class="pendant">
+		<h1>Drive Anywhere</h1>
+		<h2>A car driving sim.</h2>
+		<hr>
+		<p>To drive forward or back, adjust the gas slider on the lower left. The brake is on the lower right. To steer, swipe the screen or click and drag with your mouse. Arrow keys also work.</p>
+		<button type="button" class="closer open-next" name="directions">Instructions</button>
+		<button type="button" id="splashok" class="closer open-next" name="pick">Let's Go!</button>
+	</div>
+	<div id="pick" class="hidden pendant">
+		<h2>What would you like to drive? Something...</h2>
+		<hr>
+		<button type="button" class="pick_button red closer" name="redcar">Red</button>
+		<button type="button" class="pick_button yellow closer" name="bulldozer">Yellow</button>
+		<button type="button" class="pick_button white closer" name="formula1">White</button>
+		<button type="button" class="pick_button blue closer" name="viper">Blue</button>
+		<button type="button" class="pick_button green closer" name="lambo">Green</button>
+		<button type="button" class="pick_button black closer" name="convertible">Black</button>
+	</div>
+	<div id="directions" class="hidden">
+		<div class="directions" id="gas_dir">Gas</div>
+		<div class="directions" id="brake_dir">Break</div>
+		<div class="directions" id="steer_dir">To steer, you can:
+			<ul>
+				<li>Swipe the map right or left on a touchscreen</li>
+				<li>Click and drag the screen right or left with the mouse</li>
+				<li>Use the arrow keys.</li>
+			</ul>
+		</div>
+		<div class="directions" id="geo_dir">
+			Click to drive around your neighborhood.
+		</div>
+		<div class="directions" id="search_dir">
+			Search for a fun place to drive!
+		</div>
+		<button id="dir_ok" type="button" class="closer open-next" name="pick">OK</button>
+	</div>
+	<div id="credits" class="pendant hidden">
+		
+		<button type="button" class="closer">Cool</button>
+	</div>
+	<script type="text/javascript" src="./js/arcgis.js"></script>
+</body>
+</html>
