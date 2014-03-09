@@ -1,3 +1,9 @@
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+
 html, body {
 	width: 100%;
 	height: 100%;
@@ -91,6 +97,8 @@ button {
 	z-index: 200;
 	color: White;
 	background: #444;
+	text-align:-moz-center;
+    text-align:-webkit-center;
 	text-align: center;
 	background: url('../images/leather.png') repeat; 
 	-moz-border-radius: 5px 5px 21px 21px;
@@ -105,6 +113,10 @@ button {
 	overflow: hidden;
 }
 
+.clear {
+	float: none;
+	clear: both;
+}
 #map {
 	position: relative;
 	background: white;
@@ -124,8 +136,9 @@ button {
 #car.redcar { background-position: 0 0;}
 #car.bulldozer { background-position: -100px 0;}
 #car.viper {background-position: -200px 0;}
-
 #car.formula1 {background-position: -300px 0;}
+#car.lambo {background-position: -400px 0;}
+#car.convertible {background-position: -500px 0;}
 
 #drift {
 	position: absolute;
@@ -180,7 +193,7 @@ button {
 	position: absolute;
 	bottom: 0;
 	left: 50%;
-	width: 200px;
+	width: 220px;
 	margin-left: -100px;
 	height: auto;
 	z-index: 200;
@@ -202,11 +215,9 @@ button {
 
 #cardinal {
 	font-size: 28px;
-	margin-left: 5px;
+	float: right;
 }
-#splash {
-	
-}
+#splash { }
 #directions {
 	position: absolute;
 	top: 0;
@@ -228,18 +239,20 @@ button {
 	border-radius: 0 0 0 8px;
 }
 
-.red,
-.yellow,
-.blue,
-.white {
+.pick_button {
+	font-family: 'magentaregular';
+	font-size: 200%;
 	border: 0;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	width: 100px;
+	text-align:-moz-center;
+    text-align:-webkit-center;
 	text-align: center;
 	margin: 3px;
 }
+
 .red {
 	background: #f93131; /* Old browsers */
 	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -289,9 +302,30 @@ button {
 	background: linear-gradient(to bottom, #ffffff 0%,#efefef 40%,#d8d8d8 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d8d8d8',GradientType=0 ); /* IE6-8 */	
 }
-.pick_button {
-	font-family: 'magentaregular';
-	font-size: 200%;
+.green {
+	background: #72f430; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzcyZjQzMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iIzU5ZTAxNiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzZmJmMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #72f430 0%, #59e016 40%, #3fbf00 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#72f430), color-stop(40%,#59e016), color-stop(100%,#3fbf00)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #72f430 0%,#59e016 40%,#3fbf00 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #72f430 0%,#59e016 40%,#3fbf00 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #72f430 0%,#59e016 40%,#3fbf00 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #72f430 0%,#59e016 40%,#3fbf00 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#72f430', endColorstr='#3fbf00',GradientType=0 ); /* IE6-8 */
+}
+.black {
+	color: #EFEFEF;
+	background: #4c4c4c; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRjNGM0YyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iIzY2NjY2NiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iIzIyMjIyMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwODA4MDgiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #4c4c4c 0%, #666666 10%, #222222 40%, #080808 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4c4c4c), color-stop(10%,#666666), color-stop(40%,#222222), color-stop(100%,#080808)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #4c4c4c 0%,#666666 10%,#222222 40%,#080808 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #4c4c4c 0%,#666666 10%,#222222 40%,#080808 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #4c4c4c 0%,#666666 10%,#222222 40%,#080808 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #4c4c4c 0%,#666666 10%,#222222 40%,#080808 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#080808',GradientType=0 ); /* IE6-8 */
 }
 
 .pedal, 
@@ -309,6 +343,23 @@ button {
 	width: 36px;
 	height: 32px;
 	top: -16px;
+}
+
+.claro .dijitSliderDecrementIconV,
+.claro .dijitSliderIncrementIconV {
+	background-image: url("../images/dash_contents.png");
+	background-repeat: no-repeat;
+	width: 24px;
+	height: 24px;
+	border: 0;
+}
+
+.claro .dijitSliderIncrementIconV {
+	background-position: 0 0;
+}
+
+.claro .dijitSliderDecrementIconV {
+	background-position: 0px -24px;
 }
 
 .directions {
@@ -366,7 +417,7 @@ button {
 	top: 50%;
 	right: 0;
 	width: 60px;
-	height: 50px;
+	height: 52px;
 	-webkit-border-radius: 25px 0 0 25px;
 	-moz-border-radius: 25px 0 0 25px;
 	border-radius: 25px 0 0 25px;
@@ -375,12 +426,11 @@ button {
 
 #horn {
 	position: relative;
-	width: 46px;
-	height: 46px;
-	background: red;
-	-webkit-border-radius: 23px;
-	-moz-border-radius: 23px;
-	border-radius: 23px;
+	width: 48px;
+	height: 48px;
+	border: 0;
+	background: url("../images/dash_contents.png") no-repeat;
+	background-position: -24px 0;
 }
 
 /* Smartphones (portrait and landscape) ----------- */

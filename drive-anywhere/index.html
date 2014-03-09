@@ -12,6 +12,7 @@
 	<script src="http://js.arcgis.com/3.8compact/"></script>
 	<!--[if gte IE 9]>
 	  <style type="text/css">
+	    button,
 	    .gradient {
 	       filter: none;
 	    }
@@ -31,13 +32,13 @@
 	<div id="console" class="digital">
 		<span id="speed" >0.0</span>MPH
 		<span id="cardinal">N</span>
+		<span class="clear"></span>
 	</div>
 	<div class="search_container">
 		<div id="search"></div>
 	</div>
 	<div class="horn-container">
 		<button type="button" class="sounder" name="audio/horn" id="horn">
-			&nbsp;
 		</button>
 	</div>
 	<div id="splash" class="pendant">
@@ -56,7 +57,7 @@
 		<button type="button" class="pick_button white closer" name="formula1">White</button>
 		<button type="button" class="pick_button blue closer" name="viper">Blue</button>
 		<button type="button" class="pick_button green closer" name="lambo">Green</button>
-		<button type="button" class="pick_button black closer" name="convertable">Black</button>
+		<button type="button" class="pick_button black closer" name="convertible">Black</button>
 	</div>
 	<div id="directions" class="hidden">
 		<div class="directions" id="gas_dir">Gas</div>
@@ -69,14 +70,14 @@
 			</ul>
 		</div>
 		<div class="directions" id="geo_dir">
-			Click here to drive in your neighborhood.
+			Click to drive around your neighborhood.
 		</div>
 		<div class="directions" id="search_dir">
 			Search for a fun place to drive!
 		</div>
 		<button id="dir_ok" type="button" class="closer open-next" name="pick">OK</button>
 	</div>
-	<div id="credits">
+	<div id="credits" class="pendant hidden">
 		
 		<button type="button" class="closer">Cool</button>
 	</div>

@@ -1,10 +1,11 @@
 require(["esri/map","esri/dijit/LocateButton","esri/dijit/Geocoder","esri/geometry/Polyline",
 	"esri/symbols/SimpleLineSymbol","esri/graphic","dojo/on","dojo/dom-style","dojo/dom-construct",
 	"dojo/dom-class","dijit/form/VerticalSlider","dojo/keys","dojo/query","dojo/domReady!"],
-function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyle, domConstruct, domClass, Slider, keys, dQuery) {
+function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyle, domConstruct, 
+	domClass, Slider, keys, dQuery) {
 	var gas = new Slider({value: 0, minimum: -20, maximum: 40, intermediateChanges: true}, "gas"),
 		d = document, gauges = [d.getElementById("speed"), d.getElementById("cardinal")], 
-		mapcfg = {basemap: "satellite", showAttribution: false, center: [-117,34], zoom:19},
+		mapcfg = {basemap: "satellite", showAttribution: false, center: [-115.17,36.13], zoom:19},
 		lineCfg = {type:"esriSLSSolid", color: [165,42,42,192], width:10}, 
 		stepTime = new Date(), isDrivn = false, map, prop, position, gas, locateBtn, trail;
 	function updateSpeed() {
