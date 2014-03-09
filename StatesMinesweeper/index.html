@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+      on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>StatesMinesweeper</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+	<link href="css/redmond/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+	<script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.js"></script>
+    <style>
+      html, body, #map{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="http://js.arcgis.com/3.8/"></script>
+    <script src="js/javascript-Minesweeper.js"></script>
+  </head>
+  
+  <body>
+  <div id="dialog" title="About this Game!">
+States Minesweeper!<br>
+<p style=" font-weight:bold">Only click on those you think are clean!</p>
+Good Luck!
+</div>
+<div id="right" style=" float:left;width:40%">
+  <div id="Tital" style="font-size:xx-large;margin-left:1%;">
+  States Minesweeper!
+  </div>
+    <div id="top" style="float:left;width:100%;">
+    <div  style=" width:90%; height:20px">
+       <div style="width:2%; height:90%; float:left"></div>
+       <div style="width:5%; height:90%; float:left; border-style:solid; border-color:White; border-width:2px; background:rgb(100, 100, 255)"></div>
+       <div style="width:55px; height:90%; float:left;">:Unknown</div>
+       <div style="width:5%; height:90%; float:left; border-style:solid; border-color:White; border-width:2px; background:rgb(255, 255, 80)"></div>
+       <div style="width:100px; height:90%; float:left;">:NextToMine(s)</div>
+       <div style="width:5%; height:90%; float:left; border-style:solid; border-color:White; border-width:2px; background:rgb(150, 150, 150)"></div>
+       <div style="width:45px; height:90%; float:left;">:Clean</div>
+       <div style="width:5%; height:90%; float:left; border-style:solid; border-color:White; border-width:2px; background:rgb(255, 50, 50)"></div>
+       <div style="width:45px; height:90%; float:left;">:Mine!</div>
+    </div>
+
+    </div>
+    </div>
+         <div id="Div1" style="float:left;width:10%; height:10%; border-left-style:solid; border-left-color:Silver; border-left-width:3px;">
+         <div id="num" style=" font-size:40px; margin-left:0%; margin-top:7%">
+         4 Mines
+         </div>
+        </div>
+        <div id="ref" style="float:left;width:1%; height:10%; border-left-style:solid; border-left-color:Silver; border-left-width:3px">
+        </div>
+
+    <div id="mid" style="float:left;width:100%; height:90%">
+    
+    <div id="map"></div>
+    </div>
+
+    <div id="abr" style=" display:none">DC,AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY</div>
+    <div id="statesname" style=" display:none">Alabama,Alabama,Alaska,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,Florida,Georgia,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,Nebraska,Nevada,NewHampshire,NewJersey,NewMexico,NewYork,NorthCarolina,NorthDakota,Ohio,Oklahoma,Oregon,Pennsylvania,RhodeIsland,SouthCarolina,SouthDakota,Tennessee,Texas,Utah,Vermont,Virginia,Washington,WestVirginia,Wisconsin,Wyoming</div>
+  </body>
+
+</html>
