@@ -43,7 +43,9 @@ Map, FeatureLayer, InfoTemplate, SimpleLineSymbol, SimpleFillSymbol, TextSymbol,
         featureLayer2.setRenderer(renderer2);
         map.addLayer(featureLayer2);
         map.addLayer(featureLayer1);
-        $("#dialog").dialog({ autoOpen: true, width: 400 });
+        $("#dialog").dialog({ autoOpen: true, width: 300 });
+        $("#dialog2").dialog({ autoOpen: false, width: 300 });
+        $("#dialog3").dialog({ autoOpen: false, width: 300 });
         for (var i = 0; i <= 50; i++)  sadd[i] = 0;
         var f = 0;
         while (f < mm)
@@ -85,14 +87,14 @@ Map, FeatureLayer, InfoTemplate, SimpleLineSymbol, SimpleFillSymbol, TextSymbol,
                 SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
                 new Color([255, 255, 255]), 2), new Color([255, 255, 50, 0])));
                 featureLayer1.redraw();
-                alert("BOOM!!!!!");
-                location.reload();}
+                $( "#dialog2" ).dialog( "open" ); $("#dialog2").dialog({close: 
+                function( event, ui ) {location.reload();}});}
             else if (sadd[ck] >= 0 && clean.indexOf(ck) == -1)
                 cleanner(ck);
             featureLayer1.redraw();
             if (clean.length >= 46)
-            {  alert("You win!!!!!");
-                location.reload();}
+            { $( "#dialog3" ).dialog( "open" );$("#dialog3").dialog({close: 
+                function( event, ui ) {location.reload();}});}
         });
     }
 });
