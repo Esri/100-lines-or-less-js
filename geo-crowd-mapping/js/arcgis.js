@@ -64,7 +64,7 @@ require([
     });
     
     $(".clear").click(function (e) {
-      if(confirm("Clear edits?")) {
+      if(confirm("Clear edits in private layer?")) {
         map.graphics.clear();
       }
     });

@@ -74,8 +74,9 @@ function facebookWallPost() {
     var theindex = 0; if (theImage) { theindex = theImage._graphicsLayer.graphics.indexOf(theImage) }
     var tc = 'View from the International Space Station';
     FB.ui({ method: 'feed', name: 'ISERV Image Viewer', caption: tc, description: ('Image from ISERV'),
-          link: 'http://3.0websitedesigns.com/arcgis100lines/',
-          picture: 'http://3.0websitedesigns.com/arcgis100lines/' + mil.getImages()[theindex].href},
+        link: 'http://esri.github.io/100-lines-or-less-js/ISERV_Viewer/',
+        picture: 'http://esri.github.io/100-lines-or-less-js/ISERV_Viewer/' + mil.getImages()[theindex].href
+    },
       function (response) {if (response && response.post_id) {alert('Post was published.');
           } else {alert('Post was not published.'); }});}
 $(document).ready(function () {

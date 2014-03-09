@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Falcon</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		 <!-- jQuery UI -->
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+
+		<!-- Bootstrap -->
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+		<!-- Bootstrap-map-js -->
+		<link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">   
+		<link rel="stylesheet" type="text/css" href="http://esri.github.io/bootstrap-map-js/src/css/bootstrapmap.css">
+		
+		<!-- MiniColors -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.minicolors/2.0.5/jquery.minicolors.css">
+		
+		<!-- Falcon -->
+		<link rel="stylesheet" type="text/css" href="css/Falcon.css">
+	</head>
+<body>
+	<!-- Header -->
+	<div class="navbar navbar-default navbar-fixed-top navbar-custom">
+	  <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+		  </button>
+		  <a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;Falcon</a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-contents">
+			<ul class="nav navbar-nav navbar-right" role="navigation">
+				<li><a href="#" data-toggle="modal" data-target="#modal-about">Help</a></li>
+			</ul>
+		</div>
+	  </div>
+	</div>
+	
+	<!-- Map -->
+	<div class="container">
+	  <div id="mapDiv"></div>
+	</div>
+
+	<!-- Right Toolbar -->
+	<div class="btn-group-vertical tools">
+		<a data-toggle="modal" href="#modal-login" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-user"></span></a>
+		<a data-toggle="collapse" href="#collapseOne" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-th-list"></span></a>
+	</div>
+
+	<!-- Legend Board -->
+	<div id="collapseOne" class="btn-group-vertical legend panel-collapse collapse in">
+		<span>Legend<span>
+		<div id="legendItens">
+		</div>
+	</div>	
+
+	<!-- Modal Login -->
+	<div id="modal-login" class="modal">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-body">
+				<legend>Login</legend>
+
+				<!-- Text input-->
+				<div class="control-group">
+				  <label class="control-label" for="group">Group</label>
+				  <div class="controls">
+					<input id="group" name="group" type="text" value="DevSummit2014" class="input-xlarge" required="">
+					
+				  </div>
+				</div>
+
+				<!-- Text input-->
+				<div class="control-group">
+				  <label class="control-label" for="name">Name</label>
+				  <div class="controls">
+					<input id="name" name="name" type="text" placeholder="" class="input-xlarge" required="">
+					
+				  </div>
+				</div>
+				
+				<!-- Input Color -->
+				<div class="control-group">
+					<label class="control-label" for="text-field">Color</label>
+					<div class="controls">
+						<input type="text" id="color-text-field" class="form-control demo">
+					</div>
+				</div>
+				
+				<!-- Button -->
+				<div class="control-group">
+				  <label class="control-label" for="login"></label>
+				  <div class="controls">
+					<a href="#" id="login" name="login" class="btn confirm btn-primary">Login</a>
+					<a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-default btn-danger">Cancel</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	
+	<!-- Modal About -->
+	<div id="modal-about" class="modal">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-body">
+				<h3>Falcon</h3>
+				<hr>
+				<p>Falcon is a Web App that run well across mutiple devices.</p>
+				<p>The main objective of Falcon is to create a easy way to share your location among a group of people.</p>
+				<p>To create or join a group, you just have enter the name of group on login screen, if it exists, you will join, else, you will create it.</p>
+				<p>On right side of app, there are two tools, the first one is to change symbol color, user name or group and other one is to toogle legend board.</p>
+			
+				<!-- Button -->
+				<div class="control-group">
+				  <label class="control-label" for="login"></label>
+				  <div class="controls">
+					<a href="#" data-dismiss="modal" aria-hidden="true" class="btn confirm btn-primary">Ok</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	
+	<!-- Templates -->
+	<input type="hidden" id="infoTemplateTitle" value="${name} - <span style='background-color:${color}'>&nbsp;&nbsp;&nbsp;&nbsp;</span>" />
+	<input type="hidden" id="infoTemplate" value="group: ${group} <br/> Longitude: ${longitude} <br/>latitude:${latitude}" />
+	<input type="hidden" id="legendTemplate" value="<span style='background-color: #color#'>&nbsp;&nbsp;&nbsp;&nbsp;</span> #name# </br>"" />
+	
+	<!-- ArcGIS JS API -->
+	<script src="http://js.arcgis.com/3.7compact"></script>
+
+	<!-- jQuery (for Bootstrap's JavaScript plugins) -->
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+	<!-- Include all  plugins or individual files as needed -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+	<!-- Firebase -->
+	<script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
+
+	<!-- MiniColors -->
+	<script src="//cdn.jsdelivr.net/jquery.minicolors/2.0.5/jquery.minicolors.js"></script>
+
+	<!-- Twitter Bootstrap collapse plugin-->
+	<script src="js/collapse.js"></script>
+
+	<!-- Falcon -->
+	<script src="js/arcgis.js"></script>
+</body>
+</html>

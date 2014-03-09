@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>THE VISITORIST</title>	
+	<link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+	<link href="css/fixed-positioning.css" rel="stylesheet" type="text/css" />	
+	<link href='http://fonts.googleapis.com/css?family=Wallpoet' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Voces' rel='stylesheet' type='text/css'>
+	<link href="css/mediaq.css" rel="stylesheet" type="text/css" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	<script> 
+		var dojoConfig = { 						 
+			async: true,//cacheBust: true,
+			packages: [        
+        				{name: "app", location: location.pathname.replace(/\/[^/]+$/, "") + "/js"}        
+    				],
+	      	deps: ["app/visitorist"],
+	    	callback: function(Visitorist) {	      		
+	      		Visitorist.startup()
+	      	}
+	      }
+	</script>	
+	
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.11/skrollr.min.js"></script>
+	<script src="http://js.arcgis.com/3.8/"></script>
+</head>
+<body class="app">	
+	<div id="scrollpos"></div><div id="scrollIntro" data-0="top:0px;right:30px" data-800="top:-100px;right:30px">▼ Scroll Now ▼</div>
+	<div id="appTitle">THE VISITORIST</div>
+	<div class='subtitle'>A City Guide Map</div>
+	<div id="bg1" data-0="background-position:0px 0px;" data-end="background-position:0px 0px;"></div>
+	<div id="map" style="height:5000px;width:5000px"></div>
+	<div id="progress" data-0="width:0%;background:#00FFFF;" data-end="width:100%;background:#00FFFF;"></div>
+	<div id="tourInfo" class="dijitHidden"></div><div id="tourImg" class="dijitHidden"></div>
+	<div id="introText" data-0="left:0px" data-500="left:-500px">The VISITORIST (Visitor/Tourist) provides a simple interface for someone looking to tour the city. Simply scroll through the page. There are no map navigation tools. Data is hosted on ArcGIS Online. Click on place names on the right for detailed information. <br><br> This website has been built by Aamir Suleman using an open source library called Skrollr. Aamir is a JavaScript Developer at Blue Raster in Arlington, VA. </div>
+	<div id="spotlinks"></div>	
+	<div id="scrollbar" data-0="top:0%;margin-top:2px;" data-end="top:100%;margin-top:-52px;"></div>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="dist/skrollr.ie.min.js"></script>
+	<![endif]-->
+</body>
+</html>

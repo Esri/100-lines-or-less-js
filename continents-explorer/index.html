@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta lang="en" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+    <meta name="description" content="This application is developed to compete on Esri mapping app code challenge" />
+    <meta name="keywords" content="Continents Explorer, ESRI ArcGIS API" />
+    <meta name="author" content="Akbar Ali Hussain - #akbaralihussain" />
+
+    <title>Continents Explorer</title>
+
+    <!-- ArcGIS script and style -->
+    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/dojo/dijit/themes/claro/claro.css" />
+    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css" />
+    <script type="text/javascript" src="http://js.arcgis.com/3.8/"></script>
+
+    <!-- Custom stylesheets refer from local -->
+    <link type="text/css" rel="stylesheet" href="css/common.css" />
+    <link type="text/css" rel="stylesheet" href="css/toolbar.css" />
+    <link type="text/css" rel="stylesheet" href="css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="css/cont-panel.css" />
+    <link type="text/css" rel="stylesheet" href="css/cont-info.css" />
+  </head>
+  <body>
+    <!-- Map container -->
+    <div id="divMap"></div>
+
+    <!-- Toolbar START -->
+    <div id="divTbrNTtl" class="tbrNTitle-desktop tbrNTitle-mobile">
+        <div id="divToolbar" class="toolbar">
+            <div id="mnuBasemap">
+                <img id="basemap" alt="Basemap" src="images/basemap.png" title="Basemap" />
+            </div>
+            <div id="mnuLayers">
+                <img id="layers" alt="Layers" src="images/maplayers.png" title="Layers" />
+            </div>
+            <div id="mnuWindows">
+                <img id="windows" alt="Windows" src="images/windows.png" title="Windows" />
+            </div>
+            <div id="mnuAbout">
+                <img id="about" alt="About" src="images/help.png" title="About" />
+            </div>
+        </div>
+        <div id="divTitle" >
+            <label id="lblTitle" class="appTitle">Continents Explorer</label>
+            <br />
+            <label id="lblCurrCont" class="contTitle">Locating...</label>
+        </div>
+    </div>
+    <!-- Toolbar END -->
+
+    <!-- Balloon dialogs START -->
+    <!-- Basemaps -->
+    <div id="dlg_basemap" class="balloon-dialog">
+        <div class="balloon-arrow"></div>
+        <div id="divBasemap" class="balloon-dialog-content">
+            <div id="divBMCurr">
+                <label id="lblCurrBasemap" class="title-med">Satellite</label>
+                <br />
+            </div>
+            <div id="divBMAll">
+                <label id="divEBM" class="title-small">Available Basemaps</label>
+                <br />
+                <img id="streets" src="images/basemaps/streets.png" alt="Streets" title="Streets" />
+                <img id="satellite" src="images/basemaps/satellite.png" alt="Streets" title="Satellite" />
+                <img id="hybrid" src="images/basemaps/hybrid.png" alt="Streets" title="Hybrid" />
+                <img id="topo" src="images/basemaps/topo.png" alt="Streets" title="Topographic" />
+                <img id="gray" src="images/basemaps/gray.png" alt="Streets" title="Gray" />
+                <img id="oceans" src="images/basemaps/oceans.png" alt="Streets" title="Oceans" />
+                <img id="national-geographic" src="images/basemaps/n-g.png" alt="Streets" title="National Geographic" />
+                <img id="osm" src="images/basemaps/osm.png" alt="Streets" title="Open Street Map (OSM)" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Layers -->
+    <div id="dlg_layers" class="balloon-dialog">
+        <div class="balloon-arrow"></div>
+        <div id="divLayers" class="balloon-dialog-content">
+            <label class="title-med" >Layers On</label>
+            <div id="divLyrOn">
+            </div>
+            <br />
+            <label class="title-small" >Layers Off</label>
+            <div id="divLyrOff">
+                <img id="lyr0" src="images/layers/demographics.png" data-svc-url="http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Population_World/MapServer" alt="Population" title="World Population"  />
+                <img id="lyr1" src="images/layers/boundaries.png" data-svc-url="http://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer" alt="Boundaries" title="World Boundaries and Places"  />
+                <img id="lyr2" src="images/layers/navigation.png" data-svc-url="http://server.arcgisonline.com/arcgis/rest/services/Specialty/World_Navigation_Charts/MapServer" alt="Navigation" title="World Navigation Charts" />
+                <img id="lyr3" src="images/layers/transportation.png" data-svc-url="http://server.arcgisonline.com/arcgis/rest/services/Reference/World_Transportation/MapServer" alt="Transportation" title="World Transportation" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Show/Hide Windows -->
+    <div id="dlg_windows" class="balloon-dialog">
+        <div class="balloon-arrow"></div>
+        <div id="divWindows" class="balloon-dialog-content">
+            <div><label class="title-med">Show/Hide Windows</label></div>
+            <br />
+            <div>
+                <div class="win-icons-div">
+                    <img id="win_divContContainer" class="win-icon" src="images/cont-navg.png" alt="Navigation" title="Navigation"  />
+                    <br />
+                    <label class="title-small">Navigation</label>
+                </div>
+                <div class="win-icons-div">
+                    <img id="win_divInfoWdg" class="win-icon" src="images/cont-info.png" alt="Information" title="Information"  />
+                    <br />
+                    <label class="title-small">Information</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About -->
+    <div id="dlg_about" class="balloon-dialog">
+        <div class="balloon-arrow"></div>
+        <div id="divAbout" class="balloon-dialog-content">
+            <label class="title-med">About Continents Explorer</label>
+            <br />
+            <label class="note-small">This responsive Application helps user to explore all continents and its countries.
+            <br />
+            ESRI's  <a href="https://developers.arcgis.com/en/" target="_blank">ArcGIS API for JavaScript</a> and
+            <a href="http://resources.arcgis.com/en/help/rest/apiref/" target="_blank">ArcGIS Server REST API</a> are used to develop this application.
+            <br />
+            <span style="color:Green">
+                Statistics are collected from <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>
+                <br />
+                Flags are retrieved from <a href="http://flagpedia.net/" target="_blank">Flagpedia</a>
+            </span>
+            </label>
+        </div>
+    </div>
+    <!-- Balloon dialogs END -->
+
+    <!-- Continents Selection Panel START -->
+    <div id="divContContainer" class="contPanel-desktop">
+        <div id="divContList" class="contGlbs">
+            <img id="north_america" class="contGlb-curr" src="images/continents/north-america.png" alt="North America" title="North America" />
+            <img id="south_america" class="contGlb" src="images/continents/south-america.png" alt="South America" title="South America" />
+            <img id="africa" class="contGlb" src="images/continents/africa.png" alt="Africa" title="Africa" />
+            <img id="europe" class="contGlb" src="images/continents/europe.png" alt="Europe" title="Europe" />
+            <img id="asia" class="contGlb" src="images/continents/asia.png" alt="Asia" title="Asia" />
+            <img id="australia" class="contGlb" src="images/continents/australia.png" alt="Australia" title="Australia" />
+            <img id="antarctica" class="contGlb" src="images/continents/antarctica.png" alt="Antarctica" title="Antarctica" />
+        </div>
+    </div>
+    <!-- Continents Selection Panel END -->
+
+    <!-- Continent Info START -->
+    <div id="divInfoWdg" class="widgetInfo-desktop">
+        <div class="widgetInfo-top">
+            <div id="divWidgetHeader" class="widgetInfo-title">
+                <label id="lblWidgetTitle"></label>
+            </div>
+            <div id="divContInfo" class="widgetInfo-content">
+            </div>
+        </div>
+        <div id="divContImages" class="widgetInfo-images">
+            <label class="title-small" style="padding-left:0px;">List of Countries</label>
+            <br />
+            <label class="msg-tip" style="padding-left:2px;">(Click on a Flag to locate the country on Map)</label>
+            <br />
+            <div id="divContImageList" class="widgetInfo-imageList">
+            </div>
+            <br />
+            <label class="msg-tip" style="color: Maroon;">All data displayed here are for DEMO purpose only</label>
+        </div>
+    </div>
+
+    <div id="divContInfoData">
+        <div id="divData_north_america" >
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>24,709,000 km2 (9,540,000 sq mi)</td></tr>
+                    <tr><td class="title-small">Population</td><td>528,720,588 (2008, 4th)</td></tr>
+                    <tr><td class="title-small">Pop. density</td><td>22.9/km2 (59.3/sq mi</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>North American</td></tr>
+                    <tr><td class="title-small">Countries</td><td>23</td></tr>
+                    <tr><td class="title-small">Languages</td><td>English, Spanish, French and many others</td></tr>
+                    <tr><td class="title-small">Time zones</td><td>UTC-10 to UTC</td></tr>
+                </table>
+            </div>
+        </div>
+        <div id="divData_south_america">
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>17,840,000 km2(6,890,000 sq mi)</td></tr>
+                    <tr><td class="title-small">Population</td><td>385,742,554 (2011, 5th)</td></tr>
+                    <tr><td class="title-small">Pop. density</td><td>21.4/km2 (56.0/sq mi)</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>South American</td></tr>
+                    <tr><td class="title-small">Countries</td><td>13</td></tr>
+                    <tr><td class="title-small">Languages</td><td>Portuguese, Spanish, and many others</td></tr>
+                    <tr><td class="title-small">Time zones</td><td>UTC-2 to UTC-5</td></tr>
+                </table>
+            </div>
+        </div>
+        <div id="divData_africa">
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>30,221,532 km2 (11,668,599 sq mi)</td></tr>
+                    <tr><td class="title-small">Population</td><td>1,032,532,974 (2013, 2nd)</td></tr>
+                    <tr><td class="title-small">Pop. density</td><td>30.51/km2 (about 80/sq mi)</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>African</td></tr>
+                    <tr><td class="title-small">Countries</td><td>54 (and 2 disputed)</td></tr>
+                    <tr><td class="title-small">Languages</td><td>Afro-Asiatic, Nilo-Saharan, Niger-Congo A, Niger-Congo B</td></tr>
+                    <tr><td class="title-small">Time zones</td><td>UTC-1 to UTC+4</td></tr>
+                </table>
+            </div>
+        </div>
+        <div id="divData_europe">
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>10,180,000 km2 (3,930,000 sq mi)</td></tr>
+                    <tr><td class="title-small">Population</td><td>739,165,030 (2011, 3rd)</td></tr>
+                    <tr><td class="title-small">Pop. density</td><td>72.5/km2 (about 134/sq mi)</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>European</td></tr>
+                    <tr><td class="title-small">Countries</td><td>50 (and 6 disputed)</td></tr>
+                    <tr><td class="title-small">Languages</td><td><a href="http://en.wikipedia.org/wiki/Languages_of_Europe" target="_blank">Click here</a></td></tr>
+                    <tr><td class="title-small">Time zones</td><td>UTC to UTC+6</td></tr>
+                </table>
+                <br /><br />
+            </div>
+        </div>
+        <div id="divData_asia">
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>44,579,000 km2 (17,212,000 sq mi)</td></tr>
+                    <tr><td class="title-small">Population</td><td>4,164,252,000 (1st)</td></tr>
+                    <tr><td class="title-small">Pop. density</td><td>87/km2 (225/sq mi)</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>Asian</td></tr>
+                    <tr><td class="title-small">Countries</td><td>49 (and 5 disputed)</td></tr>
+                    <tr><td class="title-small">Languages</td><td><a href="http://en.wikipedia.org/wiki/Languages_of_Asia" target="_blank">Click here</a></td></tr>
+                    <tr><td class="title-small">Time zones</td><td>UTC+2 to UTC+12</td></tr>
+                </table>
+                <br /><br />
+            </div>
+        </div>
+        <div id="divData_australia">
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>7,692,024 km2 2,969,907 sq mi</td></tr>
+                    <tr><td class="title-small">Population</td><td>21,507,717 (2011 census)</td></tr>
+                    <tr><td class="title-small">Pop. density</td><td>2.8/km2  7.3/sq mi</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>Australian - Aussie</td></tr>
+                    <tr><td class="title-small">Languages</td><td>English</td></tr>
+                </table>
+                <br /><br /><br /><br /><br />
+            </div>
+        </div>
+        <div id="divData_antarctica">
+            <div class="cont-info">
+                <table>
+                    <tr><td class="title-small">Area</td><td>14,000,000 km2 (5,400,000 sq mi)</td></tr>
+                    <tr><td class="title-small">Demonym</td><td>Antarctican</td></tr>
+                </table>
+                <br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br />
+            </div>
+        </div>
+        <!-- Continent Info END -->
+
+        <!-- Countries flag collection START -->
+        <div id="divContInfoImages">
+            <div id="divImages_north_america">
+                <img alt="" title="Antigua and Barbuda" src="http://flagpedia.net/data/flags/small/ag.png" />
+                <img alt="" title="Bahamas" src="http://flagpedia.net/data/flags/small/bs.png" />
+                <img alt="" title="Barbados" src="http://flagpedia.net/data/flags/small/bb.png" />
+                <img alt="" title="Belize" src="http://flagpedia.net/data/flags/small/bz.png" />
+                <img alt="" title="Canada" src="http://flagpedia.net/data/flags/small/ca.png" />
+                <img alt="" title="Costa Rica" src="http://flagpedia.net/data/flags/small/cr.png" />
+                <img alt="" title="Cuba" src="http://flagpedia.net/data/flags/small/cu.png" />
+                <img alt="" title="Dominica" src="http://flagpedia.net/data/flags/small/dm.png" />
+                <img alt="" title="Dominican Republic" src="http://flagpedia.net/data/flags/small/do.png"  />
+                <img alt="" title="El Salvador" src="http://flagpedia.net/data/flags/small/sv.png"  />
+                <img alt="" title="Grenada" src="http://flagpedia.net/data/flags/small/gd.png" />
+                <img alt="" title="Guatemala" src="http://flagpedia.net/data/flags/small/gt.png" />
+                <img alt="" title="Haiti" src="http://flagpedia.net/data/flags/small/ht.png" />
+                <img alt="" title="Honduras" src="http://flagpedia.net/data/flags/small/hn.png" />
+                <img alt="" title="Jamaica" src="http://flagpedia.net/data/flags/small/jm.png" />
+                <img alt="" title="Mexico" src="http://flagpedia.net/data/flags/small/mx.png" />
+                <img alt="" title="Nicaragua" src="http://flagpedia.net/data/flags/small/ni.png" />
+                <img alt="" title="Panama" src="http://flagpedia.net/data/flags/small/pa.png" />
+                <img alt="" title="Saint Kitts and Nevis" src="http://flagpedia.net/data/flags/small/kn.png" />
+                <img alt="" title="Saint Lucia" src="http://flagpedia.net/data/flags/small/lc.png" />
+                <img alt="" title="Saint Vincent and the Grenadines" src="http://flagpedia.net/data/flags/small/vc.png" />
+                <img alt="" title="Trinidad and Tobago" src="http://flagpedia.net/data/flags/small/tt.png" />
+                <img alt="" title="United States" src="http://flagpedia.net/data/flags/small/us.png" />
+            </div>
+
+            <div id="divImages_south_america">
+                <img alt="" title="Argentina" src="http://flagpedia.net/data/flags/small/ar.png" />
+                <img alt="" title="Bolivia" src="http://flagpedia.net/data/flags/small/bo.png" />
+                <img alt="" title="Brazil" src="http://flagpedia.net/data/flags/small/br.png" />
+                <img alt="" title="Chile" src="http://flagpedia.net/data/flags/small/cl.png" />
+                <img alt="" title="Colombia" src="http://flagpedia.net/data/flags/small/co.png" />
+                <img alt="" title="Ecuador" src="http://flagpedia.net/data/flags/small/ec.png" />
+                <img alt="" title="Guyana" src="http://flagpedia.net/data/flags/small/gy.png" />
+                <img alt="" title="Paraguay" src="http://flagpedia.net/data/flags/small/py.png" />
+                <img alt="" title="Peru" src="http://flagpedia.net/data/flags/small/pe.png" />
+                <img alt="" title="Suriname" src="http://flagpedia.net/data/flags/small/sr.png" />
+                <img alt="" title="Trinidad and Tobago" src="http://flagpedia.net/data/flags/small/tt.png" />
+                <img alt="" title="Uruguay" src="http://flagpedia.net/data/flags/small/uy.png" />
+                <img alt="" title="Venezuela" src="http://flagpedia.net/data/flags/small/ve.png" />
+            </div>
+
+            <div id="divImages_africa">
+				<img alt="" title="Algeria" src="http://flagpedia.net/data/flags/small/dz.png" />
+				<img alt="" title="Angola" src="http://flagpedia.net/data/flags/small/ao.png" />
+				<img alt="" title="Benin" src="http://flagpedia.net/data/flags/small/bj.png" />
+				<img alt="" title="Botswana" src="http://flagpedia.net/data/flags/small/bw.png" />
+				<img alt="" title="Burkina Faso" src="http://flagpedia.net/data/flags/small/bf.png" />
+				<img alt="" title="Burundi" src="http://flagpedia.net/data/flags/small/bi.png" />
+				<img alt="" title="Cameroon" src="http://flagpedia.net/data/flags/small/cm.png" />
+				<img alt="" title="Cape Verde" src="http://flagpedia.net/data/flags/small/cv.png" />
+				<img alt="" title="Central African Republic" src="http://flagpedia.net/data/flags/small/cf.png" />
+				<img alt="" title="Chad" src="http://flagpedia.net/data/flags/small/td.png" />
+				<img alt="" title="Comoros" src="http://flagpedia.net/data/flags/small/km.png" />
+				<img alt="" title="Cote d'Ivoire" src="http://flagpedia.net/data/flags/small/ci.png" />
+				<img alt="" title="Democratic Republic of the Congo" src="http://flagpedia.net/data/flags/small/cd.png" />
+				<img alt="" title="Djibouti" src="http://flagpedia.net/data/flags/small/dj.png" />
+				<img alt="" title="Egypt" src="http://flagpedia.net/data/flags/small/eg.png" />
+				<img alt="" title="Equatorial Guinea" src="http://flagpedia.net/data/flags/small/gq.png" />
+				<img alt="" title="Eritrea" src="http://flagpedia.net/data/flags/small/er.png" />
+				<img alt="" title="Ethiopia" src="http://flagpedia.net/data/flags/small/et.png" />
+				<img alt="" title="Gabon" src="http://flagpedia.net/data/flags/small/ga.png" />
+				<img alt="" title="Gambia" src="http://flagpedia.net/data/flags/small/gm.png" />
+				<img alt="" title="Ghana" src="http://flagpedia.net/data/flags/small/gh.png" />
+				<img alt="" title="Guinea" src="http://flagpedia.net/data/flags/small/gn.png" />
+				<img alt="" title="Guinea-Bissau" src="http://flagpedia.net/data/flags/small/gw.png" />
+				<img alt="" title="Kenya" src="http://flagpedia.net/data/flags/small/ke.png" />
+				<img alt="" title="Lesotho" src="http://flagpedia.net/data/flags/small/ls.png" />
+				<img alt="" title="Liberia" src="http://flagpedia.net/data/flags/small/lr.png" />
+				<img alt="" title="Libya" src="http://flagpedia.net/data/flags/small/ly.png" />
+				<img alt="" title="Madagascar" src="http://flagpedia.net/data/flags/small/mg.png" />
+				<img alt="" title="Malawi" src="http://flagpedia.net/data/flags/small/mw.png" />
+				<img alt="" title="Mali" src="http://flagpedia.net/data/flags/small/ml.png" />
+				<img alt="" title="Mauritania" src="http://flagpedia.net/data/flags/small/mr.png" />
+				<img alt="" title="Mauritius" src="http://flagpedia.net/data/flags/small/mu.png" />
+				<img alt="" title="Morocco" src="http://flagpedia.net/data/flags/small/ma.png" />
+				<img alt="" title="Mozambique" src="http://flagpedia.net/data/flags/small/mz.png" />
+				<img alt="" title="Namibia" src="http://flagpedia.net/data/flags/small/na.png" />
+				<img alt="" title="Niger" src="http://flagpedia.net/data/flags/small/ne.png" />
+				<img alt="" title="Nigeria" src="http://flagpedia.net/data/flags/small/ng.png" />
+				<img alt="" title="Republic of the Congo" src="http://flagpedia.net/data/flags/small/cg.png" />
+				<img alt="" title="Rwanda" src="http://flagpedia.net/data/flags/small/rw.png" />
+				<img alt="" title="Sao Tome and Principe" src="http://flagpedia.net/data/flags/small/st.png" />
+				<img alt="" title="Senegal" src="http://flagpedia.net/data/flags/small/sn.png" />
+				<img alt="" title="Seychelles" src="http://flagpedia.net/data/flags/small/sc.png" />
+				<img alt="" title="Sierra Leone" src="http://flagpedia.net/data/flags/small/sl.png" />
+				<img alt="" title="Somalia" src="http://flagpedia.net/data/flags/small/so.png" />
+				<img alt="" title="South Africa" src="http://flagpedia.net/data/flags/small/za.png" />
+				<img alt="" title="Sudan" src="http://flagpedia.net/data/flags/small/sd.png" />
+				<img alt="" title="Swaziland" src="http://flagpedia.net/data/flags/small/sz.png" />
+				<img alt="" title="Tanzania" src="http://flagpedia.net/data/flags/small/tz.png" />
+				<img alt="" title="Togo" src="http://flagpedia.net/data/flags/small/tg.png" />
+				<img alt="" title="Tunisia" src="http://flagpedia.net/data/flags/small/tn.png" />
+				<img alt="" title="Uganda" src="http://flagpedia.net/data/flags/small/ug.png" />
+				<img alt="" title="Western Sahara" src="http://flagpedia.net/data/flags/small/eh.png" />
+				<img alt="" title="Zambia" src="http://flagpedia.net/data/flags/small/zm.png" />
+				<img alt="" title="Zimbabwe" src="http://flagpedia.net/data/flags/small/zw.png" />
+            </div>
+
+            <div id="divImages_europe">
+				<img alt="" title="Albania" src="http://flagpedia.net/data/flags/small/al.png" />
+				<img alt="" title="Andorra" src="http://flagpedia.net/data/flags/small/ad.png" />
+				<img alt="" title="Austria" src="http://flagpedia.net/data/flags/small/at.png" />
+				<img alt="" title="Belarus" src="http://flagpedia.net/data/flags/small/by.png" />
+				<img alt="" title="Belgium" src="http://flagpedia.net/data/flags/small/be.png" />
+				<img alt="" title="Bosnia and Herzegovina" src="http://flagpedia.net/data/flags/small/ba.png" />
+				<img alt="" title="Bulgaria" src="http://flagpedia.net/data/flags/small/bg.png" />
+				<img alt="" title="Croatia" src="http://flagpedia.net/data/flags/small/hr.png" />
+				<img alt="" title="Czech Republic" src="http://flagpedia.net/data/flags/small/cz.png" />
+				<img alt="" title="Denmark" src="http://flagpedia.net/data/flags/small/dk.png" />
+				<img alt="" title="Estonia" src="http://flagpedia.net/data/flags/small/ee.png" />
+				<img alt="" title="Finland" src="http://flagpedia.net/data/flags/small/fi.png" />
+				<img alt="" title="France" src="http://flagpedia.net/data/flags/small/fr.png" />
+				<img alt="" title="Germany" src="http://flagpedia.net/data/flags/small/de.png" />
+				<img alt="" title="Greece" src="http://flagpedia.net/data/flags/small/gr.png" />
+				<img alt="" title="Hungary" src="http://flagpedia.net/data/flags/small/hu.png" />
+				<img alt="" title="Iceland" src="http://flagpedia.net/data/flags/small/is.png" />
+				<img alt="" title="Ireland" src="http://flagpedia.net/data/flags/small/ie.png" />
+				<img alt="" title="Italy" src="http://flagpedia.net/data/flags/small/it.png" />
+				<img alt="" title="Kosovo" src="http://flagpedia.net/data/flags/small/ks.png" />
+				<img alt="" title="Latvia" src="http://flagpedia.net/data/flags/small/lv.png" />
+				<img alt="" title="Liechtenstein" src="http://flagpedia.net/data/flags/small/li.png" />
+				<img alt="" title="Lithuania" src="http://flagpedia.net/data/flags/small/lt.png" />
+				<img alt="" title="Luxembourg" src="http://flagpedia.net/data/flags/small/lu.png" />
+				<img alt="" title="Macedonia" src="http://flagpedia.net/data/flags/small/mk.png" />
+				<img alt="" title="Malta" src="http://flagpedia.net/data/flags/small/mt.png" />
+				<img alt="" title="Moldova" src="http://flagpedia.net/data/flags/small/md.png" />
+				<img alt="" title="Monaco" src="http://flagpedia.net/data/flags/small/mc.png" />
+				<img alt="" title="Montenegro" src="http://flagpedia.net/data/flags/small/me.png" />
+				<img alt="" title="Netherlands" src="http://flagpedia.net/data/flags/small/nl.png" />
+				<img alt="" title="Norway" src="http://flagpedia.net/data/flags/small/no.png" />
+				<img alt="" title="Poland" src="http://flagpedia.net/data/flags/small/pl.png" />
+				<img alt="" title="Portugal" src="http://flagpedia.net/data/flags/small/pt.png" />
+				<img alt="" title="Romania" src="http://flagpedia.net/data/flags/small/ro.png" />
+				<img alt="" title="Russia" src="http://flagpedia.net/data/flags/small/ru.png" />
+				<img alt="" title="San Marino" src="http://flagpedia.net/data/flags/small/sm.png" />
+				<img alt="" title="Serbia" src="http://flagpedia.net/data/flags/small/rs.png" />
+				<img alt="" title="Slovakia" src="http://flagpedia.net/data/flags/small/sk.png" />
+				<img alt="" title="Slovenia" src="http://flagpedia.net/data/flags/small/si.png" />
+				<img alt="" title="Spain" src="http://flagpedia.net/data/flags/small/es.png" />
+				<img alt="" title="Sweden" src="http://flagpedia.net/data/flags/small/se.png" />
+				<img alt="" title="Switzerland" src="http://flagpedia.net/data/flags/small/ch.png" />
+				<img alt="" title="Turkey" src="http://flagpedia.net/data/flags/small/tr.png" />
+				<img alt="" title="Ukraine" src="http://flagpedia.net/data/flags/small/ua.png" />
+				<img alt="" title="United Kingdom" src="http://flagpedia.net/data/flags/small/gb.png" />
+				<img alt="" title="Vatican City" src="http://flagpedia.net/data/flags/small/va.png" />
+            </div>
+
+            <div id="divImages_asia">
+				<img alt="" title="Afghanistan" src="http://flagpedia.net/data/flags/small/af.png" />
+				<img alt="" title="Armenia" src="http://flagpedia.net/data/flags/small/am.png" />
+				<img alt="" title="Azerbaijan" src="http://flagpedia.net/data/flags/small/az.png" />
+				<img alt="" title="Bahrain" src="http://flagpedia.net/data/flags/small/bh.png" />
+				<img alt="" title="Bangladesh" src="http://flagpedia.net/data/flags/normal/bd.png" />
+				<img alt="" title="Bhutan" src="http://flagpedia.net/data/flags/mini/bt.png" />
+				<img alt="" title="Brunei" src="http://flagpedia.net/data/flags/small/bn.png" />
+				<img alt="" title="Cambodia" src="http://flagpedia.net/data/flags/small/kh.png" />
+				<img alt="" title="Cyprus" src="http://flagpedia.net/data/flags/small/cy.png" />
+				<img alt="" title="East Timor" src="http://flagpedia.net/data/flags/small/tl.png" />
+				<img alt="" title="Egypt" src="http://flagpedia.net/data/flags/small/eg.png" />
+				<img alt="" title="Georgia" src="http://flagpedia.net/data/flags/small/ge.png" />
+				<img alt="" title="India" src="http://flagpedia.net/data/flags/small/in.png" />
+				<img alt="" title="Indonesia" src="http://flagpedia.net/data/flags/small/id.png" />
+				<img alt="" title="Iran" src="http://flagpedia.net/data/flags/small/ir.png" />
+				<img alt="" title="Iraq" src="http://flagpedia.net/data/flags/small/iq.png" />
+				<img alt="" title="Israel" src="http://flagpedia.net/data/flags/small/il.png" />
+				<img alt="" title="Japan" src="http://flagpedia.net/data/flags/small/jp.png" />
+				<img alt="" title="Jordan" src="http://flagpedia.net/data/flags/small/jo.png" />
+				<img alt="" title="Kazakhstan" src="http://flagpedia.net/data/flags/small/kz.png" />
+				<img alt="" title="Kuwait" src="http://flagpedia.net/data/flags/small/kw.png" />
+				<img alt="" title="Kyrgyzstan" src="http://flagpedia.net/data/flags/small/kg.png" />
+				<img alt="" title="Laos" src="http://flagpedia.net/data/flags/small/la.png" />
+				<img alt="" title="Lebanon" src="http://flagpedia.net/data/flags/small/lb.png" />
+				<img alt="" title="Malaysia" src="http://flagpedia.net/data/flags/small/my.png" />
+				<img alt="" title="Maldives" src="http://flagpedia.net/data/flags/small/mv.png" />
+				<img alt="" title="Mongolia" src="http://flagpedia.net/data/flags/small/mn.png" />
+				<img alt="" title="Myanmar" src="http://flagpedia.net/data/flags/small/mm.png" />
+				<img alt="" title="Nepal" src="http://flagpedia.net/data/flags/small/np.png" />
+				<img alt="" title="North Korea" src="http://flagpedia.net/data/flags/small/kp.png" />
+				<img alt="" title="Oman" src="http://flagpedia.net/data/flags/small/om.png" />
+				<img alt="" title="Pakistan" src="http://flagpedia.net/data/flags/small/pk.png" />
+				<img alt="" title="People's Republic of China" src="http://flagpedia.net/data/flags/small/cn.png" />
+				<img alt="" title="Philippines" src="http://flagpedia.net/data/flags/small/ph.png" />
+				<img alt="" title="Qatar" src="http://flagpedia.net/data/flags/small/qa.png" />
+				<img alt="" title="Taiwan" src="http://flagpedia.net/data/flags/small/tw.png" />
+				<img alt="" title="Russia" src="http://flagpedia.net/data/flags/small/ru.png" />
+				<img alt="" title="Saudi Arabia" src="http://flagpedia.net/data/flags/small/sa.png" />
+				<img alt="" title="Singapore" src="http://flagpedia.net/data/flags/small/sg.png" />
+				<img alt="" title="South Korea" src="http://flagpedia.net/data/flags/small/kr.png" />
+				<img alt="" title="Sri Lanka" src="http://flagpedia.net/data/flags/small/lk.png" />
+				<img alt="" title="Syria" src="http://flagpedia.net/data/flags/small/sy.png" />
+				<img alt="" title="Tajikistan" src="http://flagpedia.net/data/flags/small/tj.png" />
+				<img alt="" title="United Arab Emirates" src="http://flagpedia.net/data/flags/small/ae.png" />
+				<img alt="" title="Uzbekistan" src="http://flagpedia.net/data/flags/small/uz.png" />
+				<img alt="" title="Vietnam" src="http://flagpedia.net/data/flags/small/vn.png" />
+				<img alt="" title="Yemen" src="http://flagpedia.net/data/flags/small/ye.png" />
+             </div>
+
+            <div id="divImages_australia">
+                <img alt="" title="Australia" src="http://flagpedia.net/data/flags/small/au.png" />
+                <img alt="" title="East Timor" src="http://flagpedia.net/data/flags/small/tl.png" />
+                <img alt="" title="Fiji" src="http://flagpedia.net/data/flags/small/fj.png" />
+                <img alt="" title="Indonesia" src="http://flagpedia.net/data/flags/small/id.png" />
+                <img alt="" title="Kiribati" src="http://flagpedia.net/data/flags/small/ki.png" />
+                <img alt="" title="Marshall Islands" src="http://flagpedia.net/data/flags/small/mh.png" />
+                <img alt="" title="Micronesia" src="http://flagpedia.net/data/flags/small/fm.png" />
+                <img alt="" title="Nauru" src="http://flagpedia.net/data/flags/small/nr.png" />
+                <img alt="" title="New Zealand" src="http://flagpedia.net/data/flags/small/nz.png" />
+                <img alt="" title="Palau" src="http://flagpedia.net/data/flags/small/pw.png" />
+                <img alt="" title="Papua New Guinea" src="http://flagpedia.net/data/flags/small/pg.png" />
+                <img alt="" title="Samoa" src="http://flagpedia.net/data/flags/small/ws.png" />
+                <img alt="" title="Solomon Islands" src="http://flagpedia.net/data/flags/small/sb.png" />
+                <img alt="" title="Tonga" src="http://flagpedia.net/data/flags/small/to.png" />
+                <img alt="" title="Tuvalu" src="http://flagpedia.net/data/flags/small/tv.png" />
+                <img alt="" title="Vanuatu" src="http://flagpedia.net/data/flags/small/vu.png" />
+            </div>
+
+            <div id="divImages_antarctica">
+                <img alt="" title="Antarctica" src="images/antarctica1.png" style="width: 230px; height: 140px;" />
+            </div>
+        </div>
+        <!-- Countries flag collection END -->
+    </div>
+
+    <!-- jQuery library refer from server -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <!-- Javascript refer from local - LESS THAN 100 LINES -->
+    <script type="text/javascript" src="js/arcgis.js"></script>
+
+  </body>
+</html>

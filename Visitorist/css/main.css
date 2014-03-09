@@ -1,0 +1,301 @@
+
+
+html, body, div, span, p, a, del, em, img, ol, ul, li, fieldset, form, label {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Wallpoet', cursive;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+html, body {
+	line-height: 1;
+	min-height:100%;
+	font-family:Artial, Verdana, sans-serif;
+}
+
+body {
+	background: #eeeeee;
+	background: -webkit-linear-gradient(top, #eeeeee, #cccccc 100%);
+	background: -moz-linear-gradient(top, #eeeeee, #cccccc 100%);
+	background: -o-linear-gradient(top, #eeeeee, #cccccc 100%);
+	background: -ms-linear-gradient(top, #eeeeee, #cccccc 100%);
+	background: linear-gradient(top, #eeeeee, #cccccc 100%);
+	background-attachment:fixed;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+p {
+	margin:1em 0;
+	line-height:1.1em;
+}
+
+q {
+	font-style:italic;
+	color:#333;
+}
+
+h1 {
+	font-size:2.91em;
+	margin:0;
+}
+
+h1 > small {
+	text-align:right;
+	display:inline-block;
+	font-size:.71em;
+	text-indent:15em;
+	color:#444;
+}
+
+h2 {
+	color:inherit;
+	font-size:1.91em;
+	margin:2em 0 1em 0;
+}
+
+h2:first-child {margin-top:0;}
+
+h3 {
+	color:#333;
+	font-size:1.41em;
+	margin:1em 0;
+}
+
+h4 {
+	color:#444;
+	font-size:1.11em;
+	margin:1em 0;
+}
+
+
+
+#introText {
+	position: fixed;
+    z-index: 1000;
+    background: #000;
+    left: 0;
+    top:100px;
+    height:280px;    
+    opacity: 0.5;
+    color:#fff;
+    padding: 15px;
+    font-family: 'Voces', cursive;
+    max-width:300px;
+
+}
+#scrollpos{
+    position: fixed;
+    z-index: 1000;
+    background: #ffffff;
+    top: 0;
+    right: 0;
+    display:none;
+}
+
+.dijitHidden,.dijitHiddenTemp
+{
+	display:none;
+}
+#scrollIntro{
+    position: fixed;
+    z-index: 1000;
+    background: #FFD300;        
+    top:20px;/*controled from html*/
+}
+#BasemapToggle{
+	position: fixed;
+    z-index: 1000;
+    background: #FFD300;
+    top: 20px;
+    right: 20px;
+}
+
+#progress {
+	height:10px;
+	background:#A60000;
+	top:0;
+	z-index:200;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-top:3px solid #000;
+	border-bottom:3px solid #000;
+	border-radius: 0px 5px 5px 0px;
+}
+.subtitle{
+	position: fixed;
+	z-index: 1000;
+	top: 60px;
+	font-size: 18px;
+	color:#25567B;
+	background-color: #FFF;
+	padding-left: 5px;
+	padding-right: 5px;
+	}
+#appTitle{
+	position: fixed;
+    z-index: 1000;
+    background: none;   
+	height:30px;
+	color: #009999;
+}
+
+
+
+#tourImg {
+		text-align: center;
+		position: fixed;
+		
+		left: 75px;
+		right: 75px;
+		bottom: 75px;
+		z-index: 1001;
+		transition: all 1s ease-in;  
+		-webkit-transition: all 1s ease-in;
+		-moz-transition: all 1s ease-in;  
+		-o-transition: all 1s ease-in;  
+		background-color: none;
+		
+	}
+#tourInfo{
+	position: fixed;	
+	overflow-y:auto;
+	opacity: 0.5;
+	background-color: #000;
+	z-index: 1000;
+	transition: all 1s ease-in;  
+	-webkit-transition: all 1s ease-in;
+	-moz-transition: all 1s ease-in;  
+	-o-transition: all 1s ease-in;  
+	color:#fff;
+	padding:10px;
+	font-size: 18px;
+}
+.spotItem{
+	width:200px;
+}
+
+#spotlinks {
+	height:100%;		
+	right:10px;
+	width:200px;
+	z-index:2000;
+	text-align: right;
+	position: fixed;
+}
+#spotlinks .spot:hover{
+	border-right-color: #00FF00;
+	cursor: pointer;
+	}
+
+#spotlinks .spot{
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	
+	border-color: transparent rgb(0,123,255) transparent transparent;
+	/* float:left; */
+	
+	
+	position: relative !important;
+}
+#spotlinks .spotLabel{
+	
+	margin-right: 70px;
+	background-color: #000;
+	border-radius: 3px;
+	opacity: 0.8;
+	color: #FFF;
+	float: right;
+	vertical-align: middle;
+	line-height: 20px;
+	padding-left:20px;
+	padding-right: 20px;
+	max-width: 200px;
+
+	
+}
+#spotlinks .spotLabel:hover{
+	text-decoration: underline;
+	color:red;
+	cursor:pointer;
+}
+
+
+#scrollbar {
+	position:fixed;
+	right:2px;
+	height:50px;
+	width:6px;
+	background:#444;
+	background:rgba(0,0,0,0.6);
+	border:1px solid rgba(255,255,255,0.6);
+	z-index:300;
+	border-radius:3px;
+}
+
+.tooltip:hover:after{
+    background: #333;
+    background: rgba(0,0,0,.3);
+    border-radius: 5px;
+    bottom: 0px;
+    color: #fff;
+    font-size:14px;
+    content: attr(data-title);
+    right: 30px;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+
+    /*width: 220px;*/
+}
+
+.skrollr-desktop #scrollbar {display:none;}
+
+#bg1, #bg2, #bg3 {
+	z-index:500;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	/*background:url(images/bubbles.png) repeat 0 0;*/
+}
+
+
+#intro .arrows {
+	font-size:2em;
+	color:#09f;
+}
+
+#transform {
+	width:70%;
+	left:50%;
+	top:20%;
+	margin-left:-35%;
+	text-align:center;
+	font-size:150%;
+
+	.transform-origin(50%, 50%);
+}
+
+#properties {
+	width:100%;
+	height:100%;
+	padding-top:10%;
+	text-align:center;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
