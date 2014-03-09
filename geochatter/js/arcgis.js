@@ -30,7 +30,7 @@ require(['esri/map','esri/InfoTemplate','esri/graphic','esri/symbols/PictureMark
   var connect = goinstant.connect(url);
   connect.then(function(result) {
     room = result.rooms[0];
-    messagesKey = room.key('messages'); //messages-esri
+    messagesKey = room.key('messages-esri');
     return room.self().get();
   }).then(function(result) {
     user = result.value;
