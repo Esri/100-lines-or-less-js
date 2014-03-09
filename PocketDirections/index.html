@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pocket Directions">
+    <meta name="author" content="Vinicius Machuca @vmachuca">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Pocket Directions</title>
+    <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap_v3/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,700,600,300,800'>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+
+<section id="find">
+    <div class="container-full">
+        <div class="row">
+            <div class="col-lg-12 text-center v-center">
+                <h1>Pocket Directions</h1>
+                <p class="sub">Where are you going?</p>
+                <br>
+                <form class="col-lg-12">
+                    <div class="input-group">
+                        <input id="addressA" class="form-control input-lg" placeholder="Start address" type="text">
+                        <span class="input-group-addon">A</span>
+                    </div><br>
+                    <div class="input-group">
+                        <input id="addressB" class="form-control input-lg" placeholder="Destination address" type="text">
+                        <span class="input-group-addon">B</span>
+                    </div><br>
+                    <div class="input-group">
+                        <button id="btnSolve" class="btn btn-lg btn-primary" type="button" style="width: 100%">Show me how!</button></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="result">
+    <div id="dir"></div>
+    <div id="info">
+        <button id="nt" class="next btn btn-primary btn-lg nb">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+        <button id="lt" class="back btn btn-primary btn-lg nb">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+        <div id="infodata">
+            <img id="maneuvers" src="" alt="">
+            <div id="text">
+           </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <button id="btnReset" class="btn btn btn-warning" type="button">
+        <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+    <div id="map"></div>
+</section>
+
+<footer>
+    <button id="nb" class="next btn btn-primary btn-lg nb">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+    <button id="lb" class="back btn btn-primary btn-lg nb">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+</footer>
+
+<div id="overlay"><img src="assets/img/loader.gif" alt="aguarde"> thinking!</div>
+<input id="mPath" type="hidden" value="assets/img/maneuvers/">
+<input id="routeUrl" type="hidden" value="http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Route">
+
+<script src="http://js.arcgis.com/3.8compact"></script>
+<script src="assets/libs/jquery-1.11.0.min.js"></script>
+<script src="assets/js/arcgis.js"></script>
+</body>
+</html>

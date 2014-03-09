@@ -1,0 +1,200 @@
+html, body, section, #map {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #FFF;
+    overflow: hidden;
+    font-family: "Trebuchet MS";
+}
+
+h1 {
+    line-height: 67px;
+    color:#fff;
+    font-family: 'Open Sans',sans-serif;
+}
+
+#map {
+    margin-bottom: 50px;
+}
+
+.sub {
+    color:#b28b6e;
+    font-size: 20px;
+}
+
+#result {
+    display: none;
+}
+
+.container-full {
+    color:#eee;
+    margin: 0 auto;
+    width: 100%;
+    min-height:100%;
+    overflow:hidden;
+    background:#000 url('../img/bg.jpg') center center;
+}
+
+.container-full a {
+    color:#efefef;
+    text-decoration:none;
+}
+
+.v-center {
+    margin-top:7%;
+}
+
+.input-group {
+    margin:0 auto;
+    text-align:center;
+}
+
+#info {
+    min-height: 60px;
+    border-bottom:4px #000 solid;
+    background:#000 url('../img/bgm.jpg')repeat-x;
+}
+
+#infodata {
+     color:#fff;
+     margin: 0 auto;
+     font-family: 'Open Sans',sans-serif;
+     text-align: center;
+ }
+
+#infodata {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#maneuvers, #text  {
+    float: left;
+}
+
+#btnReset {
+    right: 0;
+    top: 80px;
+    z-index: 999;
+    margin-right: 10px;
+    position: absolute;
+    border-radius: 0;
+}
+
+@media (max-width: 600px) {
+    h1{
+        font-size: 50px;
+    }
+    .input-group {
+        width: 240px;
+    }
+    #infodata {
+        width: 150px;
+        font-weight: bold;
+        font-size: 12px;
+        padding-top: 5px;
+    }
+    #maneuvers {
+        width: 20px;
+        height: 20px;
+        margin-top: 12px;
+    }
+    #text {
+        width: 125px;
+        margin-left: 5px;
+    }
+    #nt {display: none;}
+    #lt {display: none;}
+    .ft {display: inline-block;}
+}
+
+@media (min-width: 600px) {
+    h1{
+        font-size: 60px;
+    }
+    .input-group {
+        width: 340px;
+    }
+    #infodata {
+        width: 350px;
+        font-weight: bold;
+        font-size: 16px;
+        padding-top: 4px;
+    }
+    #maneuvers {
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+    }
+    #text {
+        width: 307px;
+        margin-left: 5px;
+    }
+    #nt {display: block;}
+    #lt {display: block;}
+    .ft {display: none;}
+}
+
+.simpleDirections {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    z-index: 9999999;
+    left: 999999999px;
+}
+
+.nb {
+    border-radius: 0;
+    padding: 17px 26px;
+}
+
+.ml {
+    font-weight: normal;
+    font-style: italic;
+    color:#eaeaea;
+}
+
+#nt {float: right;}
+
+#lt {float: left;}
+
+#nb {
+    float: right;
+    width: 50%
+}
+
+#lb {
+    float: left;
+    width: 50%
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter:alpha(opacity=97);
+    -moz-opacity:0.97;
+    -khtml-opacity: 0.97;
+    opacity: 0.97;
+    z-index: 10000;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 15px;
+}
+
+footer {
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: #000;
+}
+
