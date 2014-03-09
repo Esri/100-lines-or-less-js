@@ -1,7 +1,14 @@
 Drive-Anywhere
-==========
+==============
 
-A simple driving app with a twist. Gas and break are in the lower left and lower right, respectively. Steer the car by clicking-and-dragging or swiping the map right or left.
+A simple driving app with a twist. 
+
+Driving Directions: 
+===================
+
+Gas and break are in the lower left and lower right, respectively. 
+Steer the car by clicking-and-dragging or swiping the map right or left.
+Keyboard arrow keys also work. Honk the horn with the spacebar.
 
 Libraries Referenced
 ====================
@@ -11,4 +18,4 @@ Libraries Referenced
 * [Propeller](http://pixelscommander.com/polygon/propeller/)
 * [Magento Font](http://www.fontsquirrel.com/fonts/Magenta)
 * [Digital Dream Font](http://www.fontsquirrel.com/fonts/Digital-dream)
-* [Car Horn](http://www.freesound.org/people/keweldog/sounds/182474/)
+* [Car Horn sound](http://www.freesound.org/people/keweldog/sounds/182474/)
