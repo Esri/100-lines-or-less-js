@@ -1,20 +1,22 @@
-require(["esri/map","esri/InfoTemplate","esri/graphic","esri/symbols/PictureMarkerSymbol",
-  "esri/layers/GraphicsLayer","esri/geometry/Point","dojo/domReady!"
+require(['esri/map','esri/InfoTemplate','esri/graphic','esri/symbols/PictureMarkerSymbol',
+  'esri/layers/GraphicsLayer','esri/geometry/Point','dojo/domReady!'
   ], function(Map, InfoTemplate, Graphic, PictureMarkerSymbol, GraphicsLayer, Point) {
-  var map = new Map("map", {
+  var map = new Map('map', {
     center: [-56.049, 38.485],
     zoom: 3,
-    basemap: "topo",
-    sliderPosition: "bottom-left"
+    basemap: 'topo',
+    sliderPosition: 'bottom-left'
   });
 
+  $('.text').focus();
   map.infoWindow.highlight = false;
 
-  var infoTemplate = new InfoTemplate("${name}","${message}");
+  var infoTemplate = new InfoTemplate('${name}','${message}');
   var symbol = new PictureMarkerSymbol('css/pushpin.png', 42, 42);
 
-  $(".dropdown-img, .dropdown-img-top").click(function() {
-     $(".messages-top-level").slideToggle();
+  $('#dropdown-img, #dropdown-img-top').click(function() {
+     $('.messages-top-level').slideToggle();
+     $(this).parent().find('img').toggleClass('opaque');
      map.infoWindow.hide();
      _scrollBottom();
      return false;
@@ -28,7 +30,7 @@ require(["esri/map","esri/InfoTemplate","esri/graphic","esri/symbols/PictureMark
   var connect = goinstant.connect(url);
   connect.then(function(result) {
     room = result.rooms[0];
-    messagesKey = room.key('messages-esri');
+    messagesKey = room.key('messages'); //messages-esri
     return room.self().get();
   }).then(function(result) {
     user = result.value;
@@ -47,7 +49,7 @@ require(["esri/map","esri/InfoTemplate","esri/graphic","esri/symbols/PictureMark
     $name.on('keydown blur', handleName);
   });
 
-  function addMessage(message, isLoad, context) {
+  function addMessage(message, context) {
     map.infoWindow.hide();
     var $message = $('<li><div class="user-name"></div><div class="user-message"></div></li>');
     $message.addClass('message');
@@ -55,10 +57,8 @@ require(["esri/map","esri/InfoTemplate","esri/graphic","esri/symbols/PictureMark
     $message.children().last().text(message.text);
     $messages.append($message);
     _scrollBottom();
-    if (context != null && context.userId === user.id) {
-      $text.val('');
-    }
-    addGraphic(message.lat, message.lng, message.text, message.name, isLoad);
+    if (context.userId === user.id) { $text.val(''); }
+    addGraphic(message.lat, message.lng, message.text, message.name, context);
   }
 
   function updatePosition(position) {
@@ -67,12 +67,13 @@ require(["esri/map","esri/InfoTemplate","esri/graphic","esri/symbols/PictureMark
 
   function addGraphic(lat, lng, message, name, loading) {
     if ((lat === null || lng === null) || (loading != null && loading === true)) return;
-    var point = new Point({"x": lng, "y": lat, "spatialReference": {"wkid": 4326 } });
+    var point = new Point({'x': lng, 'y': lat, 'spatialReference': {'wkid': 4326 } });
     var attributes = {'name': name,'message': message};
     map.graphics.add(new Graphic(point, symbol, attributes, infoTemplate));
     map.infoWindow.setTitle(name);
     map.infoWindow.setContent(message);
-    map.infoWindow.show(point);
+    var isVisible = $('.messages-top-level').is(':visible');
+    if (!isVisible) { map.infoWindow.show(point); }
     map.centerAt(point);
   }
 
