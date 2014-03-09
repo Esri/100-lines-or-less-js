@@ -11,7 +11,7 @@ Pan around the map to see where people are talking (all messages are geolocated)
 
 Check out our search page as well. Super neat auto complete enabled search on message history allowing easy search for specific topics.
 
-Try it out [here](https://esri.github.io/100-lines-or-less-js/GeoHappenings).
+Try it out [here](https://esri.github.io/100-lines-or-less-js/geohappenings).
 
 The JavaScripts:
 
