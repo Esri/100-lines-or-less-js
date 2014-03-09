@@ -1,6 +1,5 @@
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-var map;
 require([
   "esri/map", "esri/tasks/locator", "esri/SpatialReference", "esri/graphic",
   "esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleMarkerSymbol",
@@ -13,7 +12,7 @@ require([
   Font, TextSymbol, Extent, webMercatorUtils, arrayUtils, Color, parser, BootstrapMap
 ) {
     parser.parse();
-    map = new Map("mapDiv", { center: [-56.049, 38.485], zoom: 3, basemap: "hybrid" });
+    var map = new Map("mapDiv", { center: [-56.049, 38.485], zoom: 3, basemap: "hybrid" });
     BootstrapMap.bindTo(map);
     locator = new Locator("https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
     locator.on("address-to-locations-complete", function (evt) {
@@ -43,18 +42,17 @@ require([
     if (annyang) {
         annyang.debug()
         $('#welcome').fadeIn('fast');
-        var locate = function (place) { geoLocate(place); };
-        var pan = function (type) {
-            if (type === "left") map.panLeft();
-            if (type === "right") map.panRight();
-            if (type === "up") map.panUp();
-            if (type === "down") map.panDown();
-        };
-        var zoom = function (type) {
-            if (type === "in") map.setZoom(map.getZoom() + 1);
-            if (type === "out") map.setZoom(map.getZoom() - 1);
+        var move = function (dir) {
+            if (dir === "left" || dir === "west") map.panLeft();
+            if (dir === "right" || dir === "east") map.panRight();
+            if (dir === "up" || dir === "north") map.panUp();
+            if (dir === "down" || dir === "south") map.panDown();
+            if (dir === "in") map.setZoom(map.getZoom() + 1);
+            if (dir === "out") map.setZoom(map.getZoom() - 1);
         };
         var setBasemap = function (basemap) {
+            if (basemap == 'gray') basemap = 'grey'; //helper
+            if (basemap == 'street') basemap = 'streets'; //helper
             var baseMaps = $("a[data-basemapname='" + basemap + "']");
             if (baseMaps.length > 0) map.setBasemap($(baseMaps[0]).attr("data-basemapvalue"));
         };
@@ -64,10 +62,10 @@ require([
         };
         var showHelp = function () { $('#help').modal('show'); };
         var commands = {
-            'zoom :type': zoom,
-            'pan :type': pan,
-            'locate *place': locate,
+            'move :dir': move,
+            'locate *place': geoLocate,
             'set base map *basemap': setBasemap,
+            'base map *basemap': setBasemap,
             'close': close,
             'help': showHelp
         };
