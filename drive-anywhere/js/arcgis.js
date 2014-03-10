@@ -17,8 +17,10 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 	function newPosition (pos, speed, angle) { // calculate position
 		pos.x -= (speed * Math.sin(angle)); pos.y += (speed * Math.cos(angle)); return pos;
 	}
-	function isGassed() { updateSpeed(); isDrivn = !!gas.value; if (isDrivn) { drive(); } }
-	function drive () {
+	function isGassed() { // test whether car needs to keep moving.
+		updateSpeed(); isDrivn = !!gas.value; if (isDrivn) { drive(); } 
+	}
+	function drive () {// draw trail, calculate new position, and use map.centerAt to move.
 		var len = trail.geometry.paths[0].length; trail.geometry.insertPoint(0, 0, position); 
 		while (len > 100) { trail.geometry.removePoint(0,len); len--;}
 		map.graphics.refresh();
@@ -34,6 +36,7 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 		domStyle.set("map", {width: diag + "px", height: diag + "px", 
 			margin: ((h-diag)/2) + "px 0 0 " + ((w-diag)/2) + "px"
 		}); 
+		if (map) {map.on("update-end", function () {resetPos();});}
 	}
 	function getCardinal(dd) { // get north, south, east, or west directions from map angle.
 		var dir; dd = dd % 360; dd = dd < 0 ? 360 + dd : dd;
@@ -63,19 +66,22 @@ function (Map, Locater, Geocoder, Polyline, LineSymbol, Graphic, dojoOn, domStyl
 			case keys.RIGHT_ARROW: prop.speed = prop.speed - 3; break; // turn right
 			case keys.LEFT_ARROW: prop.speed = prop.speed + 3; break; // turn left
 			case keys.DOWN_ARROW: gas.set("value", Math.max(-20, gas.value - 5)); break; //reverse
+			case keys.SPACE: playSound("audio/horn"); break;
 		}
 	});
 	gas._onKeyDown = function (a) {}; // fix for issue when slider doesn't bubble keydown event.
 	map = new Map("map", mapcfg);
 	locateBtn = new Locater({map: map, highlightLocation: false}, "locateBtn");
-	locateBtn.startup(); 
-	locateBtn.on("locate", function () {resetPos();}); // lets you zoom to your current location.
+	locateBtn.startup(); // lets user zoom to their current location.
+	locateBtn.on("locate", function () {resetPos();}); 
 	map.on("load", function () {
 		var geocoder = new Geocoder({map: map}, "search"); geocoder.startup();
-		geocoder.on("select", function (res) { resetPos(res.extent.getCenter());});
+		geocoder.on("select", function (res) { 
+			resetPos(res.extent.getCenter()); // reset map position when geocoder is used.
+		});
 		trail = new Graphic(new Polyline(map.spatialReference), new LineSymbol(lineCfg));
 		resetPos(map.extent.getCenter()); // set map center.
-		map.graphics.clear(); map.graphics.add(trail);
+		map.graphics.clear(); map.graphics.add(trail); // add trail graphic
 		map.disableMapNavigation(); // stop normal map navigation (zoom in/out buttons okay).
 		domConstruct.place("map_zoom_slider", "newzoomspot", "first"); // make zoom slider visible
 		prop = new Propeller(document.getElementById("map"), {

@@ -78,6 +78,12 @@ button {
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 
+a,
+a:hover,
+a:visited {
+	color: white;
+}
+
 .digital
 {
 	font-family: 'digital_dream', Arial, Helvetica, sans-serif;
@@ -374,6 +380,7 @@ button {
 	-webkit-box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,0.7);
 	-moz-box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,0.7);
 	box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,0.7);
+	z-index: 200;
 }
 	
 #gas_dir {
@@ -431,6 +438,18 @@ button {
 	border: 0;
 	background: url("../images/dash_contents.png") no-repeat;
 	background-position: -24px 0;
+}
+
+.cred {
+	float: right;
+}
+
+
+.esriSimpleSliderIncrementButton,
+.esriSimpleSliderDecrementButton {
+	background: #444;
+	font-family: 'digital_dream', Arial, Helvetica, sans-serif;
+	color: #44ffff;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
