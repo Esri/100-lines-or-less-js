@@ -8,8 +8,7 @@ require([
         showmehow($('#addressA').val(), $('#addressB').val());
     });
     $('#btnReset').click(function(){
-        $('#overlay').show();
-        window.location.reload();
+        reset();
     })
     $('.next').click(function(){ctrlstep(++step, 1);});
     $('.back').click(function(){ctrlstep(--step, -1);});
@@ -27,10 +26,14 @@ require([
             map: map, routeTaskUrl:$('#routeUrl').val()});
         directions.on('load', function(){
             window.ar = 0;
-            directions.updateStop(addressA, 0).then(function(){ckresult();});
-            directions.updateStop(addressB, 1).then(function(){ckresult();});
+            directions.updateStop(addressA, 0).then(function(e){ckresult();});
+            directions.updateStop(addressB, 1).then(function(e){ckresult();});
         });
         directions.on('directions-finish', function(r) {
+            if(r.result.code != undefined) {
+                alert("Unable to resolve this route.");
+                reset(); return;
+            }
             window.resultRoute = r.result.routeResults[0].directions;
             ctrlstep(window.step = 1, 1);
         });
@@ -61,5 +64,9 @@ require([
         $('#find').hide();
         $('#result').show();
         $('footer').addClass('ft');
+    }
+    function reset() {
+        $('#overlay').show();
+        window.location.reload();
     }
 });});
