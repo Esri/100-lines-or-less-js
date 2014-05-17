@@ -1,3 +1,7 @@
+html, body{
+ height: 100%;	/*to get rid of that annoying 400px #mapdiv inline css*/
+}
+
 #start,  #backward {
   margin-top: 9px;
   margin-right: 3px;
