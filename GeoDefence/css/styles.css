@@ -1,0 +1,14 @@
+﻿body {
+}
+
+.drawIcon {
+    background-image: url(../images/Draw.png);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 30%; 
+    z-index: 1000000;
+    left: 3%
+}
+
+
